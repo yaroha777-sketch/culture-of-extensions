@@ -965,16 +965,25 @@
     }
 
     .faq-answer {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-answer-inner {
+      overflow: hidden;
       font-size: 13px;
       color: var(--grey-light);
       line-height: 1.9;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding-bottom: 0;
+      transition: padding-bottom 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .faq-item.open .faq-answer {
-      max-height: 300px;
+      grid-template-rows: 1fr;
+    }
+
+    .faq-item.open .faq-answer-inner {
       padding-bottom: 28px;
     }
 
@@ -1248,9 +1257,93 @@
       .cities-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
+    /* ─── HAMBURGER BUTTON ─── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 300;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--cream);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+
+    /* X state */
+    nav.menu-open .nav-hamburger span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    nav.menu-open .nav-hamburger span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    nav.menu-open .nav-hamburger span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    /* ─── MOBILE OVERLAY MENU ─── */
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-cta { display: none; }
+
+      .nav-links {
+        display: flex !important;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(13,13,13,0.98);
+        backdrop-filter: blur(12px);
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        z-index: 200;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+
+      nav.menu-open .nav-links {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        letter-spacing: 0.35em;
+      }
+
+      /* Mobile book button inside overlay */
+      .nav-mobile-book {
+        display: block !important;
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--onyx);
+        background: var(--gold);
+        padding: 16px 40px;
+        margin-top: 8px;
+        transition: background 0.3s;
+      }
+
+      .nav-mobile-book:hover { background: var(--gold-light); }
+    }
+
     @media (max-width: 768px) {
       nav { padding: 20px 24px; }
-      .nav-links { display: none; }
       section { padding: 64px 24px; }
       .hero { padding: 0 24px 64px; }
       .services-grid { grid-template-columns: 1fr; }
@@ -1284,8 +1377,14 @@
       <li><a href="#academy">Academy</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="nav-mobile-book" style="display:none;" aria-label="Book consultation">Book Consultation</a></li>
     </ul>
     <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="nav-cta" aria-label="Book complimentary consultation">Book Consultation</a>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </nav>
 
   <!-- ─── HERO ─── -->
@@ -1655,31 +1754,31 @@
       <div class="faq-list" role="list">
         <div class="faq-item" role="listitem">
           <div class="faq-question" role="button" tabindex="0" aria-expanded="false">How much do hair extensions cost in Burbank / Los Angeles?</div>
-          <div class="faq-answer">Pricing depends on the method, hair length, grams, hair quality and the desired result. Targeted volume enhancements can start from $400, while full length transformations typically begin from $1,000+. A private consultation is required for an accurate quote tailored to your specific needs.</div>
+          <div class="faq-answer"><div class="faq-answer-inner">Pricing depends on the method, hair length, grams, hair quality and the desired result. Targeted volume enhancements can start from $400, while full length transformations typically begin from $1,000+. A private consultation is required for an accurate quote tailored to your specific needs.</div></div>
         </div>
         <div class="faq-item" role="listitem">
           <div class="faq-question" role="button" tabindex="0" aria-expanded="false">What hair extension method is best for me?</div>
-          <div class="faq-answer">The best method depends on your natural hair density, scalp sensitivity, lifestyle, desired length and maintenance habits. During consultation, Lana evaluates your hair and recommends the most suitable method — whether K-Tip, micro-capsule, BIO Tape or a hybrid approach.</div>
+          <div class="faq-answer"><div class="faq-answer-inner">The best method depends on your natural hair density, scalp sensitivity, lifestyle, desired length and maintenance habits. During consultation, Lana evaluates your hair and recommends the most suitable method — whether K-Tip, micro-capsule, BIO Tape or a hybrid approach.</div></div>
         </div>
         <div class="faq-item" role="listitem">
           <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Are K-Tip and micro-capsule extensions damaging?</div>
-          <div class="faq-answer">When installed correctly and maintained properly, these methods can be comfortable and natural-looking without damaging your natural hair. The health of the natural hair always comes first, which is why consultation and correct maintenance are a non-negotiable part of the process at Culture of Extensions.</div>
+          <div class="faq-answer"><div class="faq-answer-inner">When installed correctly and maintained properly, these methods can be comfortable and natural-looking without damaging your natural hair. The health of the natural hair always comes first, which is why consultation and correct maintenance are a non-negotiable part of the process at Culture of Extensions.</div></div>
         </div>
         <div class="faq-item" role="listitem">
           <div class="faq-question" role="button" tabindex="0" aria-expanded="false">How long do hair extensions last?</div>
-          <div class="faq-answer">Longevity depends on the method, hair quality, aftercare routine and maintenance schedule. Many clients need a maintenance move-up every 8–10 weeks, but the exact timeline is personalized based on your natural hair growth rate and lifestyle.</div>
+          <div class="faq-answer"><div class="faq-answer-inner">Longevity depends on the method, hair quality, aftercare routine and maintenance schedule. Many clients need a maintenance move-up every 8–10 weeks, but the exact timeline is personalized based on your natural hair growth rate and lifestyle.</div></div>
         </div>
         <div class="faq-item" role="listitem">
           <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Do I need a consultation before booking?</div>
-          <div class="faq-answer">Yes, always. Consultation allows Lana to evaluate your current hair, desired result, color match, density goals, previous extension history and budget before creating a personalized plan. This protects your hair health and ensures you receive the right service at the right investment.</div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes, always. Consultation allows Lana to evaluate your current hair, desired result, color match, density goals, previous extension history and budget before creating a personalized plan. This protects your hair health and ensures you receive the right service at the right investment.</div></div>
         </div>
         <div class="faq-item" role="listitem">
           <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Do you offer professional hair extension education?</div>
-          <div class="faq-answer">Yes. Culture Academy by Lana offers professional hair extension education for stylists who want to learn consultation, placement logic, blending, maintenance, correction and luxury client experience. Apply for training through the Academy section below.</div>
+          <div class="faq-answer"><div class="faq-answer-inner">Yes. Culture Academy by Lana offers professional hair extension education for stylists who want to learn consultation, placement logic, blending, maintenance, correction and luxury client experience. Apply for training through the Academy section below.</div></div>
         </div>
         <div class="faq-item" role="listitem">
           <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Where is Culture of Extensions located?</div>
-          <div class="faq-answer">Culture of Extensions serves clients in Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas by private appointment. The studio is located at 2119 N Glenoaks Blvd, Burbank, CA.</div>
+          <div class="faq-answer"><div class="faq-answer-inner">Culture of Extensions serves clients in Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas by private appointment. The studio is located at 2119 N Glenoaks Blvd, Burbank, CA.</div></div>
         </div>
       </div>
     </div>
@@ -1858,6 +1957,23 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
     }, { passive: true });
+
+    // Mobile hamburger menu
+    const hamburger = document.getElementById('navHamburger');
+    hamburger.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('menu-open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close menu on nav link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('menu-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
 
     // FAQ accordion
     document.querySelectorAll('.faq-question').forEach(q => {
