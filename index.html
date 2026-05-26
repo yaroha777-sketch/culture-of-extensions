@@ -1238,6 +1238,45 @@
       text-align: right;
     }
 
+    /* ─── SCROLL ANIMATIONS ─── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Stagger delays for grid children */
+      .reveal-stagger > * {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .reveal-stagger.visible > *:nth-child(1) { transition-delay: 0ms;   opacity: 1; transform: none; }
+      .reveal-stagger.visible > *:nth-child(2) { transition-delay: 80ms;  opacity: 1; transform: none; }
+      .reveal-stagger.visible > *:nth-child(3) { transition-delay: 160ms; opacity: 1; transform: none; }
+      .reveal-stagger.visible > *:nth-child(4) { transition-delay: 240ms; opacity: 1; transform: none; }
+      .reveal-stagger.visible > *:nth-child(5) { transition-delay: 320ms; opacity: 1; transform: none; }
+      .reveal-stagger.visible > *:nth-child(6) { transition-delay: 400ms; opacity: 1; transform: none; }
+      .reveal-stagger.visible > *:nth-child(7) { transition-delay: 480ms; opacity: 1; transform: none; }
+      .reveal-stagger.visible > *:nth-child(8) { transition-delay: 560ms; opacity: 1; transform: none; }
+
+      /* Stats counter fade-up */
+      .stat-item {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      .about-stats.visible .stat-item:nth-child(1) { transition-delay: 0ms;   opacity: 1; transform: none; }
+      .about-stats.visible .stat-item:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: none; }
+      .about-stats.visible .stat-item:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: none; }
+      .about-stats.visible .stat-item:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: none; }
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1200px) {
       .trust-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1436,7 +1475,7 @@
       <p class="section-label">Our Difference</p>
       <h2 class="section-title">Why Clients <em>Choose Lana</em></h2>
     </div>
-    <div class="trust-grid">
+    <div class="trust-grid reveal-stagger">
       <div class="trust-card">
         <div class="trust-icon">14+</div>
         <h3 class="trust-card-title">Years of Extension Experience</h3>
@@ -1477,7 +1516,7 @@
       </p>
     </div>
 
-    <div class="services-grid">
+    <div class="services-grid reveal-stagger">
       <div class="service-card">
         <div class="service-num" aria-hidden="true">01</div>
         <h3 class="service-name">K-Tip Extensions</h3>
@@ -1556,7 +1595,7 @@
       <p class="section-body" style="margin-top: 20px;">
         Lana's philosophy is rooted in a singular principle: your natural hair comes first. Every application is preceded by a structural analysis of your hair's architecture — porosity, density, growth patterns — to select the safest, most flattering technique for your unique profile.
       </p>
-      <div class="about-stats">
+      <div class="about-stats reveal">
         <div class="stat-item">
           <div class="stat-num">14+</div>
           <div class="stat-label">Years of Mastery</div>
@@ -1587,7 +1626,7 @@
       </p>
     </div>
 
-    <div class="process-steps">
+    <div class="process-steps reveal-stagger">
       <div class="process-step">
         <div class="step-num" aria-hidden="true">01</div>
         <h3 class="step-title">Share Your Hair Goals</h3>
@@ -1711,7 +1750,7 @@
       <p class="section-label">Client Love</p>
       <h2 class="section-title">What Clients <em>Say</em></h2>
     </div>
-    <div class="testimonials-grid">
+    <div class="testimonials-grid reveal-stagger">
       <div class="testimonial-card">
         <span class="testimonial-placeholder-badge" aria-label="Placeholder content">Placeholder</span>
         <div class="testimonial-stars" aria-label="5 stars">
@@ -1808,7 +1847,7 @@
         </div>
       </div>
 
-      <div class="academy-programs">
+      <div class="academy-programs reveal-stagger">
         <div class="program-item">
           <div>
             <div class="program-name">3-Day Intensive Masterclass</div>
@@ -1857,7 +1896,7 @@
         </div>
       </div>
       <div>
-        <div class="cities-grid">
+        <div class="cities-grid reveal-stagger">
           <div class="city-card">
             <div class="city-name">Burbank</div>
             <div class="city-services">K-Tip Extensions<br/>Micro-Capsule<br/>Volume &amp; Density</div>
@@ -1889,7 +1928,7 @@
 
   <!-- ─── FINAL CTA ─── -->
   <section class="final-cta" aria-label="Book your transformation">
-    <div class="final-cta-content">
+    <div class="final-cta-content reveal">
       <p class="section-label">Begin Your Journey</p>
       <h2 class="section-title">
         Ready for Your<br/><em>Transformation?</em>
@@ -1962,6 +2001,20 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 80);
     }, { passive: true });
+
+    // Scroll reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => {
+      revealObserver.observe(el);
+    });
 
     // Mobile hamburger menu
     const hamburger = document.getElementById('navHamburger');
