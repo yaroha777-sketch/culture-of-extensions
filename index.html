@@ -840,6 +840,56 @@
 
     .gallery-item:hover img { transform: scale(1.05); }
     .gallery-item:hover { border-color: rgba(201,169,110,0.25); }
+    .gallery-item { cursor: pointer; }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      border: none;
+      background: transparent;
+      padding: 0;
+      max-width: 92vw;
+      max-height: 92vh;
+      outline: none;
+    }
+    .lightbox::backdrop { background: rgba(0,0,0,0.93); }
+    .lightbox-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .lightbox img {
+      display: block;
+      max-width: 80vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border: 1px solid rgba(201,169,110,0.12);
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 18px; right: 22px;
+      background: none; border: none;
+      color: var(--gold); font-size: 30px;
+      cursor: pointer; line-height: 1; padding: 8px;
+      opacity: 0.8; transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-arrow {
+      background: none; border: none;
+      color: var(--gold); font-size: 36px;
+      cursor: pointer; padding: 16px 20px;
+      opacity: 0.6; transition: opacity 0.2s;
+      user-select: none; line-height: 1;
+    }
+    .lightbox-arrow:hover { opacity: 1; }
+    .lightbox-counter {
+      position: fixed;
+      bottom: 18px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--sans);
+      font-size: 11px; letter-spacing: 0.12em;
+      color: rgba(201,169,110,0.6);
+    }
 
     /* ─── TESTIMONIALS ─── */
     .testimonials {
@@ -1761,13 +1811,13 @@
     </div>
     <div class="gallery-scroll" role="list">
       <!-- TODO: Replace alt text with real client transformation descriptions when known -->
-      <div class="gallery-item" role="listitem"><img src="photos/g1.jpg" alt="K-Tip hair extension transformation — long blonde hair, Burbank Los Angeles" loading="lazy"/></div>
-      <div class="gallery-item" role="listitem"><img src="photos/g2.jpg" alt="Premium hair extension result — natural blending, Culture of Extensions" loading="lazy"/></div>
-      <div class="gallery-item" role="listitem"><img src="photos/g3.jpg" alt="Micro-capsule hair extension transformation — seamless length and volume" loading="lazy"/></div>
-      <div class="gallery-item" role="listitem"><img src="photos/g4.jpg" alt="Slavic hair extension result — color matched, natural movement" loading="lazy"/></div>
-      <div class="gallery-item" role="listitem"><img src="photos/g5.jpg" alt="Bespoke hair extension transformation by Lana, Los Angeles" loading="lazy"/></div>
-      <div class="gallery-item" role="listitem"><img src="photos/g6.jpg" alt="Volume and density extension result — fine hair transformation" loading="lazy"/></div>
-      <div class="gallery-item" role="listitem"><img src="photos/g7.jpg" alt="Premium extension work — European hair, invisible placement" loading="lazy"/></div>
+      <div class="gallery-item" role="button" tabindex="0" data-src="photos/g1.jpg" aria-label="View full size"><img src="photos/g1.jpg" alt="K-Tip hair extension transformation — long blonde hair, Burbank Los Angeles" loading="lazy"/></div>
+      <div class="gallery-item" role="button" tabindex="0" data-src="photos/g2.jpg" aria-label="View full size"><img src="photos/g2.jpg" alt="Premium hair extension result — natural blending, Culture of Extensions" loading="lazy"/></div>
+      <div class="gallery-item" role="button" tabindex="0" data-src="photos/g3.jpg" aria-label="View full size"><img src="photos/g3.jpg" alt="Micro-capsule hair extension transformation — seamless length and volume" loading="lazy"/></div>
+      <div class="gallery-item" role="button" tabindex="0" data-src="photos/g4.jpg" aria-label="View full size"><img src="photos/g4.jpg" alt="Slavic hair extension result — color matched, natural movement" loading="lazy"/></div>
+      <div class="gallery-item" role="button" tabindex="0" data-src="photos/g5.jpg" aria-label="View full size"><img src="photos/g5.jpg" alt="Bespoke hair extension transformation by Lana, Los Angeles" loading="lazy"/></div>
+      <div class="gallery-item" role="button" tabindex="0" data-src="photos/g6.jpg" aria-label="View full size"><img src="photos/g6.jpg" alt="Volume and density extension result — fine hair transformation" loading="lazy"/></div>
+      <div class="gallery-item" role="button" tabindex="0" data-src="photos/g7.jpg" aria-label="View full size"><img src="photos/g7.jpg" alt="Premium extension work — European hair, invisible placement" loading="lazy"/></div>
     </div>
   </div>
 
@@ -2541,7 +2591,63 @@
     });
 
     applyLanguage(localStorage.getItem('lang') || 'en');
+
+    // ─── LIGHTBOX ───
+    const lightbox   = document.getElementById('lightbox');
+    const lbImg      = document.getElementById('lbImg');
+    const lbCounter  = document.getElementById('lbCounter');
+    const galleryItems = Array.from(document.querySelectorAll('.gallery-item[data-src]'));
+    let lbIndex = 0;
+
+    function lbOpen(idx) {
+      lbIndex = idx;
+      const item = galleryItems[idx];
+      lbImg.src = item.dataset.src;
+      lbImg.alt = item.querySelector('img').alt;
+      lbCounter.textContent = (idx + 1) + ' / ' + galleryItems.length;
+      lightbox.showModal();
+      document.body.style.overflow = 'hidden';
+    }
+
+    function lbClose() {
+      lightbox.close();
+      document.body.style.overflow = '';
+    }
+
+    function lbPrev() { lbOpen((lbIndex - 1 + galleryItems.length) % galleryItems.length); }
+    function lbNext() { lbOpen((lbIndex + 1) % galleryItems.length); }
+
+    galleryItems.forEach((item, idx) => {
+      item.addEventListener('click', () => lbOpen(idx));
+      item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); lbOpen(idx); } });
+    });
+
+    document.getElementById('lbClose').addEventListener('click', lbClose);
+    document.getElementById('lbPrev').addEventListener('click', lbPrev);
+    document.getElementById('lbNext').addEventListener('click', lbNext);
+
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) lbClose(); });
+    lightbox.addEventListener('close', () => { document.body.style.overflow = ''; });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.open) return;
+      if (e.key === 'ArrowLeft')  lbPrev();
+      if (e.key === 'ArrowRight') lbNext();
+      if (e.key === 'Escape')     lbClose();
+    });
+
   </script>
+
+  <!-- LIGHTBOX DIALOG -->
+  <dialog id="lightbox" class="lightbox" aria-label="Photo lightbox">
+    <button id="lbClose" class="lightbox-close" aria-label="Close">&times;</button>
+    <div class="lightbox-inner">
+      <button id="lbPrev" class="lightbox-arrow" aria-label="Previous photo">&#8249;</button>
+      <img id="lbImg" src="" alt="" />
+      <button id="lbNext" class="lightbox-arrow" aria-label="Next photo">&#8250;</button>
+    </div>
+    <div id="lbCounter" class="lightbox-counter"></div>
+  </dialog>
 
 </body>
 </html>
