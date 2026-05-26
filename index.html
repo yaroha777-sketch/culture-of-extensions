@@ -1404,6 +1404,33 @@
       .local-seo { padding: 64px 24px; }
       .trust { padding: 64px 24px; }
     }
+
+    /* ─── LANGUAGE SWITCHER ─── */
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-right: 16px;
+    }
+    .lang-btn {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      color: var(--grey-mid);
+      cursor: pointer;
+      padding: 4px 2px;
+      transition: color 0.3s;
+    }
+    .lang-btn.active { color: var(--gold); }
+    .lang-btn:hover { color: var(--gold-light); }
+    .lang-sep { color: var(--grey-mid); font-size: 10px; opacity: 0.4; }
+
+    @media (max-width: 768px) {
+      .lang-switcher { margin-right: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -1415,15 +1442,22 @@
       <span>by Lana · Burbank, Los Angeles</span>
     </a>
     <ul class="nav-links" role="list">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#process">Consultation</a></li>
-      <li><a href="#academy">Academy</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#gallery">Gallery</a></li>
-      <li><a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="nav-mobile-book" style="display:none;" aria-label="Book consultation">Book Consultation</a></li>
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#process" data-i18n="nav.consultation">Consultation</a></li>
+      <li><a href="#academy" data-i18n="nav.academy">Academy</a></li>
+      <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+      <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+      <li><a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="nav-mobile-book" style="display:none;" aria-label="Book consultation" data-i18n="nav.book">Book Consultation</a></li>
     </ul>
-    <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="nav-cta" aria-label="Book complimentary consultation">Book Consultation</a>
+    <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="nav-cta" aria-label="Book complimentary consultation" data-i18n="nav.book">Book Consultation</a>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="en">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="es">ES</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="ru">RU</button>
+    </div>
     <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false">
       <span></span>
       <span></span>
@@ -1437,19 +1471,13 @@
     <div class="hero-lines" aria-hidden="true"></div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow">Burbank · Los Angeles · Est. 2024</p>
-      <h1 class="hero-title">
-        Where Modern<br/>
-        <em>Goddesses</em><br/>
-        Are Born
-      </h1>
-      <p class="hero-subtitle">
-        Premium K-Tip, Micro-Capsule &amp; bespoke hair extensions in Burbank, Los Angeles — designed around your natural hair, density, color and lifestyle.
-      </p>
-      <p class="hero-support">Receive a personalized extension plan before booking your transformation.</p>
+      <p class="hero-eyebrow" data-i18n="hero.eyebrow">Burbank · Los Angeles · Est. 2024</p>
+      <h1 class="hero-title" data-i18n-html="hero.title">Where Modern<br/><em>Goddesses</em><br/>Are Born</h1>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">Premium K-Tip, Micro-Capsule &amp; bespoke hair extensions in Burbank, Los Angeles — designed around your natural hair, density, color and lifestyle.</p>
+      <p class="hero-support" data-i18n="hero.support">Receive a personalized extension plan before booking your transformation.</p>
       <div class="hero-actions">
-        <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book complimentary consultation">Book Complimentary Consultation</a>
-        <a href="#gallery" class="btn-ghost">View Transformations</a>
+        <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book complimentary consultation" data-i18n="hero.cta1">Book Complimentary Consultation</a>
+        <a href="#gallery" class="btn-ghost" data-i18n="hero.cta2">View Transformations</a>
       </div>
     </div>
 
@@ -1463,43 +1491,43 @@
 
   <!-- ─── STATEMENT ─── -->
   <div class="statement" aria-label="Founder philosophy">
-    <blockquote>
+    <blockquote data-i18n="statement.quote">
       "We don't simply add hair — we architect a transformation that honors your natural foundation and elevates your presence."
     </blockquote>
-    <cite>Lana · Master Educator · 14+ Years of Excellence</cite>
+    <cite data-i18n="statement.cite">Lana · Master Educator · 14+ Years of Excellence</cite>
   </div>
 
   <!-- ─── WHY LANA / TRUST ─── -->
   <section class="trust" id="why-lana" aria-label="Why clients choose Lana">
     <div class="trust-header">
-      <p class="section-label">Our Difference</p>
-      <h2 class="section-title">Why Clients <em>Choose Lana</em></h2>
+      <p class="section-label" data-i18n="trust.label">Our Difference</p>
+      <h2 class="section-title" data-i18n-html="trust.title">Why Clients <em>Choose Lana</em></h2>
     </div>
     <div class="trust-grid reveal-stagger">
       <div class="trust-card">
         <div class="trust-icon">14+</div>
-        <h3 class="trust-card-title">Years of Extension Experience</h3>
-        <p class="trust-card-desc">European-level extension artistry with a health-first approach. Every technique refined through thousands of real transformations.</p>
+        <h3 class="trust-card-title" data-i18n="trust.card1.title">Years of Extension Experience</h3>
+        <p class="trust-card-desc" data-i18n="trust.card1.desc">European-level extension artistry with a health-first approach. Every technique refined through thousands of real transformations.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">✦</div>
-        <h3 class="trust-card-title">Bespoke Color &amp; Density Matching</h3>
-        <p class="trust-card-desc">Every plan is built around your natural hair, face shape, lifestyle and desired result. No two clients receive the same approach.</p>
+        <h3 class="trust-card-title" data-i18n="trust.card2.title">Bespoke Color &amp; Density Matching</h3>
+        <p class="trust-card-desc" data-i18n="trust.card2.desc">Every plan is built around your natural hair, face shape, lifestyle and desired result. No two clients receive the same approach.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">✦</div>
-        <h3 class="trust-card-title">Premium Slavic &amp; European Hair</h3>
-        <p class="trust-card-desc">Luxury hair selection focused on softness, movement and natural blending. Ethically sourced, cuticle-aligned and hand-matched.</p>
+        <h3 class="trust-card-title" data-i18n="trust.card3.title">Premium Slavic &amp; European Hair</h3>
+        <p class="trust-card-desc" data-i18n="trust.card3.desc">Luxury hair selection focused on softness, movement and natural blending. Ethically sourced, cuticle-aligned and hand-matched.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">✦</div>
-        <h3 class="trust-card-title">Invisible, Comfortable Placement</h3>
-        <p class="trust-card-desc">K-Tip and micro-capsule methods designed for seamless wear and natural movement. Zero damage protocol. No shortcuts.</p>
+        <h3 class="trust-card-title" data-i18n="trust.card4.title">Invisible, Comfortable Placement</h3>
+        <p class="trust-card-desc" data-i18n="trust.card4.desc">K-Tip and micro-capsule methods designed for seamless wear and natural movement. Zero damage protocol. No shortcuts.</p>
       </div>
       <div class="trust-card">
         <div class="trust-icon">✦</div>
-        <h3 class="trust-card-title">Private By-Appointment Experience</h3>
-        <p class="trust-card-desc">A calm, premium studio experience in the Burbank / Los Angeles area. Lana works with a select number of clients each month.</p>
+        <h3 class="trust-card-title" data-i18n="trust.card5.title">Private By-Appointment Experience</h3>
+        <p class="trust-card-desc" data-i18n="trust.card5.desc">A calm, premium studio experience in the Burbank / Los Angeles area. Lana works with a select number of clients each month.</p>
       </div>
     </div>
   </section>
@@ -1508,10 +1536,10 @@
   <section class="services" id="services" aria-label="Services">
     <div class="services-header">
       <div>
-        <p class="section-label">The Studio</p>
-        <h2 class="section-title">Bespoke <em>Services</em></h2>
+        <p class="section-label" data-i18n="services.label">The Studio</p>
+        <h2 class="section-title" data-i18n-html="services.title">Bespoke <em>Services</em></h2>
       </div>
-      <p class="section-body" style="max-width:380px;">
+      <p class="section-body" style="max-width:380px;" data-i18n="services.body">
         No templates. No shortcuts. Every service begins with a thorough hair architecture analysis. Final investment is determined exclusively at your personal consultation.
       </p>
     </div>
@@ -1519,61 +1547,61 @@
     <div class="services-grid reveal-stagger">
       <div class="service-card">
         <div class="service-num" aria-hidden="true">01</div>
-        <h3 class="service-name">K-Tip Extensions</h3>
-        <p class="service-desc">Micro-capsule keratin bonds — our signature method. Invisible, natural movement, zero damage protocol. The choice of discerning clients who prioritize longevity and hair health.</p>
+        <h3 class="service-name" data-i18n="svc1.name">K-Tip Extensions</h3>
+        <p class="service-desc" data-i18n="svc1.desc">Micro-capsule keratin bonds — our signature method. Invisible, natural movement, zero damage protocol. The choice of discerning clients who prioritize longevity and hair health.</p>
         <p class="service-investment">From $700</p>
       </div>
       <div class="service-card">
         <div class="service-num" aria-hidden="true">02</div>
-        <h3 class="service-name">Volume &amp; Density</h3>
-        <p class="service-desc">Targeted placement to restore fullness and create the illusion of naturally abundant hair. Ideal for fine hair or areas requiring strategic density enhancement.</p>
+        <h3 class="service-name" data-i18n="svc2.name">Volume &amp; Density</h3>
+        <p class="service-desc" data-i18n="svc2.desc">Targeted placement to restore fullness and create the illusion of naturally abundant hair. Ideal for fine hair or areas requiring strategic density enhancement.</p>
         <p class="service-investment">From $400</p>
       </div>
       <div class="service-card">
         <div class="service-num" aria-hidden="true">03</div>
-        <h3 class="service-name">Length &amp; Transformation</h3>
-        <p class="service-desc">Full-length bespoke extensions using 100% Slavic &amp; European remy hair, hand-selected to match your unique texture, porosity and color profile.</p>
+        <h3 class="service-name" data-i18n="svc3.name">Length &amp; Transformation</h3>
+        <p class="service-desc" data-i18n="svc3.desc">Full-length bespoke extensions using 100% Slavic &amp; European remy hair, hand-selected to match your unique texture, porosity and color profile.</p>
         <p class="service-investment">From $1,000</p>
       </div>
       <div class="service-card">
         <div class="service-num" aria-hidden="true">04</div>
-        <h3 class="service-name">Maintenance &amp; Correction</h3>
-        <p class="service-desc">Scheduled move-up appointments to maintain the integrity of your investment. We also offer correction services for extensions applied elsewhere.</p>
+        <h3 class="service-name" data-i18n="svc4.name">Maintenance &amp; Correction</h3>
+        <p class="service-desc" data-i18n="svc4.desc">Scheduled move-up appointments to maintain the integrity of your investment. We also offer correction services for extensions applied elsewhere.</p>
         <p class="service-investment">Consultation Required</p>
       </div>
       <div class="service-card">
         <div class="service-num" aria-hidden="true">05</div>
-        <h3 class="service-name">Safe Removal</h3>
-        <p class="service-desc">Gentle, protocol-based removal that preserves your natural hair. We ensure your hair leaves our studio in better condition than it arrived.</p>
+        <h3 class="service-name" data-i18n="svc5.name">Safe Removal</h3>
+        <p class="service-desc" data-i18n="svc5.desc">Gentle, protocol-based removal that preserves your natural hair. We ensure your hair leaves our studio in better condition than it arrived.</p>
         <p class="service-investment">From $150</p>
       </div>
       <div class="service-card">
         <div class="service-num" aria-hidden="true">06</div>
-        <h3 class="service-name">Premium Hair Supply</h3>
-        <p class="service-desc">100% Slavic &amp; European remy hair available by the gram. 18" to 24" lengths. Every strand ethically sourced and cuticle-aligned for seamless blending.</p>
+        <h3 class="service-name" data-i18n="svc6.name">Premium Hair Supply</h3>
+        <p class="service-desc" data-i18n="svc6.desc">100% Slavic &amp; European remy hair available by the gram. 18" to 24" lengths. Every strand ethically sourced and cuticle-aligned for seamless blending.</p>
         <p class="service-investment">From $450 per 100g</p>
       </div>
       <div class="service-card">
         <div class="service-num" aria-hidden="true">07</div>
-        <h3 class="service-name">Color Touch</h3>
-        <p class="service-desc">Custom toning and color blending to perfectly match your extensions with your natural hair. We work exclusively with transparent keratin coloring techniques — no hair dye, no damage.</p>
+        <h3 class="service-name" data-i18n="svc7.name">Color Touch</h3>
+        <p class="service-desc" data-i18n="svc7.desc">Custom toning and color blending to perfectly match your extensions with your natural hair. We work exclusively with transparent keratin coloring techniques — no hair dye, no damage.</p>
         <p class="service-investment">From $250</p>
       </div>
       <div class="service-card">
         <div class="service-num" aria-hidden="true">08</div>
-        <h3 class="service-name">BIO Tape Extensions</h3>
-        <p class="service-desc">A seamless tape-in method using ultra-thin wefts that lay flat against the scalp. Lightweight, comfortable, designed for maximum natural feel with minimal visibility.</p>
+        <h3 class="service-name" data-i18n="svc8.name">BIO Tape Extensions</h3>
+        <p class="service-desc" data-i18n="svc8.desc">A seamless tape-in method using ultra-thin wefts that lay flat against the scalp. Lightweight, comfortable, designed for maximum natural feel with minimal visibility.</p>
         <p class="service-investment">From $500</p>
       </div>
     </div>
 
     <div class="services-pricing-note">
-      <p>Personalized extension plans start from $400 for targeted volume enhancements. Full length transformations typically begin from $1,000+.</p>
-      <p>Final pricing depends on hair length, grams, method, density goals and hair quality. A private consultation is required before the final quote — so Lana can evaluate your natural hair, desired length, color match, density and lifestyle.</p>
+      <p data-i18n="services.pricing1">Personalized extension plans start from $400 for targeted volume enhancements. Full length transformations typically begin from $1,000+.</p>
+      <p data-i18n="services.pricing2">Final pricing depends on hair length, grams, method, density goals and hair quality. A private consultation is required before the final quote — so Lana can evaluate your natural hair, desired length, color match, density and lifestyle.</p>
     </div>
 
     <div class="services-cta">
-      <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Get your personalized extension plan">Get Your Personalized Extension Plan</a>
+      <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Get your personalized extension plan" data-i18n="services.cta">Get Your Personalized Extension Plan</a>
     </div>
   </section>
 
@@ -1587,30 +1615,30 @@
       </div>
     </div>
     <div class="about-content">
-      <p class="section-label">by Lana</p>
-      <h2 class="section-title">The <em>Architect</em><br/>Behind the Art</h2>
-      <p class="section-body">
+      <p class="section-label" data-i18n="about.label">by Lana</p>
+      <h2 class="section-title" data-i18n-html="about.title">The <em>Architect</em><br/>Behind the Art</h2>
+      <p class="section-body" data-i18n="about.body1">
         Svitlana Levenets — known to her clients as Lana — is a master educator and luxury extension specialist with 14+ years of experience. Trained in the most advanced European techniques, she has built a reputation in Los Angeles for delivering seamless, natural-looking transformations that protect and restore hair health.
       </p>
-      <p class="section-body" style="margin-top: 20px;">
+      <p class="section-body" style="margin-top: 20px;" data-i18n="about.body2">
         Lana's philosophy is rooted in a singular principle: your natural hair comes first. Every application is preceded by a structural analysis of your hair's architecture — porosity, density, growth patterns — to select the safest, most flattering technique for your unique profile.
       </p>
       <div class="about-stats reveal">
         <div class="stat-item">
           <div class="stat-num">14+</div>
-          <div class="stat-label">Years of Mastery</div>
+          <div class="stat-label" data-i18n="stat.years">Years of Mastery</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">2500+</div>
-          <div class="stat-label">Transformations</div>
+          <div class="stat-label" data-i18n="stat.transformations">Transformations</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">100%</div>
-          <div class="stat-label">Natural Hair Priority</div>
+          <div class="stat-label" data-i18n="stat.priority">Natural Hair Priority</div>
         </div>
         <div class="stat-item">
           <div class="stat-num">3</div>
-          <div class="stat-label">Day Intensive Masterclass</div>
+          <div class="stat-label" data-i18n="stat.masterclass">Day Intensive Masterclass</div>
         </div>
       </div>
     </div>
@@ -1619,9 +1647,9 @@
   <!-- ─── CONSULTATION PROCESS ─── -->
   <section class="process" id="process" aria-label="Your consultation experience">
     <div class="process-header">
-      <p class="section-label">The Consultation</p>
-      <h2 class="section-title">Your <em>Consultation</em> Experience</h2>
-      <p class="section-body" style="margin: 0 auto; text-align: center;">
+      <p class="section-label" data-i18n="process.label">The Consultation</p>
+      <h2 class="section-title" data-i18n-html="process.title">Your <em>Consultation</em> Experience</h2>
+      <p class="section-body" style="margin: 0 auto; text-align: center;" data-i18n="process.body">
         Every client relationship begins with a complimentary consultation — because exceptional results require exceptional preparation.
       </p>
     </div>
@@ -1629,39 +1657,39 @@
     <div class="process-steps reveal-stagger">
       <div class="process-step">
         <div class="step-num" aria-hidden="true">01</div>
-        <h3 class="step-title">Share Your Hair Goals</h3>
-        <p class="step-desc">Send your current hair photos and inspiration references. Share your hair history, desired outcome and any previous extension experience. No obligation — just clarity.</p>
+        <h3 class="step-title" data-i18n="step1.title">Share Your Hair Goals</h3>
+        <p class="step-desc" data-i18n="step1.desc">Send your current hair photos and inspiration references. Share your hair history, desired outcome and any previous extension experience. No obligation — just clarity.</p>
       </div>
       <div class="process-step">
         <div class="step-num" aria-hidden="true">02</div>
-        <h3 class="step-title">Lana Evaluates Your Hair</h3>
-        <p class="step-desc">Natural density, length, color, porosity, previous extensions and lifestyle are reviewed. A thorough hair architecture analysis to determine the safest, most flattering approach.</p>
+        <h3 class="step-title" data-i18n="step2.title">Lana Evaluates Your Hair</h3>
+        <p class="step-desc" data-i18n="step2.desc">Natural density, length, color, porosity, previous extensions and lifestyle are reviewed. A thorough hair architecture analysis to determine the safest, most flattering approach.</p>
       </div>
       <div class="process-step">
         <div class="step-num" aria-hidden="true">03</div>
-        <h3 class="step-title">Receive a Personalized Plan</h3>
-        <p class="step-desc">Method, grams, length, hair quality, timing and investment range are discussed. A bespoke service plan — transparent, no surprises, no pressure.</p>
+        <h3 class="step-title" data-i18n="step3.title">Receive a Personalized Plan</h3>
+        <p class="step-desc" data-i18n="step3.desc">Method, grams, length, hair quality, timing and investment range are discussed. A bespoke service plan — transparent, no surprises, no pressure.</p>
       </div>
       <div class="process-step">
         <div class="step-num" aria-hidden="true">04</div>
-        <h3 class="step-title">Book Your Transformation</h3>
-        <p class="step-desc">Once the plan is approved, your appointment is reserved through Square Appointments. A retainer secures your dedicated time with Lana and is applied to your service total.</p>
+        <h3 class="step-title" data-i18n="step4.title">Book Your Transformation</h3>
+        <p class="step-desc" data-i18n="step4.desc">Once the plan is approved, your appointment is reserved through Square Appointments. A retainer secures your dedicated time with Lana and is applied to your service total.</p>
       </div>
     </div>
 
-    <p class="process-note">
+    <p class="process-note" data-i18n="process.note">
       Appointments are limited. Lana works with a select number of clients each month to ensure every transformation receives her full and undivided attention.
     </p>
-    <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book your complimentary consultation">Book Complimentary Consultation</a>
+    <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book your complimentary consultation" data-i18n="process.cta">Book Complimentary Consultation</a>
   </section>
 
   <!-- ─── INVESTMENT & POLICY ─── -->
   <section class="investment" id="investment" aria-label="Investment and studio policy">
     <div class="investment-grid">
       <div>
-        <p class="section-label">Investment</p>
-        <h2 class="section-title">Transparent<br/><em>Starting Points</em></h2>
-        <p class="section-body">
+        <p class="section-label" data-i18n="inv.label">Investment</p>
+        <h2 class="section-title" data-i18n-html="inv.title">Transparent<br/><em>Starting Points</em></h2>
+        <p class="section-body" data-i18n="inv.body">
           All investments are personalized. Final pricing is determined at your consultation based on your hair's needs and desired result. Complete transparency — no hidden costs, ever.
         </p>
 
@@ -1680,7 +1708,7 @@
           </div>
           <div class="inv-row">
             <span class="inv-service">Maintenance · Move-Up</span>
-            <span class="inv-price">Consultation</span>
+            <span class="inv-price" data-i18n="inv.maintenance">Consultation</span>
           </div>
           <div class="inv-row">
             <span class="inv-service">Safe Removal</span>
@@ -1703,23 +1731,23 @@
             <span class="inv-price">From $500</span>
           </div>
         </div>
-        <p class="investment-disclaimer">All prices are starting points. Final investment is confirmed during your private consultation after Lana evaluates your natural hair, desired length, density and method.</p>
+        <p class="investment-disclaimer" data-i18n="inv.disclaimer">All prices are starting points. Final investment is confirmed during your private consultation after Lana evaluates your natural hair, desired length, density and method.</p>
       </div>
 
       <div>
-        <p class="section-label">Studio Policy</p>
-        <h2 class="section-title">Our <em>Standards</em></h2>
-        <p class="section-body">
+        <p class="section-label" data-i18n="policy.label">Studio Policy</p>
+        <h2 class="section-title" data-i18n-html="policy.title">Our <em>Standards</em></h2>
+        <p class="section-body" data-i18n="policy.body">
           Our policies exist to protect the integrity of every client experience and the dedicated time of our specialist.
         </p>
 
         <div class="policy-box">
-          <h3 class="policy-title">Booking &amp; Appointments</h3>
-          <div class="policy-item">To protect reserved artist time and private appointment availability, a retainer may be required to secure selected appointments.</div>
-          <div class="policy-item">Appointments changed or cancelled with less than 48 hours' notice may affect the retainer.</div>
-          <div class="policy-item">No-shows may require a new retainer before rebooking. We appreciate your understanding and respect for dedicated studio time.</div>
-          <div class="policy-item">Complimentary consultations are available by private appointment. We will never pressure a booking decision.</div>
-          <div class="policy-item">We reserve the right to decline service if hair health does not meet safe application standards — always with your long-term hair health in mind.</div>
+          <h3 class="policy-title" data-i18n="policy.booking">Booking &amp; Appointments</h3>
+          <div class="policy-item" data-i18n="policy.p1">To protect reserved artist time and private appointment availability, a retainer may be required to secure selected appointments.</div>
+          <div class="policy-item" data-i18n="policy.p2">Appointments changed or cancelled with less than 48 hours' notice may affect the retainer.</div>
+          <div class="policy-item" data-i18n="policy.p3">No-shows may require a new retainer before rebooking. We appreciate your understanding and respect for dedicated studio time.</div>
+          <div class="policy-item" data-i18n="policy.p4">Complimentary consultations are available by private appointment. We will never pressure a booking decision.</div>
+          <div class="policy-item" data-i18n="policy.p5">We reserve the right to decline service if hair health does not meet safe application standards — always with your long-term hair health in mind.</div>
         </div>
       </div>
     </div>
@@ -1728,8 +1756,8 @@
   <!-- ─── GALLERY ─── -->
   <div class="gallery-strip" id="gallery" role="region" aria-label="Client transformations gallery">
     <div class="gallery-label">
-      <p class="section-label">Transformations</p>
-      <h2 class="section-title">The <em>Archive</em></h2>
+      <p class="section-label" data-i18n="gallery.label">Transformations</p>
+      <h2 class="section-title" data-i18n-html="gallery.title">The <em>Archive</em></h2>
     </div>
     <div class="gallery-scroll" role="list">
       <!-- TODO: Replace alt text with real client transformation descriptions when known -->
@@ -1747,8 +1775,8 @@
   <!-- TODO: Replace placeholder testimonials with real verified reviews from Google, Yelp or Instagram screenshots. -->
   <section class="testimonials" id="testimonials" aria-label="Client reviews">
     <div class="testimonials-header">
-      <p class="section-label">Client Love</p>
-      <h2 class="section-title">What Clients <em>Say</em></h2>
+      <p class="section-label" data-i18n="testimonials.label">Client Love</p>
+      <h2 class="section-title" data-i18n-html="testimonials.title">What Clients <em>Say</em></h2>
     </div>
     <div class="testimonials-grid reveal-stagger">
       <div class="testimonial-card">
@@ -1785,44 +1813,44 @@
   <section class="faq" id="faq" aria-label="Frequently asked questions">
     <div class="faq-inner">
       <div>
-        <p class="section-label">FAQ</p>
-        <h2 class="section-title">Hair Extension Questions, <em>Answered</em></h2>
-        <p class="section-body" style="margin-top: 24px;">
+        <p class="section-label" data-i18n="faq.label">FAQ</p>
+        <h2 class="section-title" data-i18n-html="faq.title">Hair Extension Questions, <em>Answered</em></h2>
+        <p class="section-body" style="margin-top: 24px;" data-i18n="faq.body">
           Every question deserves a thoughtful answer. If yours isn't here, your consultation is the place to ask.
         </p>
         <div style="margin-top: 40px;">
-          <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Send your hair photos for review">Send Your Hair Photos for Review</a>
+          <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Send your hair photos for review" data-i18n="faq.cta">Send Your Hair Photos for Review</a>
         </div>
       </div>
 
       <div class="faq-list" role="list">
         <div class="faq-item" role="listitem">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">How much do hair extensions cost in Burbank / Los Angeles?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">Pricing depends on the method, hair length, grams, hair quality and the desired result. Targeted volume enhancements can start from $400, while full length transformations typically begin from $1,000+. A private consultation is required for an accurate quote tailored to your specific needs.</div></div>
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" data-i18n="faq.q1">How much do hair extensions cost in Burbank / Los Angeles?</div>
+          <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a1">Pricing depends on the method, hair length, grams, hair quality and the desired result. Targeted volume enhancements can start from $400, while full length transformations typically begin from $1,000+. A private consultation is required for an accurate quote tailored to your specific needs.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">What hair extension method is best for me?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">The best method depends on your natural hair density, scalp sensitivity, lifestyle, desired length and maintenance habits. During consultation, Lana evaluates your hair and recommends the most suitable method — whether K-Tip, micro-capsule, BIO Tape or a hybrid approach.</div></div>
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" data-i18n="faq.q2">What hair extension method is best for me?</div>
+          <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a2">The best method depends on your natural hair density, scalp sensitivity, lifestyle, desired length and maintenance habits. During consultation, Lana evaluates your hair and recommends the most suitable method — whether K-Tip, micro-capsule, BIO Tape or a hybrid approach.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Are K-Tip and micro-capsule extensions damaging?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">When installed correctly and maintained properly, these methods can be comfortable and natural-looking without damaging your natural hair. The health of the natural hair always comes first, which is why consultation and correct maintenance are a non-negotiable part of the process at Culture of Extensions.</div></div>
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" data-i18n="faq.q3">Are K-Tip and micro-capsule extensions damaging?</div>
+          <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a3">When installed correctly and maintained properly, these methods can be comfortable and natural-looking without damaging your natural hair. The health of the natural hair always comes first, which is why consultation and correct maintenance are a non-negotiable part of the process at Culture of Extensions.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">How long do hair extensions last?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">Longevity depends on the method, hair quality, aftercare routine and maintenance schedule. Many clients need a maintenance move-up every 8–10 weeks, but the exact timeline is personalized based on your natural hair growth rate and lifestyle.</div></div>
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" data-i18n="faq.q4">How long do hair extensions last?</div>
+          <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a4">Longevity depends on the method, hair quality, aftercare routine and maintenance schedule. Many clients need a maintenance move-up every 8–10 weeks, but the exact timeline is personalized based on your natural hair growth rate and lifestyle.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Do I need a consultation before booking?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">Yes, always. Consultation allows Lana to evaluate your current hair, desired result, color match, density goals, previous extension history and budget before creating a personalized plan. This protects your hair health and ensures you receive the right service at the right investment.</div></div>
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" data-i18n="faq.q5">Do I need a consultation before booking?</div>
+          <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a5">Yes, always. Consultation allows Lana to evaluate your current hair, desired result, color match, density goals, previous extension history and budget before creating a personalized plan. This protects your hair health and ensures you receive the right service at the right investment.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Do you offer professional hair extension education?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">Yes. Culture Academy by Lana offers professional hair extension education for stylists who want to learn consultation, placement logic, blending, maintenance, correction and luxury client experience. Apply for training through the Academy section below.</div></div>
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" data-i18n="faq.q6">Do you offer professional hair extension education?</div>
+          <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a6">Yes. Culture Academy by Lana offers professional hair extension education for stylists who want to learn consultation, placement logic, blending, maintenance, correction and luxury client experience. Apply for training through the Academy section below.</div></div>
         </div>
         <div class="faq-item" role="listitem">
-          <div class="faq-question" role="button" tabindex="0" aria-expanded="false">Where is Culture of Extensions located?</div>
-          <div class="faq-answer"><div class="faq-answer-inner">Culture of Extensions serves clients in Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas by private appointment. The studio is located at 2119 N Glenoaks Blvd, Burbank, CA.</div></div>
+          <div class="faq-question" role="button" tabindex="0" aria-expanded="false" data-i18n="faq.q7">Where is Culture of Extensions located?</div>
+          <div class="faq-answer"><div class="faq-answer-inner" data-i18n="faq.a7">Culture of Extensions serves clients in Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas by private appointment. The studio is located at 2119 N Glenoaks Blvd, Burbank, CA.</div></div>
         </div>
       </div>
     </div>
@@ -1833,48 +1861,48 @@
   <section class="academy" id="academy" aria-label="Culture Academy by Lana — Professional Education">
     <div class="academy-inner">
       <div>
-        <p class="section-label">Professional Education</p>
-        <h2 class="section-title">Culture Academy<br/><em>by Lana</em></h2>
-        <p class="section-body">
+        <p class="section-label" data-i18n="academy.label">Professional Education</p>
+        <h2 class="section-title" data-i18n-html="academy.title">Culture Academy<br/><em>by Lana</em></h2>
+        <p class="section-body" data-i18n="academy.body1">
           Professional hair extension education for stylists who want to master premium K-Tip, micro-capsule and bespoke extension work.
         </p>
-        <p class="section-body" style="margin-top: 20px;">
+        <p class="section-body" style="margin-top: 20px;" data-i18n="academy.body2">
           Learn consultation, hair selection, placement logic, blending, maintenance, correction and luxury client experience — directly from Lana.
         </p>
         <div style="margin-top: 40px; display: flex; gap: 24px; flex-wrap: wrap;">
-          <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Apply for hair extension training">Apply for Training</a>
-          <a href="#" class="btn-ghost">Join Academy Waitlist</a>
+          <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Apply for hair extension training" data-i18n="academy.cta1">Apply for Training</a>
+          <a href="#" class="btn-ghost" data-i18n="academy.cta2">Join Academy Waitlist</a>
         </div>
       </div>
 
       <div class="academy-programs reveal-stagger">
         <div class="program-item">
           <div>
-            <div class="program-name">3-Day Intensive Masterclass</div>
-            <div class="program-detail">In-Studio · Burbank, LA · Foundation-to-advanced training for serious beauty professionals</div>
+            <div class="program-name" data-i18n="prog1.name">3-Day Intensive Masterclass</div>
+            <div class="program-detail" data-i18n="prog1.detail">In-Studio · Burbank, LA · Foundation-to-advanced training for serious beauty professionals</div>
           </div>
-          <span class="program-badge">Enrolling</span>
+          <span class="program-badge" data-i18n="prog1.badge">Enrolling</span>
         </div>
         <div class="program-item">
           <div>
-            <div class="program-name">Advanced Techniques</div>
-            <div class="program-detail">K-Tip · Micro-Capsule · Hybrid Methods · Color Matching</div>
+            <div class="program-name" data-i18n="prog2.name">Advanced Techniques</div>
+            <div class="program-detail" data-i18n="prog2.detail">K-Tip · Micro-Capsule · Hybrid Methods · Color Matching</div>
           </div>
-          <span class="program-badge">Available</span>
+          <span class="program-badge" data-i18n="prog2.badge">Available</span>
         </div>
         <div class="program-item">
           <div>
-            <div class="program-name">Online Course</div>
-            <div class="program-detail">Self-paced · Theory &amp; Certification · Digital curriculum</div>
+            <div class="program-name" data-i18n="prog3.name">Online Course</div>
+            <div class="program-detail" data-i18n="prog3.detail">Self-paced · Theory &amp; Certification · Digital curriculum</div>
           </div>
-          <span class="program-badge" style="background: var(--grey-mid); color: var(--onyx);">Coming Soon</span>
+          <span class="program-badge" style="background: var(--grey-mid); color: var(--onyx);" data-i18n="prog3.badge">Coming Soon</span>
         </div>
         <div class="program-item">
           <div>
-            <div class="program-name">1-on-1 Mentorship</div>
-            <div class="program-detail">Private · Customized curriculum · Limited spots available</div>
+            <div class="program-name" data-i18n="prog4.name">1-on-1 Mentorship</div>
+            <div class="program-detail" data-i18n="prog4.detail">Private · Customized curriculum · Limited spots available</div>
           </div>
-          <span class="program-badge">Apply</span>
+          <span class="program-badge" data-i18n="prog4.badge">Apply</span>
         </div>
       </div>
     </div>
@@ -1884,15 +1912,15 @@
   <section class="local-seo" id="locations" aria-label="Service areas">
     <div class="local-seo-inner">
       <div>
-        <p class="section-label">Los Angeles Area</p>
-        <h2 class="section-title">Premium Hair Extensions in <em>Burbank &amp; Los Angeles</em></h2>
+        <p class="section-label" data-i18n="localseo.label">Los Angeles Area</p>
+        <h2 class="section-title" data-i18n-html="localseo.title">Premium Hair Extensions in <em>Burbank &amp; Los Angeles</em></h2>
         <div class="local-seo-text" style="margin-top: 32px;">
-          <p>Culture of Extensions serves clients from Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas. Each transformation is designed through a private consultation focused on natural hair health, luxury hair quality and seamless blending.</p>
+          <p data-i18n="localseo.p1">Culture of Extensions serves clients from Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas. Each transformation is designed through a private consultation focused on natural hair health, luxury hair quality and seamless blending.</p>
           <p>Whether you're searching for <strong style="color: var(--cream); font-weight: 400;">hair extensions in Burbank</strong>, <strong style="color: var(--cream); font-weight: 400;">K-Tip hair extensions in Los Angeles</strong>, <strong style="color: var(--cream); font-weight: 400;">micro-capsule hair extensions in Burbank</strong>, or a <strong style="color: var(--cream); font-weight: 400;">premium hair extension consultation in Los Angeles</strong> — Lana's approach is always the same: your natural hair comes first.</p>
-          <p>All services are available by private appointment. Complimentary consultations include a full hair architecture analysis and personalized extension plan.</p>
+          <p data-i18n="localseo.p3">All services are available by private appointment. Complimentary consultations include a full hair architecture analysis and personalized extension plan.</p>
         </div>
         <div style="margin-top: 40px;">
-          <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book complimentary consultation">Book Complimentary Consultation</a>
+          <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book complimentary consultation" data-i18n="localseo.cta">Book Complimentary Consultation</a>
         </div>
       </div>
       <div>
@@ -1929,15 +1957,15 @@
   <!-- ─── FINAL CTA ─── -->
   <section class="final-cta" aria-label="Book your transformation">
     <div class="final-cta-content reveal">
-      <p class="section-label">Begin Your Journey</p>
-      <h2 class="section-title">
+      <p class="section-label" data-i18n="finalcta.label">Begin Your Journey</p>
+      <h2 class="section-title" data-i18n-html="finalcta.title">
         Ready for Your<br/><em>Transformation?</em>
       </h2>
-      <p class="section-body">
+      <p class="section-body" data-i18n="finalcta.body">
         Your consultation is complimentary, private and without obligation. It is the beginning of a relationship — not a transaction.
       </p>
-      <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book your complimentary consultation">Book Complimentary Consultation</a>
-      <p class="deposit-note">A retainer fee secures your appointment · Applied to your service total · Limited availability</p>
+      <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="btn-primary" aria-label="Book your complimentary consultation" data-i18n="finalcta.cta">Book Complimentary Consultation</a>
+      <p class="deposit-note" data-i18n="finalcta.note">A retainer fee secures your appointment · Applied to your service total · Limited availability</p>
     </div>
   </section>
 
@@ -1946,14 +1974,14 @@
     <div class="footer-top">
       <div>
         <div class="footer-logo">Culture of Extensions</div>
-        <div class="footer-tagline">by Lana · Premium Hair Extensions · Burbank / Los Angeles</div>
-        <p class="footer-about">
+        <div class="footer-tagline" data-i18n="footer.tagline">by Lana · Premium Hair Extensions · Burbank / Los Angeles</div>
+        <p class="footer-about" data-i18n="footer.about">
           A territory where modern goddesses are born. Premium K-Tip &amp; Micro-Capsule hair extensions in Burbank, Los Angeles — crafted with 100% Slavic &amp; European hair. By appointment only.
         </p>
-        <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="footer-book" aria-label="Book complimentary consultation">Book Complimentary Consultation</a>
+        <a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" class="footer-book" aria-label="Book complimentary consultation" data-i18n="footer.book">Book Complimentary Consultation</a>
       </div>
       <div>
-        <div class="footer-col-title">Services</div>
+        <div class="footer-col-title" data-i18n="footer.col.services">Services</div>
         <ul class="footer-links">
           <li><a href="#services">K-Tip Extensions</a></li>
           <li><a href="#services">Volume &amp; Density</a></li>
@@ -1965,7 +1993,7 @@
         </ul>
       </div>
       <div>
-        <div class="footer-col-title">Studio</div>
+        <div class="footer-col-title" data-i18n="footer.col.studio">Studio</div>
         <ul class="footer-links">
           <li><a href="#about">About Lana</a></li>
           <li><a href="#process">Consultation Process</a></li>
@@ -1975,7 +2003,7 @@
         </ul>
       </div>
       <div>
-        <div class="footer-col-title">Culture Academy</div>
+        <div class="footer-col-title" data-i18n="footer.col.academy">Culture Academy</div>
         <ul class="footer-links">
           <li><a href="#academy">About the Academy</a></li>
           <li><a href="#academy">3-Day Masterclass</a></li>
@@ -1988,7 +2016,7 @@
 
     <div class="footer-bottom">
       <p class="footer-copy">© <span id="footerYear"></span> Culture of Extensions LLC · All rights reserved · cultureofextensions.com</p>
-      <p class="footer-address">2119 N Glenoaks Blvd · Burbank, CA · By Appointment Only</p>
+      <p class="footer-address" data-i18n="footer.address">2119 N Glenoaks Blvd · Burbank, CA · By Appointment Only</p>
     </div>
   </footer>
 
@@ -2054,6 +2082,465 @@
         if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
       });
     });
+
+    /* ─── TRANSLATIONS & LANGUAGE SWITCHER ─── */
+    const TRANSLATIONS = {
+      en: {
+        'nav.services': 'Services',
+        'nav.about': 'About',
+        'nav.consultation': 'Consultation',
+        'nav.academy': 'Academy',
+        'nav.faq': 'FAQ',
+        'nav.gallery': 'Gallery',
+        'nav.book': 'Book Consultation',
+        'hero.eyebrow': 'Burbank · Los Angeles · Est. 2024',
+        'hero.title': 'Where Modern<br/><em>Goddesses</em><br/>Are Born',
+        'hero.subtitle': 'Premium K-Tip, Micro-Capsule & bespoke hair extensions in Burbank, Los Angeles — designed around your natural hair, density, color and lifestyle.',
+        'hero.support': 'Receive a personalized extension plan before booking your transformation.',
+        'hero.cta1': 'Book Complimentary Consultation',
+        'hero.cta2': 'View Transformations',
+        'statement.quote': '"We don\'t simply add hair — we architect a transformation that honors your natural foundation and elevates your presence."',
+        'statement.cite': 'Lana · Master Educator · 14+ Years of Excellence',
+        'trust.label': 'Our Difference',
+        'trust.title': 'Why Clients <em>Choose Lana</em>',
+        'trust.card1.title': 'Years of Extension Experience',
+        'trust.card1.desc': 'European-level extension artistry with a health-first approach. Every technique refined through thousands of real transformations.',
+        'trust.card2.title': 'Bespoke Color & Density Matching',
+        'trust.card2.desc': 'Every plan is built around your natural hair, face shape, lifestyle and desired result. No two clients receive the same approach.',
+        'trust.card3.title': 'Premium Slavic & European Hair',
+        'trust.card3.desc': 'Luxury hair selection focused on softness, movement and natural blending. Ethically sourced, cuticle-aligned and hand-matched.',
+        'trust.card4.title': 'Invisible, Comfortable Placement',
+        'trust.card4.desc': 'K-Tip and micro-capsule methods designed for seamless wear and natural movement. Zero damage protocol. No shortcuts.',
+        'trust.card5.title': 'Private By-Appointment Experience',
+        'trust.card5.desc': 'A calm, premium studio experience in the Burbank / Los Angeles area. Lana works with a select number of clients each month.',
+        'services.label': 'The Studio',
+        'services.title': 'Bespoke <em>Services</em>',
+        'services.body': 'No templates. No shortcuts. Every service begins with a thorough hair architecture analysis. Final investment is determined exclusively at your personal consultation.',
+        'svc1.name': 'K-Tip Extensions',
+        'svc1.desc': 'Micro-capsule keratin bonds — our signature method. Invisible, natural movement, zero damage protocol. The choice of discerning clients who prioritize longevity and hair health.',
+        'svc2.name': 'Volume & Density',
+        'svc2.desc': 'Targeted placement to restore fullness and create the illusion of naturally abundant hair. Ideal for fine hair or areas requiring strategic density enhancement.',
+        'svc3.name': 'Length & Transformation',
+        'svc3.desc': 'Full-length bespoke extensions using 100% Slavic & European remy hair, hand-selected to match your unique texture, porosity and color profile.',
+        'svc4.name': 'Maintenance & Correction',
+        'svc4.desc': 'Scheduled move-up appointments to maintain the integrity of your investment. We also offer correction services for extensions applied elsewhere.',
+        'svc5.name': 'Safe Removal',
+        'svc5.desc': 'Gentle, protocol-based removal that preserves your natural hair. We ensure your hair leaves our studio in better condition than it arrived.',
+        'svc6.name': 'Premium Hair Supply',
+        'svc6.desc': '100% Slavic & European remy hair available by the gram. 18" to 24" lengths. Every strand ethically sourced and cuticle-aligned for seamless blending.',
+        'svc7.name': 'Color Touch',
+        'svc7.desc': 'Custom toning and color blending to perfectly match your extensions with your natural hair. We work exclusively with transparent keratin coloring techniques — no hair dye, no damage.',
+        'svc8.name': 'BIO Tape Extensions',
+        'svc8.desc': 'A seamless tape-in method using ultra-thin wefts that lay flat against the scalp. Lightweight, comfortable, designed for maximum natural feel with minimal visibility.',
+        'services.pricing1': 'Personalized extension plans start from $400 for targeted volume enhancements. Full length transformations typically begin from $1,000+.',
+        'services.pricing2': 'Final pricing depends on hair length, grams, method, density goals and hair quality. A private consultation is required before the final quote — so Lana can evaluate your natural hair, desired length, color match, density and lifestyle.',
+        'services.cta': 'Get Your Personalized Extension Plan',
+        'about.label': 'by Lana',
+        'about.title': 'The <em>Architect</em><br/>Behind the Art',
+        'about.body1': 'Svitlana Levenets — known to her clients as Lana — is a master educator and luxury extension specialist with 14+ years of experience. Trained in the most advanced European techniques, she has built a reputation in Los Angeles for delivering seamless, natural-looking transformations that protect and restore hair health.',
+        'about.body2': 'Lana\'s philosophy is rooted in a singular principle: your natural hair comes first. Every application is preceded by a structural analysis of your hair\'s architecture — porosity, density, growth patterns — to select the safest, most flattering technique for your unique profile.',
+        'stat.years': 'Years of Mastery',
+        'stat.transformations': 'Transformations',
+        'stat.priority': 'Natural Hair Priority',
+        'stat.masterclass': 'Day Intensive Masterclass',
+        'process.label': 'The Consultation',
+        'process.title': 'Your <em>Consultation</em> Experience',
+        'process.body': 'Every client relationship begins with a complimentary consultation — because exceptional results require exceptional preparation.',
+        'step1.title': 'Share Your Hair Goals',
+        'step1.desc': 'Send your current hair photos and inspiration references. Share your hair history, desired outcome and any previous extension experience. No obligation — just clarity.',
+        'step2.title': 'Lana Evaluates Your Hair',
+        'step2.desc': 'Natural density, length, color, porosity, previous extensions and lifestyle are reviewed. A thorough hair architecture analysis to determine the safest, most flattering approach.',
+        'step3.title': 'Receive a Personalized Plan',
+        'step3.desc': 'Method, grams, length, hair quality, timing and investment range are discussed. A bespoke service plan — transparent, no surprises, no pressure.',
+        'step4.title': 'Book Your Transformation',
+        'step4.desc': 'Once the plan is approved, your appointment is reserved through Square Appointments. A retainer secures your dedicated time with Lana and is applied to your service total.',
+        'process.note': 'Appointments are limited. Lana works with a select number of clients each month to ensure every transformation receives her full and undivided attention.',
+        'process.cta': 'Book Complimentary Consultation',
+        'inv.label': 'Investment',
+        'inv.title': 'Transparent<br/><em>Starting Points</em>',
+        'inv.body': 'All investments are personalized. Final pricing is determined at your consultation based on your hair\'s needs and desired result. Complete transparency — no hidden costs, ever.',
+        'inv.disclaimer': 'All prices are starting points. Final investment is confirmed during your private consultation after Lana evaluates your natural hair, desired length, density and method.',
+        'inv.maintenance': 'Consultation',
+        'policy.label': 'Studio Policy',
+        'policy.title': 'Our <em>Standards</em>',
+        'policy.body': 'Our policies exist to protect the integrity of every client experience and the dedicated time of our specialist.',
+        'policy.booking': 'Booking & Appointments',
+        'policy.p1': 'To protect reserved artist time and private appointment availability, a retainer may be required to secure selected appointments.',
+        'policy.p2': 'Appointments changed or cancelled with less than 48 hours\' notice may affect the retainer.',
+        'policy.p3': 'No-shows may require a new retainer before rebooking. We appreciate your understanding and respect for dedicated studio time.',
+        'policy.p4': 'Complimentary consultations are available by private appointment. We will never pressure a booking decision.',
+        'policy.p5': 'We reserve the right to decline service if hair health does not meet safe application standards — always with your long-term hair health in mind.',
+        'gallery.label': 'Transformations',
+        'gallery.title': 'The <em>Archive</em>',
+        'testimonials.label': 'Client Love',
+        'testimonials.title': 'What Clients <em>Say</em>',
+        'faq.label': 'FAQ',
+        'faq.title': 'Hair Extension Questions, <em>Answered</em>',
+        'faq.body': 'Every question deserves a thoughtful answer. If yours isn\'t here, your consultation is the place to ask.',
+        'faq.cta': 'Send Your Hair Photos for Review',
+        'faq.q1': 'How much do hair extensions cost in Burbank / Los Angeles?',
+        'faq.a1': 'Pricing depends on the method, hair length, grams, hair quality and the desired result. Targeted volume enhancements can start from $400, while full length transformations typically begin from $1,000+. A private consultation is required for an accurate quote tailored to your specific needs.',
+        'faq.q2': 'What hair extension method is best for me?',
+        'faq.a2': 'The best method depends on your natural hair density, scalp sensitivity, lifestyle, desired length and maintenance habits. During consultation, Lana evaluates your hair and recommends the most suitable method — whether K-Tip, micro-capsule, BIO Tape or a hybrid approach.',
+        'faq.q3': 'Are K-Tip and micro-capsule extensions damaging?',
+        'faq.a3': 'When installed correctly and maintained properly, these methods can be comfortable and natural-looking without damaging your natural hair. The health of the natural hair always comes first, which is why consultation and correct maintenance are a non-negotiable part of the process at Culture of Extensions.',
+        'faq.q4': 'How long do hair extensions last?',
+        'faq.a4': 'Longevity depends on the method, hair quality, aftercare routine and maintenance schedule. Many clients need a maintenance move-up every 8–10 weeks, but the exact timeline is personalized based on your natural hair growth rate and lifestyle.',
+        'faq.q5': 'Do I need a consultation before booking?',
+        'faq.a5': 'Yes, always. Consultation allows Lana to evaluate your current hair, desired result, color match, density goals, previous extension history and budget before creating a personalized plan. This protects your hair health and ensures you receive the right service at the right investment.',
+        'faq.q6': 'Do you offer professional hair extension education?',
+        'faq.a6': 'Yes. Culture Academy by Lana offers professional hair extension education for stylists who want to learn consultation, placement logic, blending, maintenance, correction and luxury client experience. Apply for training through the Academy section below.',
+        'faq.q7': 'Where is Culture of Extensions located?',
+        'faq.a7': 'Culture of Extensions serves clients in Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas by private appointment. The studio is located at 2119 N Glenoaks Blvd, Burbank, CA.',
+        'academy.label': 'Professional Education',
+        'academy.title': 'Culture Academy<br/><em>by Lana</em>',
+        'academy.body1': 'Professional hair extension education for stylists who want to master premium K-Tip, micro-capsule and bespoke extension work.',
+        'academy.body2': 'Learn consultation, hair selection, placement logic, blending, maintenance, correction and luxury client experience — directly from Lana.',
+        'academy.cta1': 'Apply for Training',
+        'academy.cta2': 'Join Academy Waitlist',
+        'prog1.name': '3-Day Intensive Masterclass',
+        'prog1.detail': 'In-Studio · Burbank, LA · Foundation-to-advanced training for serious beauty professionals',
+        'prog1.badge': 'Enrolling',
+        'prog2.name': 'Advanced Techniques',
+        'prog2.detail': 'K-Tip · Micro-Capsule · Hybrid Methods · Color Matching',
+        'prog2.badge': 'Available',
+        'prog3.name': 'Online Course',
+        'prog3.detail': 'Self-paced · Theory & Certification · Digital curriculum',
+        'prog3.badge': 'Coming Soon',
+        'prog4.name': '1-on-1 Mentorship',
+        'prog4.detail': 'Private · Customized curriculum · Limited spots available',
+        'prog4.badge': 'Apply',
+        'localseo.label': 'Los Angeles Area',
+        'localseo.title': 'Premium Hair Extensions in <em>Burbank & Los Angeles</em>',
+        'localseo.p1': 'Culture of Extensions serves clients from Burbank, Glendale, Los Angeles, Toluca Lake, Studio City, Pasadena and surrounding areas. Each transformation is designed through a private consultation focused on natural hair health, luxury hair quality and seamless blending.',
+        'localseo.p3': 'All services are available by private appointment. Complimentary consultations include a full hair architecture analysis and personalized extension plan.',
+        'localseo.cta': 'Book Complimentary Consultation',
+        'finalcta.label': 'Begin Your Journey',
+        'finalcta.title': 'Ready for Your<br/><em>Transformation?</em>',
+        'finalcta.body': 'Your consultation is complimentary, private and without obligation. It is the beginning of a relationship — not a transaction.',
+        'finalcta.cta': 'Book Complimentary Consultation',
+        'finalcta.note': 'A retainer fee secures your appointment · Applied to your service total · Limited availability',
+        'footer.tagline': 'by Lana · Premium Hair Extensions · Burbank / Los Angeles',
+        'footer.about': 'A territory where modern goddesses are born. Premium K-Tip & Micro-Capsule hair extensions in Burbank, Los Angeles — crafted with 100% Slavic & European hair. By appointment only.',
+        'footer.book': 'Book Complimentary Consultation',
+        'footer.col.services': 'Services',
+        'footer.col.studio': 'Studio',
+        'footer.col.academy': 'Culture Academy',
+        'footer.address': '2119 N Glenoaks Blvd · Burbank, CA · By Appointment Only',
+      },
+      es: {
+        'nav.services': 'Servicios',
+        'nav.about': 'Sobre Lana',
+        'nav.consultation': 'Consulta',
+        'nav.academy': 'Academia',
+        'nav.faq': 'FAQ',
+        'nav.gallery': 'Galería',
+        'nav.book': 'Reservar Consulta',
+        'hero.eyebrow': 'Burbank · Los Angeles · Est. 2024',
+        'hero.title': 'Donde Nacen las<br/><em>Diosas</em><br/>Modernas',
+        'hero.subtitle': 'Extensiones de cabello premium K-Tip, micro-cápsula y a medida en Burbank, Los Ángeles — diseñadas en torno a tu cabello natural, densidad, color y estilo de vida.',
+        'hero.support': 'Recibe un plan de extensiones personalizado antes de reservar tu transformación.',
+        'hero.cta1': 'Consulta Gratuita',
+        'hero.cta2': 'Ver Transformaciones',
+        'statement.quote': '"No simplemente añadimos cabello — arquitectamos una transformación que honra tu base natural y eleva tu presencia."',
+        'statement.cite': 'Lana · Master Educator · 14+ Years of Excellence',
+        'trust.label': 'Nuestra Diferencia',
+        'trust.title': 'Por Qué Eligen a <em>Lana</em>',
+        'trust.card1.title': 'Años de Experiencia',
+        'trust.card1.desc': 'Arte de extensiones a nivel europeo con un enfoque que prioriza la salud capilar. Cada técnica perfeccionada a través de miles de transformaciones reales.',
+        'trust.card2.title': 'Adaptación Personalizada de Color',
+        'trust.card2.desc': 'Cada plan se construye en torno a tu cabello natural, forma de cara, estilo de vida y resultado deseado. Ninguna cliente recibe el mismo enfoque.',
+        'trust.card3.title': 'Cabello Eslavo y Europeo Premium',
+        'trust.card3.desc': 'Selección de cabello de lujo enfocada en suavidad, movimiento y fusión natural. De origen ético, alineado por cutícula y seleccionado a mano.',
+        'trust.card4.title': 'Colocación Invisible y Cómoda',
+        'trust.card4.desc': 'Métodos K-Tip y micro-cápsula diseñados para un uso sin fisuras y movimiento natural. Protocolo cero daño. Sin atajos.',
+        'trust.card5.title': 'Experiencia Privada con Cita',
+        'trust.card5.desc': 'Una experiencia de estudio premium y tranquila en el área de Burbank / Los Ángeles. Lana trabaja con un número selecto de clientes cada mes.',
+        'services.label': 'El Estudio',
+        'services.title': 'Servicios <em>Exclusivos</em>',
+        'services.body': 'Sin plantillas. Sin atajos. Cada servicio comienza con un análisis exhaustivo de la arquitectura capilar. La inversión final se determina exclusivamente en tu consulta personal.',
+        'svc1.name': 'K-Tip Extensions',
+        'svc1.desc': 'Bonos de queratina micro-cápsula — nuestro método estrella. Invisibles, movimiento natural, protocolo cero daño. La elección de clientas exigentes que priorizan la longevidad y la salud capilar.',
+        'svc2.name': 'Volumen y Densidad',
+        'svc2.desc': 'Colocación dirigida para restaurar la plenitud y crear la ilusión de un cabello naturalmente abundante. Ideal para cabello fino o áreas que requieren un realce estratégico de densidad.',
+        'svc3.name': 'Largo y Transformación',
+        'svc3.desc': 'Extensiones de largo completo a medida usando 100% cabello remy eslavo y europeo, seleccionado a mano para coincidir con tu textura, porosidad y perfil de color únicos.',
+        'svc4.name': 'Mantenimiento y Corrección',
+        'svc4.desc': 'Citas programadas de ajuste para mantener la integridad de tu inversión. También ofrecemos servicios de corrección para extensiones aplicadas en otros lugares.',
+        'svc5.name': 'Retiro Seguro',
+        'svc5.desc': 'Retiro suave basado en protocolo que preserva tu cabello natural. Nos aseguramos de que tu cabello salga de nuestro estudio en mejores condiciones que cuando llegó.',
+        'svc6.name': 'Venta de Cabello Premium',
+        'svc6.desc': '100% cabello remy eslavo y europeo disponible por gramo. Largos de 18" a 24". Cada hebra de origen ético y alineada por cutícula para una fusión perfecta.',
+        'svc7.name': 'Toque de Color',
+        'svc7.desc': 'Tonificación y fusión de color personalizadas para combinar perfectamente tus extensiones con tu cabello natural. Trabajamos exclusivamente con técnicas de coloración de queratina transparente — sin tinte, sin daño.',
+        'svc8.name': 'BIO Tape Extensions',
+        'svc8.desc': 'Un método de cinta sin fisuras usando mechas ultrafinas que quedan planas contra el cuero cabelludo. Ligeras, cómodas, diseñadas para una sensación natural máxima con visibilidad mínima.',
+        'services.pricing1': 'Los planes de extensiones personalizados comienzan desde $400 para realces de volumen dirigidos. Las transformaciones de largo completo suelen comenzar desde $1,000+.',
+        'services.pricing2': 'El precio final depende del largo del cabello, gramos, método, objetivos de densidad y calidad del cabello. Se requiere una consulta privada antes del presupuesto final — para que Lana pueda evaluar tu cabello natural, largo deseado, combinación de color, densidad y estilo de vida.',
+        'services.cta': 'Obtén Tu Plan Personalizado',
+        'about.label': 'by Lana',
+        'about.title': 'La <em>Arquitecta</em><br/>del Arte',
+        'about.body1': 'Svitlana Levenets — conocida por sus clientas como Lana — es una maestra educadora y especialista en extensiones de lujo con más de 14 años de experiencia. Formada en las técnicas europeas más avanzadas, ha construido una reputación en Los Ángeles por ofrecer transformaciones naturales e impecables que protegen y restauran la salud capilar.',
+        'about.body2': 'La filosofía de Lana se basa en un principio singular: tu cabello natural es lo primero. Cada aplicación va precedida de un análisis estructural de la arquitectura de tu cabello — porosidad, densidad, patrones de crecimiento — para seleccionar la técnica más segura y favorecedora para tu perfil único.',
+        'stat.years': 'Años de Maestría',
+        'stat.transformations': 'Transformaciones',
+        'stat.priority': 'Prioridad Cabello Natural',
+        'stat.masterclass': 'Día Masterclass Intensiva',
+        'process.label': 'La Consulta',
+        'process.title': 'Tu Experiencia de <em>Consulta</em>',
+        'process.body': 'Cada relación con una cliente comienza con una consulta gratuita — porque los resultados excepcionales requieren una preparación excepcional.',
+        'step1.title': 'Comparte Tus Objetivos',
+        'step1.desc': 'Envía tus fotos actuales de cabello y referencias de inspiración. Comparte tu historial capilar, resultado deseado y cualquier experiencia previa con extensiones. Sin obligación — solo claridad.',
+        'step2.title': 'Lana Evalúa Tu Cabello',
+        'step2.desc': 'Se revisan la densidad natural, largo, color, porosidad, extensiones previas y estilo de vida. Un análisis exhaustivo de la arquitectura capilar para determinar el enfoque más seguro y favorecedor.',
+        'step3.title': 'Recibe un Plan Personalizado',
+        'step3.desc': 'Se discuten el método, gramos, largo, calidad del cabello, tiempos y rango de inversión. Un plan de servicio a medida — transparente, sin sorpresas, sin presión.',
+        'step4.title': 'Reserva Tu Transformación',
+        'step4.desc': 'Una vez aprobado el plan, tu cita se reserva a través de Square Appointments. Un anticipo asegura tu tiempo dedicado con Lana y se aplica al total de tu servicio.',
+        'process.note': 'Las citas son limitadas. Lana trabaja con un número selecto de clientas cada mes para garantizar que cada transformación reciba su atención plena e indivisa.',
+        'process.cta': 'Consulta Gratuita',
+        'inv.label': 'Inversión',
+        'inv.title': 'Precios<br/><em>Transparentes</em>',
+        'inv.body': 'Todas las inversiones son personalizadas. El precio final se determina en tu consulta según las necesidades de tu cabello y el resultado deseado. Transparencia total — sin costos ocultos, nunca.',
+        'inv.disclaimer': 'Todos los precios son puntos de partida. La inversión final se confirma durante tu consulta privada después de que Lana evalúe tu cabello natural, largo deseado, densidad y método.',
+        'inv.maintenance': 'Consulta',
+        'policy.label': 'Política del Estudio',
+        'policy.title': 'Nuestros <em>Estándares</em>',
+        'policy.body': 'Nuestras políticas existen para proteger la integridad de cada experiencia de cliente y el tiempo dedicado de nuestra especialista.',
+        'policy.booking': 'Reservas y Citas',
+        'policy.p1': 'Para proteger el tiempo reservado de la artista y la disponibilidad de citas privadas, puede requerirse un anticipo para asegurar ciertas citas.',
+        'policy.p2': 'Las citas modificadas o canceladas con menos de 48 horas de antelación pueden afectar el anticipo.',
+        'policy.p3': 'Las ausencias sin aviso pueden requerir un nuevo anticipo antes de volver a reservar. Agradecemos tu comprensión y respeto por el tiempo dedicado del estudio.',
+        'policy.p4': 'Las consultas gratuitas están disponibles con cita privada. Nunca presionaremos una decisión de reserva.',
+        'policy.p5': 'Nos reservamos el derecho de declinar el servicio si la salud capilar no cumple los estándares seguros de aplicación — siempre pensando en la salud a largo plazo de tu cabello.',
+        'gallery.label': 'Transformaciones',
+        'gallery.title': 'El <em>Archivo</em>',
+        'testimonials.label': 'Amor de Clientes',
+        'testimonials.title': 'Lo Que Dicen <em>Nuestras Clientas</em>',
+        'faq.label': 'FAQ',
+        'faq.title': 'Preguntas sobre Extensiones, <em>Respondidas</em>',
+        'faq.body': 'Cada pregunta merece una respuesta reflexiva. Si la tuya no está aquí, tu consulta es el lugar para preguntar.',
+        'faq.cta': 'Envía Tus Fotos de Cabello',
+        'faq.q1': '¿Cuánto cuestan las extensiones de cabello en Burbank / Los Ángeles?',
+        'faq.a1': 'El precio depende del método, largo del cabello, gramos, calidad del cabello y el resultado deseado. Los realces de volumen dirigidos pueden comenzar desde $400, mientras que las transformaciones de largo completo suelen iniciar desde $1,000+. Se requiere una consulta privada para un presupuesto preciso adaptado a tus necesidades específicas.',
+        'faq.q2': '¿Qué método de extensiones es mejor para mí?',
+        'faq.a2': 'El mejor método depende de tu densidad capilar natural, sensibilidad del cuero cabelludo, estilo de vida, largo deseado y hábitos de mantenimiento. Durante la consulta, Lana evalúa tu cabello y recomienda el método más adecuado — ya sea K-Tip, micro-cápsula, BIO Tape o un enfoque híbrido.',
+        'faq.q3': '¿Las extensiones K-Tip y micro-cápsula dañan el cabello?',
+        'faq.a3': 'Cuando se instalan correctamente y se mantienen adecuadamente, estos métodos pueden ser cómodos y de apariencia natural sin dañar tu cabello natural. La salud del cabello natural siempre es lo primero, por eso la consulta y el mantenimiento correcto son una parte innegociable del proceso en Culture of Extensions.',
+        'faq.q4': '¿Cuánto duran las extensiones de cabello?',
+        'faq.a4': 'La longevidad depende del método, la calidad del cabello, la rutina de cuidado y el programa de mantenimiento. Muchas clientas necesitan un ajuste de mantenimiento cada 8–10 semanas, pero el plazo exacto es personalizado según la tasa de crecimiento de tu cabello natural y tu estilo de vida.',
+        'faq.q5': '¿Necesito una consulta antes de reservar?',
+        'faq.a5': 'Sí, siempre. La consulta permite a Lana evaluar tu cabello actual, resultado deseado, combinación de color, objetivos de densidad, historial de extensiones previas y presupuesto antes de crear un plan personalizado. Esto protege la salud de tu cabello y garantiza que recibas el servicio adecuado con la inversión correcta.',
+        'faq.q6': '¿Ofrecen educación profesional en extensiones de cabello?',
+        'faq.a6': 'Sí. Culture Academy by Lana ofrece educación profesional en extensiones de cabello para estilistas que desean aprender consulta, lógica de colocación, fusión, mantenimiento, corrección y experiencia de cliente de lujo. Solicita formación a través de la sección Academia a continuación.',
+        'faq.q7': '¿Dónde está ubicada Culture of Extensions?',
+        'faq.a7': 'Culture of Extensions atiende clientas de Burbank, Glendale, Los Ángeles, Toluca Lake, Studio City, Pasadena y áreas circundantes con cita privada. El estudio está ubicado en 2119 N Glenoaks Blvd, Burbank, CA.',
+        'academy.label': 'Educación Profesional',
+        'academy.title': 'Culture Academy<br/><em>by Lana</em>',
+        'academy.body1': 'Educación profesional en extensiones de cabello para estilistas que desean dominar el trabajo premium con K-Tip, micro-cápsula y extensiones a medida.',
+        'academy.body2': 'Aprende consulta, selección de cabello, lógica de colocación, fusión, mantenimiento, corrección y experiencia de cliente de lujo — directamente de Lana.',
+        'academy.cta1': 'Solicitar Capacitación',
+        'academy.cta2': 'Lista de Espera',
+        'prog1.name': '3-Day Intensive Masterclass',
+        'prog1.detail': 'En Estudio · Burbank, LA · Formación de base a avanzado para profesionales de la belleza serios',
+        'prog1.badge': 'Inscripciones',
+        'prog2.name': 'Técnicas Avanzadas',
+        'prog2.detail': 'K-Tip · Micro-Capsule · Hybrid Methods · Color Matching',
+        'prog2.badge': 'Disponible',
+        'prog3.name': 'Curso en Línea',
+        'prog3.detail': 'A tu ritmo · Teoría y Certificación · Currículo digital',
+        'prog3.badge': 'Próximamente',
+        'prog4.name': 'Mentoría Individual',
+        'prog4.detail': 'Privado · Currículo personalizado · Plazas limitadas disponibles',
+        'prog4.badge': 'Aplicar',
+        'localseo.label': 'Área de Los Ángeles',
+        'localseo.title': 'Extensiones Premium en <em>Burbank y Los Ángeles</em>',
+        'localseo.p1': 'Culture of Extensions atiende clientas de Burbank, Glendale, Los Ángeles, Toluca Lake, Studio City, Pasadena y áreas circundantes. Cada transformación se diseña a través de una consulta privada centrada en la salud del cabello natural, calidad de cabello de lujo y fusión perfecta.',
+        'localseo.p3': 'Todos los servicios están disponibles con cita privada. Las consultas gratuitas incluyen un análisis completo de la arquitectura capilar y un plan de extensiones personalizado.',
+        'localseo.cta': 'Consulta Gratuita',
+        'finalcta.label': 'Comienza Tu Viaje',
+        'finalcta.title': '¿Lista para Tu<br/><em>Transformación?</em>',
+        'finalcta.body': 'Tu consulta es gratuita, privada y sin obligación. Es el comienzo de una relación — no de una transacción.',
+        'finalcta.cta': 'Consulta Gratuita',
+        'finalcta.note': 'Un anticipo asegura tu cita · Se aplica al total de tu servicio · Disponibilidad limitada',
+        'footer.tagline': 'by Lana · Premium Hair Extensions · Burbank / Los Angeles',
+        'footer.about': 'Un territorio donde nacen las diosas modernas. Extensiones de cabello premium K-Tip y Micro-Cápsula en Burbank, Los Ángeles — elaboradas con 100% cabello eslavo y europeo. Solo con cita.',
+        'footer.book': 'Consulta Gratuita',
+        'footer.col.services': 'Servicios',
+        'footer.col.studio': 'Estudio',
+        'footer.col.academy': 'Culture Academy',
+        'footer.address': '2119 N Glenoaks Blvd · Burbank, CA · Solo con Cita',
+      },
+      ru: {
+        'nav.services': 'Услуги',
+        'nav.about': 'О Лане',
+        'nav.consultation': 'Консультация',
+        'nav.academy': 'Академия',
+        'nav.faq': 'FAQ',
+        'nav.gallery': 'Галерея',
+        'nav.book': 'Записаться',
+        'hero.eyebrow': 'Burbank · Los Angeles · Est. 2024',
+        'hero.title': 'Здесь Рождаются<br/><em>Богини</em><br/>Нового Времени',
+        'hero.subtitle': 'Премиальное наращивание волос K-Tip, микро-капсула и индивидуальные системы в Бёрбанке, Лос-Анджелес — созданные с учётом вашего натурального волоса, плотности, цвета и образа жизни.',
+        'hero.support': 'Получите персональный план наращивания до записи на трансформацию.',
+        'hero.cta1': 'Бесплатная Консультация',
+        'hero.cta2': 'Смотреть Работы',
+        'statement.quote': '«Мы не просто добавляем волосы — мы создаём трансформацию, которая чтит вашу натуральную основу и возвышает ваш образ.»',
+        'statement.cite': 'Lana · Master Educator · 14+ Years of Excellence',
+        'trust.label': 'Наше Отличие',
+        'trust.title': 'Почему Клиенты <em>Выбирают Лану</em>',
+        'trust.card1.title': 'Лет Опыта',
+        'trust.card1.desc': 'Мастерство наращивания европейского уровня с приоритетом здоровья волос. Каждая техника отточена через тысячи реальных трансформаций.',
+        'trust.card2.title': 'Индивидуальный Подбор Цвета',
+        'trust.card2.desc': 'Каждый план строится с учётом ваших натуральных волос, формы лица, образа жизни и желаемого результата. Никакого шаблонного подхода.',
+        'trust.card3.title': 'Премиум Славянские Волосы',
+        'trust.card3.desc': 'Волосы премиального качества с акцентом на мягкость, движение и естественное слияние. Этичный источник, выровненная кутикула, ручной подбор.',
+        'trust.card4.title': 'Невидимое, Комфортное Наращивание',
+        'trust.card4.desc': 'Методы K-Tip и микро-капсула для бесшовного ношения и натурального движения. Протокол нулевого повреждения. Никаких компромиссов.',
+        'trust.card5.title': 'Приём Только по Записи',
+        'trust.card5.desc': 'Спокойная, премиальная студия в районе Бёрбанк / Лос-Анджелес. Лана работает с ограниченным числом клиентов каждый месяц.',
+        'services.label': 'Студия',
+        'services.title': 'Эксклюзивные <em>Услуги</em>',
+        'services.body': 'Без шаблонов. Без компромиссов. Каждая услуга начинается с тщательного анализа архитектуры волос. Финальная стоимость определяется исключительно на личной консультации.',
+        'svc1.name': 'K-Tip Extensions',
+        'svc1.desc': 'Кератиновые капсулы — наш фирменный метод. Невидимые, с естественным движением, протокол нулевого повреждения. Выбор взыскательных клиентов, которые ставят во главу угла долговечность и здоровье волос.',
+        'svc2.name': 'Объём и Густота',
+        'svc2.desc': 'Целевое размещение для восстановления объёма и создания иллюзии естественно пышных волос. Идеально для тонких волос или зон, требующих стратегического увеличения плотности.',
+        'svc3.name': 'Длина и Трансформация',
+        'svc3.desc': 'Индивидуальное наращивание на всю длину из 100% славянских и европейских волос remy, подобранных вручную по вашей уникальной текстуре, пористости и цветовому профилю.',
+        'svc4.name': 'Коррекция и Уход',
+        'svc4.desc': 'Плановые записи на коррекцию для поддержания целостности вашей инвестиции. Также предлагаем услуги коррекции наращивания, выполненного в других местах.',
+        'svc5.name': 'Безопасное Снятие',
+        'svc5.desc': 'Бережное снятие по протоколу, сохраняющее ваши натуральные волосы. Мы гарантируем, что ваши волосы покинут нашу студию в лучшем состоянии, чем пришли.',
+        'svc6.name': 'Продажа Волос',
+        'svc6.desc': '100% славянские и европейские волосы remy в продаже поштучно, по граммам. Длины от 45 до 60 см. Каждый пучок этично получен и выровнен по кутикуле для безупречного слияния.',
+        'svc7.name': 'Тонирование',
+        'svc7.desc': 'Индивидуальное тонирование и смешение цвета для идеального совпадения наращенных волос с вашими натуральными. Работаем исключительно с прозрачными техниками кератинового окрашивания — без краски, без вреда.',
+        'svc8.name': 'BIO Tape Extensions',
+        'svc8.desc': 'Бесшовный метод на лентах с ультратонкими прядями, плотно прилегающими к коже головы. Лёгкие, комфортные, разработанные для максимально естественного ощущения при минимальной заметности.',
+        'services.pricing1': 'Персональные планы наращивания начинаются от $400 для целевого добавления объёма. Трансформации на полную длину обычно стартуют от $1 000+.',
+        'services.pricing2': 'Финальная цена зависит от длины волос, граммов, метода, целей по плотности и качества волос. Перед финальным расчётом необходима приватная консультация — чтобы Лана могла оценить ваши натуральные волосы, желаемую длину, подбор цвета, плотность и образ жизни.',
+        'services.cta': 'Получить Персональный План',
+        'about.label': 'by Lana',
+        'about.title': 'Архитектор<br/><em>Красоты</em>',
+        'about.body1': 'Светлана Левенец — известная своим клиентам как Лана — мастер-педагог и люкс-специалист по наращиванию волос с опытом 14+ лет. Обученная самым передовым европейским техникам, она создала репутацию в Лос-Анджелесе, предоставляя бесшовные, естественно выглядящие трансформации, которые защищают и восстанавливают здоровье волос.',
+        'about.body2': 'Философия Ланы основана на едином принципе: натуральные волосы прежде всего. Каждое нанесение предваряется структурным анализом архитектуры волос — пористость, плотность, направления роста — для выбора наиболее безопасной и подходящей техники для вашего уникального профиля.',
+        'stat.years': 'Лет Мастерства',
+        'stat.transformations': 'Трансформаций',
+        'stat.priority': 'Приоритет Здоровья',
+        'stat.masterclass': 'Дня Интенсивного Мастер-класса',
+        'process.label': 'Консультация',
+        'process.title': 'Ваш Опыт <em>Консультации</em>',
+        'process.body': 'Каждые отношения с клиентом начинаются с бесплатной консультации — потому что исключительные результаты требуют исключительной подготовки.',
+        'step1.title': 'Расскажите о Целях',
+        'step1.desc': 'Пришлите актуальные фото волос и референсы. Расскажите историю ваших волос, желаемый результат и любой предыдущий опыт наращивания. Без обязательств — только ясность.',
+        'step2.title': 'Лана Оценивает Ваши Волосы',
+        'step2.desc': 'Анализируются натуральная плотность, длина, цвет, пористость, предыдущие наращивания и образ жизни. Тщательный анализ архитектуры волос для определения наиболее безопасного и подходящего подхода.',
+        'step3.title': 'Получите Персональный План',
+        'step3.desc': 'Обсуждаются метод, граммы, длина, качество волос, сроки и диапазон инвестиций. Индивидуальный план услуги — прозрачный, без сюрпризов, без давления.',
+        'step4.title': 'Запишитесь на Трансформацию',
+        'step4.desc': 'После утверждения плана ваша запись бронируется через Square Appointments. Предоплата обеспечивает ваше выделенное время с Ланой и зачитывается в счёт общей стоимости услуги.',
+        'process.note': 'Записи ограничены. Лана работает с избранным числом клиентов каждый месяц, чтобы каждая трансформация получала её полное и безраздельное внимание.',
+        'process.cta': 'Бесплатная Консультация',
+        'inv.label': 'Инвестиция',
+        'inv.title': 'Прозрачные<br/><em>Стартовые Цены</em>',
+        'inv.body': 'Все инвестиции индивидуальны. Финальная цена определяется на консультации исходя из потребностей ваших волос и желаемого результата. Полная прозрачность — никаких скрытых расходов, никогда.',
+        'inv.disclaimer': 'Все цены являются отправными точками. Финальная инвестиция подтверждается во время приватной консультации после того, как Лана оценит ваши натуральные волосы, желаемую длину, плотность и метод.',
+        'inv.maintenance': 'Консультация',
+        'policy.label': 'Политика Студии',
+        'policy.title': 'Наши <em>Стандарты</em>',
+        'policy.body': 'Наши правила существуют для защиты целостности каждого клиентского опыта и выделенного времени нашего специалиста.',
+        'policy.booking': 'Бронирование и Запись',
+        'policy.p1': 'Для защиты зарезервированного времени мастера и доступности приватных записей может потребоваться предоплата для закрепления отдельных записей.',
+        'policy.p2': 'Изменения или отмены записей менее чем за 48 часов могут повлиять на предоплату.',
+        'policy.p3': 'Неявки без предупреждения могут потребовать новой предоплаты перед повторной записью. Ценим ваше понимание и уважение к выделенному времени студии.',
+        'policy.p4': 'Бесплатные консультации доступны по приватной записи. Мы никогда не давим на решение о записи.',
+        'policy.p5': 'Мы оставляем за собой право отказать в услуге, если состояние волос не соответствует безопасным стандартам нанесения — всегда исходя из долгосрочного здоровья ваших волос.',
+        'gallery.label': 'Трансформации',
+        'gallery.title': '<em>Архив</em> Работ',
+        'testimonials.label': 'Отзывы Клиентов',
+        'testimonials.title': 'Что Говорят <em>Клиенты</em>',
+        'faq.label': 'FAQ',
+        'faq.title': 'Вопросы об Наращивании, <em>Отвечаем</em>',
+        'faq.body': 'Каждый вопрос заслуживает вдумчивого ответа. Если вашего здесь нет — консультация — то место, где стоит спросить.',
+        'faq.cta': 'Отправьте Фото Волос',
+        'faq.q1': 'Сколько стоит наращивание волос в Бёрбанке / Лос-Анджелесе?',
+        'faq.a1': 'Цена зависит от метода, длины волос, граммов, качества волос и желаемого результата. Целевое добавление объёма может начинаться от $400, а трансформации на полную длину — как правило, от $1 000+. Для точного расчёта, адаптированного к вашим конкретным потребностям, необходима приватная консультация.',
+        'faq.q2': 'Какой метод наращивания подходит именно мне?',
+        'faq.a2': 'Лучший метод зависит от плотности ваших натуральных волос, чувствительности кожи головы, образа жизни, желаемой длины и привычек в уходе. На консультации Лана оценивает ваши волосы и рекомендует наиболее подходящий метод — будь то K-Tip, микро-капсула, BIO Tape или гибридный подход.',
+        'faq.q3': 'Повреждают ли наращивание K-Tip и микро-капсула волосы?',
+        'faq.a3': 'При правильной установке и надлежащем уходе эти методы могут быть комфортными и естественно выглядящими без вреда для натуральных волос. Здоровье натуральных волос всегда на первом месте, поэтому консультация и правильный уход являются обязательной частью процесса в Culture of Extensions.',
+        'faq.q4': 'Как долго держится наращивание?',
+        'faq.a4': 'Долговечность зависит от метода, качества волос, режима ухода и расписания обслуживания. Многим клиентам требуется коррекция каждые 8–10 недель, но точные сроки индивидуальны исходя из темпа роста ваших натуральных волос и образа жизни.',
+        'faq.q5': 'Нужна ли консультация перед записью?',
+        'faq.a5': 'Да, всегда. Консультация позволяет Лане оценить ваши текущие волосы, желаемый результат, подбор цвета, цели по плотности, историю предыдущего наращивания и бюджет перед составлением персонального плана. Это защищает здоровье ваших волос и гарантирует получение правильной услуги по правильной инвестиции.',
+        'faq.q6': 'Предлагаете ли вы профессиональное обучение наращиванию?',
+        'faq.a6': 'Да. Culture Academy by Lana предлагает профессиональное образование по наращиванию волос для стилистов, желающих освоить консультацию, логику размещения, слияние, уход, коррекцию и опыт работы с клиентами класса люкс. Подайте заявку на обучение через раздел Академии ниже.',
+        'faq.q7': 'Где находится Culture of Extensions?',
+        'faq.a7': 'Culture of Extensions принимает клиентов из Бёрбанка, Глендейла, Лос-Анджелеса, Толука Лейк, Студио Сити, Пасадены и прилегающих районов по приватной записи. Студия расположена по адресу: 2119 N Glenoaks Blvd, Burbank, CA.',
+        'academy.label': 'Профессиональное Обучение',
+        'academy.title': 'Culture Academy<br/><em>by Lana</em>',
+        'academy.body1': 'Профессиональное образование по наращиванию волос для стилистов, стремящихся освоить премиальную работу с K-Tip, микро-капсулой и индивидуальными системами.',
+        'academy.body2': 'Изучите консультацию, подбор волос, логику размещения, слияние, уход, коррекцию и опыт работы с клиентами класса люкс — непосредственно от Ланы.',
+        'academy.cta1': 'Подать Заявку',
+        'academy.cta2': 'Лист Ожидания',
+        'prog1.name': '3-Day Intensive Masterclass',
+        'prog1.detail': 'В Студии · Бёрбанк, LA · Обучение от основ до продвинутого уровня для серьёзных бьюти-профессионалов',
+        'prog1.badge': 'Запись Открыта',
+        'prog2.name': 'Продвинутые Техники',
+        'prog2.detail': 'K-Tip · Micro-Capsule · Hybrid Methods · Color Matching',
+        'prog2.badge': 'Доступно',
+        'prog3.name': 'Онлайн-Курс',
+        'prog3.detail': 'Самостоятельный темп · Теория и Сертификация · Цифровая программа',
+        'prog3.badge': 'Скоро',
+        'prog4.name': 'Индивидуальный Менторинг',
+        'prog4.detail': 'Приватно · Индивидуальная программа · Ограниченное число мест',
+        'prog4.badge': 'Записаться',
+        'localseo.label': 'Район Лос-Анджелеса',
+        'localseo.title': 'Премиум Наращивание в <em>Бёрбанке и Лос-Анджелесе</em>',
+        'localseo.p1': 'Culture of Extensions принимает клиентов из Бёрбанка, Глендейла, Лос-Анджелеса, Толука Лейк, Студио Сити, Пасадены и прилегающих районов. Каждая трансформация разрабатывается через приватную консультацию с акцентом на здоровье натуральных волос, качество люкс-волос и безупречное слияние.',
+        'localseo.p3': 'Все услуги доступны по приватной записи. Бесплатные консультации включают полный анализ архитектуры волос и персональный план наращивания.',
+        'localseo.cta': 'Бесплатная Консультация',
+        'finalcta.label': 'Начните Ваш Путь',
+        'finalcta.title': 'Готовы к Своей<br/><em>Трансформации?</em>',
+        'finalcta.body': 'Ваша консультация бесплатна, приватна и без обязательств. Это начало отношений — не транзакции.',
+        'finalcta.cta': 'Бесплатная Консультация',
+        'finalcta.note': 'Предоплата закрепляет вашу запись · Засчитывается в счёт стоимости услуги · Ограниченная доступность',
+        'footer.tagline': 'by Lana · Premium Hair Extensions · Burbank / Los Angeles',
+        'footer.about': 'Территория, где рождаются современные богини. Премиум наращивание K-Tip и микро-капсула в Бёрбанке, Лос-Анджелес — из 100% славянских и европейских волос. Только по записи.',
+        'footer.book': 'Бесплатная Консультация',
+        'footer.col.services': 'Услуги',
+        'footer.col.studio': 'Студия',
+        'footer.col.academy': 'Culture Academy',
+        'footer.address': '2119 N Glenoaks Blvd · Бёрбанк, CA · Только по Записи',
+      }
+    };
+
+    function applyLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key] !== undefined) {
+          el.textContent = TRANSLATIONS[lang][key];
+        }
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (TRANSLATIONS[lang] && TRANSLATIONS[lang][key] !== undefined) {
+          el.innerHTML = TRANSLATIONS[lang][key];
+        }
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+      document.documentElement.lang = lang === 'ru' ? 'ru' : lang === 'es' ? 'es' : 'en';
+      localStorage.setItem('lang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+    });
+
+    applyLanguage(localStorage.getItem('lang') || 'en');
   </script>
 
 </body>
