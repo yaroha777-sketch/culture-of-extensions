@@ -1,3 +1,4 @@
+import asyncio
 import json
 import logging
 import anthropic
@@ -69,11 +70,16 @@ SYSTEM_PROMPT = """Ты — мастер prompt engineering для Claude (Anthr
 
 class PromptGenerator:
     def __init__(self, api_key: str):
-        self.client = anthropic.AsyncAnthropic(api_key=api_key)
+        self.client = anthropic.Anthropic(api_key=api_key)
+
+    def _call(self, **kwargs) -> str:
+        """Synchronous API call — runs in a thread pool."""
+        response = self.client.messages.create(**kwargs)
+        return response.content[0].text
 
     async def get_clarifying_questions(self, user_request: str) -> str:
-        """Returns 1-2 questions only if critically needed, else empty string."""
-        message = await self.client.messages.create(  # type: ignore[call-overload]
+        text = await asyncio.to_thread(
+            self._call,
             model="claude-sonnet-4-6",
             max_tokens=200,
             system=(
@@ -86,13 +92,11 @@ class PromptGenerator:
             ),
             messages=[{"role": "user", "content": f"Запрос: {user_request}"}],
         )
-        answer = message.content[0].text.strip()
-        if answer.upper().startswith(("НЕТ", "NO")):
+        if text.strip().upper().startswith(("НЕТ", "NO")):
             return ""
-        return answer
+        return text.strip()
 
     async def generate_two_variants(self, original: str, clarifications: str = "") -> Tuple[str, str]:
-        """Generate two optimized prompt variants."""
         user_content = f"Запрос пользователя: {original}"
         if clarifications:
             user_content += f"\nУточнения: {clarifications}"
@@ -104,18 +108,18 @@ class PromptGenerator:
             '{"v1": "...", "v2": "..."}'
         )
 
-        message = await self.client.messages.create(
+        text = await asyncio.to_thread(
+            self._call,
             model="claude-sonnet-4-6",
             max_tokens=3000,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_content}],
         )
-
-        return self._parse_response(message.content[0].text)
+        return self._parse_response(text)
 
     async def apply_edits(self, v1: str, v2: str, instruction: str) -> Tuple[str, str]:
-        """Apply edit instruction to both variants."""
-        message = await self.client.messages.create(
+        text = await asyncio.to_thread(
+            self._call,
             model="claude-sonnet-4-6",
             max_tokens=3000,
             system=SYSTEM_PROMPT,
@@ -130,14 +134,10 @@ class PromptGenerator:
                 ),
             }],
         )
-
-        return self._parse_response(message.content[0].text)
+        return self._parse_response(text)
 
     def _parse_response(self, text: str) -> Tuple[str, str]:
-        """Parse v1/v2 from JSON response with fallbacks."""
         text = text.strip()
-
-        # Find outermost JSON object
         start = text.find("{")
         end = text.rfind("}") + 1
         if start != -1 and end > start:
@@ -150,12 +150,10 @@ class PromptGenerator:
             except json.JSONDecodeError:
                 logger.warning("JSON parse failed, using text fallback")
 
-        # Fallback: split on variant marker
         for marker in ["ВАРИАНТ 2", "Вариант 2", "---", "===ВАРИАНТ 2==="]:
             if marker in text:
                 parts = text.split(marker, 1)
                 return parts[0].strip(), parts[1].strip()
 
-        # Last resort
         mid = len(text) // 2
         return text[:mid].strip(), text[mid:].strip()
