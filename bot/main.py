@@ -102,7 +102,7 @@ async def process_new_request(update: Update, context: ContextTypes.DEFAULT_TYPE
     try:
         questions = await generator.get_clarifying_questions(text)
     except Exception as e:
-        logger.error(f"Clarify error: {e}")
+        logger.error(f"Clarify error: {e}", exc_info=True)
         questions = ""
 
     await thinking.delete()
@@ -127,8 +127,17 @@ async def do_generate(update: Update, context: ContextTypes.DEFAULT_TYPE):
     try:
         v1, v2 = await generator.generate_two_variants(original, clarifications)
     except Exception as e:
-        logger.error(f"Generate error: {e}")
-        await thinking.edit_text("❌ Ошибка генерации. Попробуй ещё раз или упрости запрос.")
+        logger.error(f"Generate error: {e}", exc_info=True)
+        err_msg = str(e)
+        if "401" in err_msg or "auth" in err_msg.lower():
+            hint = "❌ Ошибка API: неверный ANTHROPIC_API_KEY. Проверь переменную на Railway."
+        elif "429" in err_msg:
+            hint = "❌ Превышен лимит Anthropic API. Попробуй через минуту."
+        elif "403" in err_msg:
+            hint = "❌ Нет доступа к модели. Проверь, что у ключа есть кредиты на console.anthropic.com."
+        else:
+            hint = f"❌ Ошибка: {err_msg[:200]}"
+        await thinking.edit_text(hint)
         context.user_data["state"] = STATE_IDLE
         return
 

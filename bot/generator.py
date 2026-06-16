@@ -73,7 +73,7 @@ class PromptGenerator:
 
     async def get_clarifying_questions(self, user_request: str) -> str:
         """Returns 1-2 questions only if critically needed, else empty string."""
-        message = await self.client.messages.create(
+        message = await self.client.messages.create(  # type: ignore[call-overload]
             model="claude-sonnet-4-6",
             max_tokens=200,
             system=(
