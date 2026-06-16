@@ -1,10 +1,13 @@
 import asyncio
 import json
 import logging
-import anthropic
+import requests
 from typing import Tuple
 
 logger = logging.getLogger(__name__)
+
+ANTHROPIC_URL = "https://api.anthropic.com/v1/messages"
+MODEL = "claude-sonnet-4-6"
 
 SYSTEM_PROMPT = """Ты — мастер prompt engineering для Claude (Anthropic). Превращаешь сырые запросы в максимально эффективные промпты.
 
@@ -70,18 +73,27 @@ SYSTEM_PROMPT = """Ты — мастер prompt engineering для Claude (Anthr
 
 class PromptGenerator:
     def __init__(self, api_key: str):
-        self.client = anthropic.Anthropic(api_key=api_key)
+        self.api_key = api_key
+        self.headers = {
+            "x-api-key": api_key,
+            "anthropic-version": "2023-06-01",
+            "content-type": "application/json",
+        }
 
-    def _call(self, **kwargs) -> str:
-        """Synchronous API call — runs in a thread pool."""
-        response = self.client.messages.create(**kwargs)
-        return response.content[0].text
+    def _call(self, system: str, messages: list, max_tokens: int) -> str:
+        payload = {
+            "model": MODEL,
+            "max_tokens": max_tokens,
+            "system": system,
+            "messages": messages,
+        }
+        resp = requests.post(ANTHROPIC_URL, headers=self.headers, json=payload, timeout=60)
+        resp.raise_for_status()
+        return resp.json()["content"][0]["text"]
 
     async def get_clarifying_questions(self, user_request: str) -> str:
         text = await asyncio.to_thread(
             self._call,
-            model="claude-sonnet-4-6",
-            max_tokens=200,
             system=(
                 "Определи: нужны ли уточняющие вопросы для создания хорошего промпта.\n\n"
                 "Задавай вопросы ТОЛЬКО если без них промпт будет слишком размытым.\n"
@@ -91,6 +103,7 @@ class PromptGenerator:
                 "Если нужны → напиши только вопросы, без вводных фраз."
             ),
             messages=[{"role": "user", "content": f"Запрос: {user_request}"}],
+            max_tokens=200,
         )
         if text.strip().upper().startswith(("НЕТ", "NO")):
             return ""
@@ -107,21 +120,17 @@ class PromptGenerator:
             "Ответь строго в JSON (не добавляй текст до/после):\n"
             '{"v1": "...", "v2": "..."}'
         )
-
         text = await asyncio.to_thread(
             self._call,
-            model="claude-sonnet-4-6",
-            max_tokens=3000,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": user_content}],
+            max_tokens=3000,
         )
         return self._parse_response(text)
 
     async def apply_edits(self, v1: str, v2: str, instruction: str) -> Tuple[str, str]:
         text = await asyncio.to_thread(
             self._call,
-            model="claude-sonnet-4-6",
-            max_tokens=3000,
             system=SYSTEM_PROMPT,
             messages=[{
                 "role": "user",
@@ -133,6 +142,7 @@ class PromptGenerator:
                     '{"v1": "...", "v2": "..."}'
                 ),
             }],
+            max_tokens=3000,
         )
         return self._parse_response(text)
 
@@ -150,7 +160,7 @@ class PromptGenerator:
             except json.JSONDecodeError:
                 logger.warning("JSON parse failed, using text fallback")
 
-        for marker in ["ВАРИАНТ 2", "Вариант 2", "---", "===ВАРИАНТ 2==="]:
+        for marker in ["ВАРИАНТ 2", "Вариант 2", "---"]:
             if marker in text:
                 parts = text.split(marker, 1)
                 return parts[0].strip(), parts[1].strip()
