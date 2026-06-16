@@ -1,0 +1,342 @@
+:root {
+  --bg: #131210;
+  --ink: #EDE8DC;
+  --gold: #C9B896;
+  --dim: #9d978a;
+  --line: rgba(201, 184, 150, 0.18);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font: 300 17px/1.7 Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: "Bodoni Moda", serif;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header.site {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(19, 18, 16, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+header.site .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  font-family: "Bodoni Moda", serif;
+  font-size: 19px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.logo em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+nav.main {
+  display: flex;
+  gap: 28px;
+}
+
+nav.main a {
+  color: var(--dim);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+nav.main a:hover,
+nav.main a:focus {
+  color: var(--gold);
+}
+
+.btn {
+  display: inline-block;
+  background: var(--gold);
+  color: #131210;
+  padding: 15px 34px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn.ghost {
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.crumbs {
+  padding: 22px 0 0;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+}
+
+.crumbs a {
+  color: var(--dim);
+  text-decoration: none;
+}
+
+.crumbs a:hover {
+  color: var(--gold);
+}
+
+.hero {
+  padding: 56px 0 64px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, #EDE8DC 30%, #C9B896 75%, #a8946c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 18px;
+}
+
+.hero p.lead {
+  color: var(--dim);
+  max-width: 54ch;
+  margin-bottom: 32px;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+
+h2 {
+  font-family: "Bodoni Moda", serif;
+  font-weight: 500;
+  font-size: clamp(26px, 3.4vw, 38px);
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+h3 {
+  font-size: 15px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+section {
+  padding: 56px 0;
+  border-top: 1px solid var(--line);
+}
+
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.card {
+  border: 1px solid var(--line);
+  padding: 30px;
+}
+
+.card p {
+  color: var(--dim);
+  font-size: 15.5px;
+}
+
+.num {
+  font-family: "Bodoni Moda", serif;
+  color: var(--gold);
+  font-size: 30px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+ul.checks {
+  list-style: none;
+  color: var(--dim);
+}
+
+ul.checks li {
+  padding: 10px 0 10px 30px;
+  position: relative;
+  border-bottom: 1px solid var(--line);
+}
+
+ul.checks li::before {
+  content: "✦";
+  position: absolute;
+  left: 2px;
+  color: var(--gold);
+  font-size: 12px;
+}
+
+details {
+  border-bottom: 1px solid var(--line);
+}
+
+details summary {
+  cursor: pointer;
+  padding: 20px 0;
+  font-size: 17px;
+  color: var(--ink);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+details summary::after {
+  content: "+";
+  color: var(--gold);
+  font-size: 22px;
+  font-family: "Bodoni Moda", serif;
+}
+
+details[open] summary::after {
+  content: "–";
+}
+
+details p {
+  color: var(--dim);
+  padding: 0 0 22px;
+  max-width: 70ch;
+}
+
+.cta {
+  padding: 72px 0;
+  text-align: center;
+}
+
+.cta p {
+  color: var(--dim);
+  max-width: 56ch;
+  margin: 0 auto 30px;
+}
+
+footer.site {
+  border-top: 1px solid var(--line);
+  padding: 48px 0;
+  font-size: 14px;
+  color: var(--dim);
+}
+
+footer.site .cols {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 36px;
+}
+
+footer.site a {
+  color: var(--dim);
+  text-decoration: none;
+}
+
+footer.site a:hover {
+  color: var(--gold);
+}
+
+footer.site ul {
+  list-style: none;
+}
+
+footer.site li {
+  padding: 4px 0;
+}
+
+.foot-label {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 840px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 40px 0;
+  }
+
+  .grid2,
+  .grid3,
+  footer.site .cols {
+    grid-template-columns: 1fr;
+  }
+
+  nav.main {
+    display: none;
+  }
+
+  section {
+    padding: 44px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
