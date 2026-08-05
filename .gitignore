@@ -1,0 +1,13 @@
+.env
+.env.local
+.env.production
+*.key
+*.pem
+node_modules/
+__pycache__/
+.DS_Store
+.vscode/
+*.log
+dist/
+.next/
+.vercel/
