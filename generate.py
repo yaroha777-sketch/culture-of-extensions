@@ -8,6 +8,8 @@ PHONE = "(424) 428-9074"
 PHONE_TEL = "+14244289074"
 ADDR = "2119 N Glenoaks Blvd, Burbank, CA 91504"
 EMAIL = "cultureofextensions@gmail.com"
+INSTAGRAM = "https://www.instagram.com/cultureofextensions_la/"
+GOOGLE_ADS_ID = "AW-6297879762"
 
 CSS = """
 :root{--bg:#131210;--ink:#EDE8DC;--gold:#C9B896;--dim:#9d978a;--line:rgba(201,184,150,.18)}
@@ -78,6 +80,143 @@ CITIES = [
     ("hair-extensions-los-angeles", "Los Angeles"),
 ]
 
+
+
+def tracking_head():
+    return """<!-- Google tag (Google Ads) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={google_ads_id}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {{ window.dataLayer.push(arguments); }}
+  window.gtag = window.gtag || gtag;
+  window.gtag("js", new Date());
+  window.gtag("config", "{google_ads_id}", {{
+    send_page_view: true,
+    business_vertical: "premium_hair_extensions",
+    market: "Los Angeles",
+    local_market: "Burbank / Glendale / Los Angeles"
+  }});
+
+  window.coeTrack = function(eventName, properties) {{
+    var payload = Object.assign({{
+      event: eventName,
+      page_path: window.location.pathname,
+      page_location: window.location.href,
+      page_title: document.title,
+      market: "Los Angeles",
+      local_market: "Burbank / Glendale / Los Angeles",
+      business_vertical: "premium_hair_extensions"
+    }}, properties || {{}});
+
+    window.dataLayer.push(payload);
+
+    if (typeof window.gtag === "function") {{
+      window.gtag("event", eventName, payload);
+    }}
+  }};
+  window.coeTrack("coe_page_view", {{ engagement_type: "page_view" }});
+</script>""".format(google_ads_id=GOOGLE_ADS_ID)
+
+
+def tracking_body():
+    return r"""<script>
+  (function() {
+    function normalizeText(value) {
+      return (value || "").replace(/\s+/g, " ").trim().slice(0, 120);
+    }
+
+    function normalizeUrl(href) {
+      try {
+        return new URL(href, window.location.href);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function sectionIdFor(link) {
+      var section = link.closest && link.closest("section");
+      return section ? section.id || undefined : undefined;
+    }
+
+    function trackClick(eventName, link, extra) {
+      var href = link.getAttribute("href") || "";
+      var url = normalizeUrl(href);
+      var payload = Object.assign({
+        link_url: href,
+        link_domain: url ? url.hostname : undefined,
+        link_text: normalizeText(link.innerText || link.getAttribute("aria-label") || link.title),
+        section_id: sectionIdFor(link),
+        click_source: "site_cta"
+      }, extra || {});
+
+      window.coeTrack(eventName, payload);
+    }
+
+    document.addEventListener("click", function(event) {
+      var link = event.target.closest && event.target.closest("a");
+      if (!link || typeof window.coeTrack !== "function") return;
+
+      var href = link.getAttribute("href") || "";
+      var hrefLower = href.toLowerCase();
+
+      if (hrefLower.indexOf("app.squareup.com/appointments") !== -1 || hrefLower.indexOf("squareup.com/appointments") !== -1) {
+        trackClick("coe_booking_click", link, {
+          conversion_type: "booking_intent",
+          lead_channel: "square_booking",
+          lead_priority: "primary",
+          value: 1,
+          currency: "USD"
+        });
+        return;
+      }
+
+      if (hrefLower.indexOf("instagram.com") !== -1) {
+        trackClick("coe_instagram_click", link, {
+          conversion_type: "social_intent",
+          lead_channel: "instagram",
+          social_platform: "instagram",
+          lead_priority: "secondary"
+        });
+        return;
+      }
+
+      if (hrefLower.indexOf("tel:") === 0) {
+        trackClick("coe_phone_click", link, {
+          conversion_type: "phone_lead",
+          lead_channel: "phone",
+          lead_priority: "secondary"
+        });
+        return;
+      }
+
+      if (hrefLower.indexOf("mailto:") === 0) {
+        trackClick("coe_email_click", link, {
+          conversion_type: "email_lead",
+          lead_channel: "email",
+          lead_priority: "secondary"
+        });
+        return;
+      }
+
+      if (href.charAt(0) === "#") {
+        trackClick("coe_navigation_click", link, {
+          conversion_type: "site_engagement",
+          destination_section: href
+        });
+        return;
+      }
+
+      var url = normalizeUrl(href);
+      if (url && url.hostname !== window.location.hostname) {
+        trackClick("coe_external_click", link, {
+          conversion_type: "external_engagement",
+          lead_priority: "diagnostic"
+        });
+      }
+    }, true);
+  })();
+</script>"""
+
 def header():
     return f"""<header class="site"><div class="wrap">
 <a class="logo" href="/">CULTURE <em>of</em> EXTENSIONS</a>
@@ -94,7 +233,7 @@ def footer():
     cit = "".join(f'<li><a href="/{s}">Hair Extensions {c}</a></li>' for s, c in CITIES)
     return f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><p class="foot-label">Culture of Extensions · by Lana</p>
-<p>{ADDR}<br><a href="tel:{PHONE_TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+<p>{ADDR}<br><a href="tel:{PHONE_TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @cultureofextensions_la</a></p>
 <p style="margin-top:14px"><a class="btn ghost" style="padding:11px 24px;font-size:11px" href="{BOOK}" rel="noopener">Book Consultation</a></p></div>
 <div><p class="foot-label">Signature Services</p><ul>{svc}</ul></div>
 <div><p class="foot-label">Service Areas</p><ul>{cit}</ul></div>
@@ -134,6 +273,7 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img, img_alt, schema_e
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Inter:wght@200..500&display=swap" rel="stylesheet">
 <style>{CSS}</style>
+{tracking_head()}
 {schemas}
 </head>
 <body>
@@ -165,6 +305,7 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img, img_alt, schema_e
 </div>
 </main>
 {footer()}
+{tracking_body()}
 </body>
 </html>"""
 
