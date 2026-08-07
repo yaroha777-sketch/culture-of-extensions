@@ -8,7 +8,7 @@ PHONE = "(424) 428-9074"
 PHONE_TEL = "+14244289074"
 ADDR = "2119 N Glenoaks Blvd, Burbank, CA 91504"
 EMAIL = "cultureofextensions@gmail.com"
-INSTAGRAM = "https://www.instagram.com/cultureofextensions_la/"
+INSTAGRAM = "https://www.instagram.com/culture_of_extensions/"
 GOOGLE_ADS_ID = "AW-6297879762"
 
 CSS = """
@@ -233,7 +233,7 @@ def footer():
     cit = "".join(f'<li><a href="/{s}">Hair Extensions {c}</a></li>' for s, c in CITIES)
     return f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><p class="foot-label">Culture of Extensions · by Lana</p>
-<p>{ADDR}<br><a href="tel:{PHONE_TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @cultureofextensions_la</a></p>
+<p>{ADDR}<br><a href="tel:{PHONE_TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @culture_of_extensions</a></p>
 <p style="margin-top:14px"><a class="btn ghost" style="padding:11px 24px;font-size:11px" href="{BOOK}" rel="noopener">Book Consultation</a></p></div>
 <div><p class="foot-label">Signature Services</p><ul>{svc}</ul></div>
 <div><p class="foot-label">Service Areas</p><ul>{cit}</ul></div>
