@@ -23,20 +23,22 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Inter:wght@200..500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#131210;--ink:#EDE8DC;--gold:#C9B896;--dim:#9d978a;--line:rgba(201,184,150,.18)}
+:root{--bg:#151617;--panel:#1c1d1f;--ink:#F2EFE7;--gold:#C9B896;--dim:#b9b5ac;--line:rgba(201,184,150,.16)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font:300 17px/1.7 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font:300 17px/1.75 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .serif{font-family:"Bodoni Moda",serif}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-header.site{position:sticky;top:0;z-index:50;background:rgba(19,18,16,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header.site{position:sticky;top:0;z-index:50;background:rgba(21,22,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 header.site .wrap{display:flex;justify-content:space-between;align-items:center;height:64px}
-.logo{font-family:"Bodoni Moda",serif;font-size:19px;letter-spacing:.06em;color:var(--ink);text-decoration:none}
+.logo{font-family:"Bodoni Moda",serif;font-size:19px;letter-spacing:.06em;color:var(--ink);text-decoration:none;white-space:nowrap}
 .logo em{color:var(--gold);font-style:italic}
 nav.main{display:flex;gap:28px}
 nav.main a{color:var(--dim);text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase;transition:color .2s}
 nav.main a:hover,nav.main a:focus{color:var(--gold)}
-.btn{display:inline-block;background:var(--gold);color:#131210;padding:15px 34px;text-decoration:none;font-weight:400;font-size:13px;letter-spacing:.16em;text-transform:uppercase;transition:opacity .2s}
+.nav-toggle{display:none}
+.nav-btn{display:none}
+.btn{display:inline-block;background:var(--gold);color:#141516;padding:16px 36px;text-decoration:none;font-weight:500;font-size:13px;letter-spacing:.16em;text-transform:uppercase;transition:opacity .2s}
 .btn:hover{opacity:.85}
 .btn.ghost{background:none;border:1px solid var(--gold);color:var(--gold)}
 .crumbs{padding:22px 0 0;font-size:12px;letter-spacing:.1em;color:var(--dim)}
@@ -44,35 +46,52 @@ nav.main a:hover,nav.main a:focus{color:var(--gold)}
 .crumbs a:hover{color:var(--gold)}
 .hero{padding:56px 0 64px;display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
 .hero .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
-h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:.01em;background:linear-gradient(135deg,#EDE8DC 30%,#C9B896 75%,#a8946c);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px}
-.hero p.lead{color:var(--dim);max-width:54ch;margin-bottom:32px}
+h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.1;letter-spacing:.01em;color:#F5F2EA;margin-bottom:22px}
+h1 .gold{color:var(--gold)}
+.hero p.lead{color:var(--dim);font-size:18px;max-width:54ch;margin-bottom:32px}
 .hero img{width:100%;height:auto;display:block;border:1px solid var(--line)}
-h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);color:var(--ink);margin:0 0 18px}
-h3{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:400;margin-bottom:10px}
+h2{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(26px,3.4vw,38px);color:#F5F2EA;margin:0 0 18px}
+h3{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px}
 section{padding:56px 0;border-top:1px solid var(--line)}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:40px}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
-.card{border:1px solid var(--line);padding:30px}
+.card{background:var(--panel);border:1px solid var(--line);padding:32px}
 .card p{color:var(--dim);font-size:15.5px}
 .num{font-family:"Bodoni Moda",serif;color:var(--gold);font-size:30px;display:block;margin-bottom:12px}
-ul.checks{list-style:none;color:var(--dim)}
-ul.checks li{padding:10px 0 10px 30px;position:relative;border-bottom:1px solid var(--line)}
+section p{color:var(--dim)}
+ul.checks{list-style:none;color:var(--ink)}
+ul.checks li{padding:12px 0 12px 30px;position:relative;border-bottom:1px solid var(--line);font-size:16px}
 ul.checks li::before{content:"✦";position:absolute;left:2px;color:var(--gold);font-size:12px}
-details{border-bottom:1px solid var(--line)}
-details summary{cursor:pointer;padding:20px 0;font-size:17px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center}
-details summary::after{content:"+";color:var(--gold);font-size:22px;font-family:"Bodoni Moda",serif}
+details{background:var(--panel);border:1px solid var(--line);margin-bottom:10px;padding:0 20px}
+details summary{cursor:pointer;padding:18px 0;font-size:17px;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+details summary::after{content:"+";color:var(--gold);font-size:22px;font-family:"Bodoni Moda",serif;flex-shrink:0}
 details[open] summary::after{content:"–"}
-details p{color:var(--dim);padding:0 0 22px;max-width:70ch}
+details p{color:var(--dim);padding:0 0 20px;max-width:70ch}
 .cta{padding:72px 0;text-align:center}
 .cta p{color:var(--dim);max-width:56ch;margin:0 auto 30px}
-footer.site{border-top:1px solid var(--line);padding:48px 0;font-size:14px;color:var(--dim)}
+footer.site{border-top:1px solid var(--line);background:#121314;padding:48px 0;font-size:14px;color:var(--dim)}
 footer.site .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
 footer.site a{color:var(--dim);text-decoration:none}
 footer.site a:hover{color:var(--gold)}
 footer.site ul{list-style:none}
-footer.site li{padding:4px 0}
+footer.site li{padding:5px 0}
 .foot-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-@media(max-width:840px){.hero{grid-template-columns:1fr;padding:40px 0}.grid2,.grid3,footer.site .cols{grid-template-columns:1fr}nav.main{display:none}section{padding:44px 0}}
+@media(max-width:840px){
+.hero{grid-template-columns:1fr;padding:36px 0;gap:36px}
+.grid2,.grid3,footer.site .cols{grid-template-columns:1fr}
+section{padding:44px 0}
+body{font-size:16.5px}
+.nav-btn{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;cursor:pointer;align-items:flex-end}
+.nav-btn span{display:block;height:2px;background:var(--gold);border-radius:2px;transition:.25s;width:26px}
+.nav-btn span:nth-child(2){width:18px}
+nav.main{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(18,19,20,.98);backdrop-filter:blur(16px);flex-direction:column;gap:0;padding:8px 24px 16px;border-bottom:1px solid var(--line)}
+nav.main a{padding:14px 0;font-size:13px;border-bottom:1px solid rgba(201,184,150,.08)}
+nav.main a:last-child{border:none;color:var(--gold)}
+.nav-toggle:checked ~ nav.main{display:flex}
+.nav-toggle:checked ~ .nav-btn span:nth-child(1){transform:translateY(7px) rotate(45deg);width:26px}
+.nav-toggle:checked ~ .nav-btn span:nth-child(2){opacity:0}
+.nav-toggle:checked ~ .nav-btn span:nth-child(3){transform:translateY(-7px) rotate(-45deg);width:26px}
+}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 <!-- Google tag (Google Ads) -->
@@ -113,12 +132,15 @@ footer.site li{padding:4px 0}
 <body>
 <header class="site"><div class="wrap">
 <a class="logo" href="/">CULTURE <em>of</em> EXTENSIONS</a>
+<input type="checkbox" id="nav-t" class="nav-toggle" aria-hidden="true">
+<label for="nav-t" class="nav-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
 <nav class="main" aria-label="Primary">
 <a href="/services/k-tip-extensions">K-Tip</a>
 <a href="/services/length-transformation">Length</a>
 <a href="/services/volume-density">Volume</a>
+<a href="/services/bio-tape-color">BIO Tape</a>
 <a href="/hair-extensions-los-angeles">Service Areas</a>
-<a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" rel="noopener">Book</a>
+<a href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" rel="noopener">Book Now</a>
 </nav></div></header>
 <main>
 <div class="wrap">
