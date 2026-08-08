@@ -10,6 +10,8 @@ ADDR = "2119 N Glenoaks Blvd, Burbank, CA 91504"
 EMAIL = "cultureofextensions@gmail.com"
 INSTAGRAM = "https://www.instagram.com/culture_of_extensions/"
 GOOGLE_ADS_ID = "AW-18195839181"
+GOOGLE_CONTACT_CONVERSION_ID = "AW-18372744603"
+GOOGLE_CONTACT_CONVERSION_SEND_TO = "AW-18372744603/ROv4CNbbhd4cEJur57hE"
 
 CSS = """
 :root{--bg:#131210;--ink:#EDE8DC;--gold:#C9B896;--dim:#9d978a;--line:rgba(201,184,150,.18)}
@@ -96,6 +98,7 @@ def tracking_head():
     market: "Los Angeles",
     local_market: "Burbank / Glendale / Los Angeles"
   }});
+  window.gtag("config", "{google_contact_conversion_id}");
 
   window.coeTrack = function(eventName, properties) {{
     var payload = Object.assign({{
@@ -115,7 +118,10 @@ def tracking_head():
     }}
   }};
   window.coeTrack("coe_page_view", {{ engagement_type: "page_view" }});
-</script>""".format(google_ads_id=GOOGLE_ADS_ID)
+</script>""".format(
+    google_ads_id=GOOGLE_ADS_ID,
+    google_contact_conversion_id=GOOGLE_CONTACT_CONVERSION_ID,
+)
 
 
 def tracking_body():
@@ -150,6 +156,16 @@ def tracking_body():
       }, extra || {});
 
       window.coeTrack(eventName, payload);
+
+      if (payload.google_ads_contact_conversion && typeof window.gtag === "function") {
+        window.gtag("event", "conversion", {
+          send_to: "__GOOGLE_CONTACT_CONVERSION_SEND_TO__",
+          value: payload.value,
+          currency: payload.currency,
+          event_category: "lead",
+          event_label: payload.lead_channel || eventName
+        });
+      }
     }
 
     document.addEventListener("click", function(event) {
@@ -164,6 +180,7 @@ def tracking_body():
           conversion_type: "booking_intent",
           lead_channel: "square_booking",
           lead_priority: "primary",
+          google_ads_contact_conversion: true,
           value: 1,
           currency: "USD"
         });
@@ -175,7 +192,8 @@ def tracking_body():
           conversion_type: "social_intent",
           lead_channel: "instagram",
           social_platform: "instagram",
-          lead_priority: "secondary"
+          lead_priority: "secondary",
+          google_ads_contact_conversion: true
         });
         return;
       }
@@ -184,7 +202,8 @@ def tracking_body():
         trackClick("coe_phone_click", link, {
           conversion_type: "phone_lead",
           lead_channel: "phone",
-          lead_priority: "secondary"
+          lead_priority: "secondary",
+          google_ads_contact_conversion: true
         });
         return;
       }
@@ -193,7 +212,8 @@ def tracking_body():
         trackClick("coe_email_click", link, {
           conversion_type: "email_lead",
           lead_channel: "email",
-          lead_priority: "secondary"
+          lead_priority: "secondary",
+          google_ads_contact_conversion: true
         });
         return;
       }
@@ -215,7 +235,10 @@ def tracking_body():
       }
     }, true);
   })();
-</script>"""
+</script>""".replace(
+        "__GOOGLE_CONTACT_CONVERSION_SEND_TO__",
+        GOOGLE_CONTACT_CONVERSION_SEND_TO,
+    )
 
 def header():
     return f"""<header class="site"><div class="wrap">
