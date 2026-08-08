@@ -9,7 +9,7 @@ PHONE_TEL = "+14244289074"
 ADDR = "2119 N Glenoaks Blvd, Burbank, CA 91504"
 EMAIL = "cultureofextensions@gmail.com"
 INSTAGRAM = "https://www.instagram.com/culture_of_extensions/"
-GOOGLE_ADS_ID = "AW-6297879762"
+GOOGLE_ADS_ID = "AW-18195839181"
 
 CSS = """
 :root{--bg:#131210;--ink:#EDE8DC;--gold:#C9B896;--dim:#9d978a;--line:rgba(201,184,150,.18)}
