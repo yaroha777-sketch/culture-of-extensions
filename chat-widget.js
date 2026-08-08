@@ -108,19 +108,25 @@ async function sendLead(){
   setTimeout(function(){
     addMsg('Thank you, ' + name.split(' ')[0] + '! Your details have been received — we\'ll call you soon.', 'ai');
   }, 400);
+  var payload = { name: name, phone: phone, page: window.location.href };
+  try{
+    await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  }catch(err){ console.error('Notion lead delivery error:', err); }
   try{
     await fetch(LEAD_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        name: name,
-        phone: phone,
+        name: name, phone: phone,
         _subject: 'New callback request — Culture of Extensions site',
-        source: 'Website concierge chat',
-        page: window.location.href
+        source: 'Website concierge chat', page: window.location.href
       })
     });
-  }catch(err){ console.error('Lead delivery error:', err); }
+  }catch(err){ console.error('Email lead delivery error:', err); }
 }
 win.querySelector('#coe-send').addEventListener('click', sendLead);
 win.querySelector('#coe-phone').addEventListener('keypress', function(e){ if(e.key==='Enter') sendLead(); });
