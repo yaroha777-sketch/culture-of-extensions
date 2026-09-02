@@ -256,15 +256,14 @@ Error generating stack: `+a.message+`
 <script>
 (function(){
   function addPortfolioLink(){
-    var nav = document.querySelector('header nav') || document.querySelector('nav');
-    if(!nav || nav.querySelector('a[href="/portfolio"]')) return;
+    if(document.querySelector('nav a[href="/portfolio"]')) return;
+    var ref = document.querySelector('nav a[href="#consultation"]') || document.querySelector('nav a[href^="#"]');
+    if(!ref) return;
     var a = document.createElement('a');
     a.href = '/portfolio';
     a.textContent = 'Portfolio';
-    var model = nav.querySelector('a');
-    if(model) a.className = model.className;
-    var ref = nav.querySelector('a[href="#consultation"]');
-    nav.insertBefore(a, ref || null);
+    a.className = ref.className;
+    ref.parentElement.insertBefore(a, ref);
   }
   var obs = new MutationObserver(addPortfolioLink);
   if(document.body) obs.observe(document.body, {childList:true, subtree:true});
