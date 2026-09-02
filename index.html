@@ -253,5 +253,23 @@ Error generating stack: `+a.message+`
   })();
 </script>
 <script defer src="/chat-widget.js"></script>
+<script>
+(function(){
+  function addPortfolioLink(){
+    var nav = document.querySelector('header nav') || document.querySelector('nav');
+    if(!nav || nav.querySelector('a[href="/portfolio"]')) return;
+    var a = document.createElement('a');
+    a.href = '/portfolio';
+    a.textContent = 'Portfolio';
+    var model = nav.querySelector('a');
+    if(model) a.className = model.className;
+    var ref = nav.querySelector('a[href="#consultation"]');
+    nav.insertBefore(a, ref || null);
+  }
+  var obs = new MutationObserver(addPortfolioLink);
+  if(document.body) obs.observe(document.body, {childList:true, subtree:true});
+  addPortfolioLink();
+})();
+</script>
 </body>
 </html>
