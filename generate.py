@@ -247,6 +247,7 @@ def header():
 <a href="/services/k-tip-extensions">K-Tip</a>
 <a href="/services/length-transformation">Length</a>
 <a href="/services/volume-density">Volume</a>
+<a href="/portfolio">Portfolio</a>
 <a href="/hair-extensions-los-angeles">Service Areas</a>
 <a href="{BOOK}" rel="noopener">Book</a>
 </nav></div></header>"""
@@ -258,7 +259,7 @@ def footer():
 <div><p class="foot-label">Culture of Extensions · by Lana</p>
 <p>{ADDR}<br><a href="tel:{PHONE_TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @culture_of_extensions</a></p>
 <p style="margin-top:14px"><a class="btn ghost" style="padding:11px 24px;font-size:11px" href="{BOOK}" rel="noopener">Book Consultation</a></p></div>
-<div><p class="foot-label">Signature Services</p><ul>{svc}</ul></div>
+<div><p class="foot-label">Signature Services</p><ul>{svc}<li><a href="/portfolio">Before &amp; After Gallery</a></li></ul></div>
 <div><p class="foot-label">Service Areas</p><ul>{cit}</ul></div>
 </div></div></footer>"""
 
@@ -316,6 +317,12 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img, img_alt, schema_e
 </div>
 {body}
 <div class="wrap">
+<section class="cta" style="border-top:none">
+<p style="font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">Real Results</p>
+<h2>See the Transformations</h2>
+<p>2,500+ real clients. Real hair. Explore the before &amp; after gallery from our Burbank studio.</p>
+<a class="btn ghost" href="/portfolio">View Full Gallery</a>
+</section>
 <section aria-labelledby="faq">
 <h2 id="faq">Questions, Answered</h2>
 {faq_html}
