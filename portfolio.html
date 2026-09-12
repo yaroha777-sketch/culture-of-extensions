@@ -15,14 +15,12 @@
   <meta property="og:url" content="https://www.cultureofextensions.com/portfolio">
   <meta property="og:title" content="Hair Extension Transformations | Culture of Extensions by Lana">
   <meta property="og:description" content="2,500+ real transformations in Burbank, CA. Premium K-Tip & BIO Tape extensions using 100% Slavic hair. View our portfolio and book your consultation.">
-  <meta property="og:image" content="https://www.cultureofextensions.com/photos/g1.jpg">
   <meta property="og:site_name" content="Culture of Extensions by Lana">
 
   <!-- === TWITTER CARD === -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Hair Extension Transformations | Culture of Extensions">
   <meta name="twitter:description" content="Real results from Burbank's premier hair extension studio. 14+ years experience, 100% Slavic hair.">
-  <meta name="twitter:image" content="https://www.cultureofextensions.com/photos/g1.jpg">
 
   <!-- === SCHEMA.ORG === -->
   <script type="application/ld+json">
@@ -47,15 +45,6 @@
       "longitude": -118.3214
     },
     "priceRange": "$$$",
-    "image": [
-      "https://www.cultureofextensions.com/photos/g1.jpg",
-      "https://www.cultureofextensions.com/photos/g2.jpg",
-      "https://www.cultureofextensions.com/photos/g3.jpg",
-      "https://www.cultureofextensions.com/photos/g4.jpg",
-      "https://www.cultureofextensions.com/photos/g5.jpg",
-      "https://www.cultureofextensions.com/photos/g6.jpg",
-      "https://www.cultureofextensions.com/photos/g7.jpg"
-    ],
     "sameAs": ["https://www.instagram.com/culture_of_extensions"],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -524,100 +513,6 @@
 
 <div class="divider"></div>
 
-<!-- ===== PORTFOLIO GALLERY ===== -->
-<section>
-  <span class="eyebrow">Before & After Gallery</span>
-  <h2 class="section-title">Results That Speak<br><em style="font-family:'Bodoni Moda',serif;font-style:italic;">for Themselves</em></h2>
-  <p class="section-sub">Click any photo to view full size</p>
-
-  <div class="gallery-grid">
-
-    <!-- Card 1 — Featured -->
-    <div class="gallery-card featured" onclick="openLightbox('/photos/g1.jpg')">
-      <img src="/photos/g1.jpg"
-           alt="K-Tip hair extension transformation before and after — natural volume added, Burbank client"
-           loading="eager">
-      <div class="gallery-card-info">
-        <span class="gallery-tag">K-Tip Extensions</span>
-        <p class="gallery-caption">Volume & Length Transformation</p>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="gallery-card" onclick="openLightbox('/photos/g2.jpg')">
-      <img src="/photos/g2.jpg"
-           alt="BIO Tape hair extensions — seamless blending with natural hair, Burbank studio"
-           loading="lazy">
-      <div class="gallery-card-info">
-        <span class="gallery-tag">BIO Tape</span>
-        <p class="gallery-caption">Seamless Color Blend</p>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="gallery-card" onclick="openLightbox('/photos/g3.jpg')">
-      <img src="/photos/g3.jpg"
-           alt="K-Tip micro-capsule extensions — density and length, 100% Slavic hair"
-           loading="lazy">
-      <div class="gallery-card-info">
-        <span class="gallery-tag">K-Tip Micro-Capsule</span>
-        <p class="gallery-caption">Density Restoration</p>
-      </div>
-    </div>
-
-    <!-- Card 4 -->
-    <div class="gallery-card" onclick="openLightbox('/photos/g4.jpg')">
-      <img src="/photos/g4.jpg"
-           alt="Hair extension length transformation — shoulder to waist length, culture of extensions"
-           loading="lazy">
-      <div class="gallery-card-info">
-        <span class="gallery-tag">Length Transformation</span>
-        <p class="gallery-caption">Shoulder to Waist</p>
-      </div>
-    </div>
-
-    <!-- Card 5 -->
-    <div class="gallery-card" onclick="openLightbox('/photos/g5.jpg')">
-      <img src="/photos/g5.jpg"
-           alt="Volume extensions — thin fine hair transformed with K-tip method, Burbank CA"
-           loading="lazy">
-      <div class="gallery-card-info">
-        <span class="gallery-tag">Volume & Density</span>
-        <p class="gallery-caption">Fine Hair Transformed</p>
-      </div>
-    </div>
-
-    <!-- Card 6 -->
-    <div class="gallery-card" onclick="openLightbox('/photos/g6.jpg')">
-      <img src="/photos/g6.jpg"
-           alt="Slavic hair extensions natural look — invisible extensions blending perfectly"
-           loading="lazy">
-      <div class="gallery-card-info">
-        <span class="gallery-tag">Natural Blend</span>
-        <p class="gallery-caption">Invisible Integration</p>
-      </div>
-    </div>
-
-    <!-- Card 7 — Featured -->
-    <div class="gallery-card featured" onclick="openLightbox('/photos/g7.jpg')">
-      <img src="/photos/g7.jpg"
-           alt="Hair extension final result — glamorous full volume style, Culture of Extensions by Lana"
-           loading="lazy">
-      <div class="gallery-card-info">
-        <span class="gallery-tag">Signature Look</span>
-        <p class="gallery-caption">Full Glamour Transformation</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ===== LIGHTBOX ===== -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
 <div class="divider"></div>
 
 <!-- ===== SERVICES ===== -->
@@ -714,20 +609,6 @@
 </footer>
 
 <!-- ===== LIGHTBOX SCRIPT ===== -->
-<script>
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
-  });
-</script>
 
 </body>
 </html>
