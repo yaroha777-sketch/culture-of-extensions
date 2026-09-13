@@ -88,6 +88,9 @@ GUIDES = [
     ("invisible-bead-vs-keratin-extensions-la", "Invisible Bead vs K-Tip", "Comparison Guide"),
     ("slavic-hair-vs-factory-european-hair", "Slavic Hair vs Factory Hair", "Material Science"),
     ("cost-and-maintenance-luxury-extensions-la", "Cost & Maintenance Guide", "2026 Pricing"),
+    ("luxury-hair-extensions-beverly-hills", "Beverly Hills Standard", "Private Studio"),
+    ("zero-damage-hair-extensions-biomechanics", "Zero-Damage Biomechanics", "Scalp Health"),
+    ("blonde-slavic-hair-extensions-los-angeles", "Blonde Slavic Hair", "Clean Lift Science"),
 ]
 
 CITIES = [
@@ -616,6 +619,126 @@ def guide_block(direct_answer_text, cards_data, h2_text, paras, checks=None, tab
 </div>'''
 
 guide_data = {
+
+"luxury-hair-extensions-beverly-hills": dict(
+ title="Luxury Hair Extensions Beverly Hills & LA | The Private Studio Standard",
+ desc="Why Beverly Hills clients drive 20 minutes to Burbank for Lana's private bespoke hair extensions. 100% Slavic hair, zero-damage K-Tips, and unhurried artistry.",
+ h1="The Beverly Hills Standard: Private Studio Artistry",
+ eyebrow="20 Minutes via the 134 / 101 Freeway",
+ lead="Beverly Hills has dozens of bustling salon floors. Discerning clients choose Culture of Extensions in Burbank for something increasingly rare: absolute privacy, undivided master attention, and zero-compromise Slavic hair.",
+ img="/photos/g1.jpg",
+ alt="Private luxury hair extensions studio for Beverly Hills clients",
+ direct_answer="For clients in Beverly Hills seeking true luxury hair extensions, Culture of Extensions by Lana in nearby Burbank offers an exclusive private sanctuary. Specializing in single-donor raw Slavic hair and tension-free K-Tip micro-capsules, Lana provides an unhurried, one-on-one transformation without the distraction or exposure of commercial salon floors. Consultations are complimentary and appointment-only.",
+ body_cards=[
+  ("Undivided Master Attention", "One client at a time. No assistants passing you between stations, no multi-booking, no salon audience."),
+  ("Raw Virgin Slavic Hair", "Authentic single-donor European hair that styles effortlessly and preserves natural movement across 12-24 months."),
+  ("Discretion & Confidentiality", "A private Burbank sanctuary located minutes from Toluca Lake and Studio City, designed for high-profile clients.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Experience Attribute</th><th>Bustling Commercial Salon Floor</th><th>Culture of Extensions (Lana Studio)</th></tr></thead>
+<tbody>
+<tr><td><strong>Format</strong></td><td>Multi-chair floor with public visibility</td><td>100% Private, one-on-one sanctuary</td></tr>
+<tr><td><strong>Stylist</strong></td><td>Often delegated to junior assistants</td><td>Exclusively installed by Master Artisan Lana</td></tr>
+<tr><td><strong>Hair Sourcing</strong></td><td>Factory processed commercial European</td><td>100% Single-donor raw virgin Slavic</td></tr>
+<tr><td><strong>Atmosphere</strong></td><td>Noisy, rushed, high turnover</td><td>Calm, focused, bespoke luxury</td></tr>
+</tbody></table>''',
+ block_h2="Why Distance Disappears When Quality Matters",
+ block_p=[
+  "The 20-minute drive over Barham or across the 134 is the easiest choice our Beverly Hills clients make. When investing in hair that defines your presence for months, having the undivided focus of a specialist with 14+ years of European mastery is irreplaceable.",
+  "From subtle hairline density restoration to 26-inch dramatic volume transformations, every installation is architected to be completely undetectable."
+ ],
+ checks=[
+  "Convenient access from Beverly Hills, WeHo, and Studio City",
+  "Complimentary private consultation before commitment",
+  "Strict zero-damage attachment protocols",
+  "Bespoke multi-dimensional color and texture matching"
+ ],
+ faq=[
+  ("How far is the studio from Beverly Hills?", "Our private studio at 2119 N Glenoaks Blvd in Burbank is approximately 20 to 25 minutes from Beverly Hills via the 101 or 134."),
+  ("Do you accommodate celebrity or high-profile privacy needs?", "Yes. The studio operates strictly on an appointment-only, single-client basis. There are no walk-ins or overlapping appointments."),
+  ("What is the booking process?", "We begin with a complimentary in-person consultation where Lana analyzes your natural hair foundation, presents Slavic hair options, and provides an exact fixed quote.")
+ ]
+),
+"zero-damage-hair-extensions-biomechanics": dict(
+ title="Zero-Damage Hair Extensions in Los Angeles | Biomechanics by Lana",
+ desc="How tension-free sectioning and 1:1 weight matching protect fine natural hair from traction alopecia. The science of damage-free extensions by Lana.",
+ h1="Zero-Damage Extensions: The Biomechanics of Scalp Health",
+ eyebrow="Follicular Health & Scientific Sectioning",
+ lead="Traction alopecia is not an inevitable risk of wearing extensions — it is the direct result of poor geometry. Discover how Lana's tension-free protocol allows natural hair to thrive.",
+ img="/photos/g3.jpg",
+ alt="Zero-damage hair extensions biomechanics on fine hair",
+ direct_answer="Hair extensions do not damage natural hair when installed with correct biomechanics. At Culture of Extensions, Lana utilizes radial sectioning that mirrors cranial curves and calibrates donor strand weight 1:1 with biological anchor hair. This eliminates root torque and tension points, ensuring zero follicular damage and promoting uninterrupted natural hair growth throughout months of wear.",
+ body_cards=[
+  ("1:1 Weight Calibration", "Each attachment point bears exact proportional weight, preventing follicular strain and mechanical pulling."),
+  ("Radial Parting Geometry", "Sections are drafted in natural crescents matching head curvature, eliminating cross-tension when hair is tied up."),
+  ("Botanical Safe Removal", "Bonds and wefts are released gently with organic botanical solutions — zero mechanical tugging or breakage.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Risk Factor</th><th>Standard Commercial Installation</th><th>Lana Zero-Damage Methodology</th></tr></thead>
+<tbody>
+<tr><td><strong>Attachment Tension</strong></td><td>High point-load tension (pinching)</td><td>Radial tension-free load distribution</td></tr>
+<tr><td><strong>Weight Ratio</strong></td><td>Often overloaded (2:1 or 3:1)</td><td>Strict 1:1 calibrated balance</td></tr>
+<tr><td><strong>Scalp Contact</strong></td><td>Metal beads against scalp surface</td><td>Beads completely encased between wefts</td></tr>
+<tr><td><strong>Natural Hair Outcome</strong></td><td>Follicular thinning & breakage</td><td>Healthy natural growth and density gain</td></tr>
+</tbody></table>''',
+ block_h2="The Architecture of Follicular Preservation",
+ block_p=[
+  "Many women are terrified of extensions because they previously experienced soreness, headaches, or thinning patches from inexperienced stylists. These symptoms are warning signs of dangerous follicular tension.",
+  "At Culture of Extensions, we treat extension artistry as biological engineering. When installed correctly, your natural hair is protected from daily friction, heat styling, and environmental breakage, frequently growing out healthier and longer than before."
+ ],
+ checks=[
+  "Zero headaches or scalp tenderness post-installation",
+  "Safe for postpartum shedding and fragile, bleached hair",
+  "Personalized homecare protocol and silk pillowcase guidance",
+  "Regular maintenance schedules strictly monitored"
+ ],
+ faq=[
+  ("Will extensions hurt after I leave the studio?", "No. A properly balanced, tension-free installation should feel completely comfortable from the moment you leave the chair. You will feel fullness, not tightness."),
+  ("Can fine hair handle extensions safely?", "Yes, fine hair is our primary specialty. By creating ultra-nano micro-capsules and featherweight weft rows, we add lush density without overburdening delicate roots."),
+  ("How often must I come in to protect my hair?", "Every 6–8 weeks for Invisible Bead wefts, and every 12–16 weeks for K-Tip resets. Adhering to this schedule prevents hair from twisting as it grows.")
+ ]
+),
+"blonde-slavic-hair-extensions-los-angeles": dict(
+ title="Blonde Slavic Hair Extensions in Los Angeles | The Clean Lift Standard",
+ desc="Authentic blonde virgin Slavic hair extensions in Los Angeles. Slow-lift cold bleaching, intact cuticles, and bespoke balayage color blending by Lana.",
+ h1="Blonde Slavic Hair: The Clean Lift Architecture",
+ eyebrow="Platinum & Honey Tones · Zero Chemical Breakage",
+ lead="Blonde extensions are the ultimate test of material quality. Discover why factory blonde hair turns brittle within weeks, and how Lana's slow-lift Slavic bundles maintain silk-like luster for up to 2 years.",
+ img="/photos/g5.jpg",
+ alt="Blonde Slavic hair extensions transformation in Los Angeles",
+ direct_answer="Authentic blonde Slavic hair extensions are the rarest luxury hair asset in the world. Unlike mass-market commercial blonde extensions that are stripped with industrial sulfuric acid, Culture of Extensions utilizes gently lifted single-donor Slavic hair with intact cuticles. The hair accepts transparent keratin toning, never mats or frizzes, and preserves its natural elasticity across 12 to 24 months of wear.",
+ body_cards=[
+  ("Natural Light Pigment", "Sourced from naturally blonde and light-brown donors, requiring minimal lift to achieve luminous champagne and platinum tones."),
+  ("Disulfide Bond Protection", "Lifted slowly at gentle low temperatures over weeks, preserving internal keratin protein chains."),
+  ("Seamless Three-Zone Blending", "Hand-painted shadow roots, seamless lowlights, and bright dimensional ends that dissolve into your natural color.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Quality Marker</th><th>Commercial Factory Blonde</th><th>Culture of Extensions Blonde Slavic</th></tr></thead>
+<tbody>
+<tr><td><strong>Raw Base</strong></td><td>Dark Asian/Indian hair (bleached heavily)</td><td>Naturally light Eastern European single-donor</td></tr>
+<tr><td><strong>Processing Method</strong></td><td>Rapid high-temp sulfuric acid bath</td><td>Weeks-long gentle cold lift protocol</td></tr>
+<tr><td><strong>Cuticle Condition</strong></td><td>Destroyed (masked with silicone)</td><td>100% Intact, smooth, and flexible</td></tr>
+<tr><td><strong>Toning Response</strong></td><td>Porous, absorbs purple shampoo patchy</td><td>Takes transparent toner evenly with luminous shine</td></tr>
+<tr><td><strong>Lifespan</strong></td><td>6 to 8 weeks (frizz & snap)</td><td>12 to 24 months through move-ups</td></tr>
+</tbody></table>''',
+ block_h2="Why Blonde Demands the Highest Craftsmanship",
+ block_p=[
+  "Blonde clients face the greatest risk in the hair extension market. If donor hair has been aggressively chemically lifted, it lacks the tensile strength to endure daily washing and heat styling, snapping off and creating uneven layers.",
+  "At Culture of Extensions, our blonde Slavic bundles feel as cool, soft, and alive as virgin hair because biologically, they are. Paired with Lana's multi-tonal root smudging, the transition between your scalp and the extensions is imperceptible."
+ ],
+ checks=[
+  "Icy platinum, champagne, warm honey, and Scandinavian blonde shades",
+  "Zero orange or brassy undertones",
+  "Custom hand-painted root smudges to match natural growth",
+  "No synthetic fiber blending — 100% pure human hair"
+ ],
+ faq=[
+  ("Can I use purple shampoo on Slavic blonde extensions?", "Yes, but gently and infrequently. Because our cuticles are intact and not overly porous, the hair does not grab violet pigment unevenly like cheap damaged extensions do."),
+  ("Can you match my dimensional blonde balayage?", "Absolutely. Lana hand-blends 2 to 4 complementary tones in every installation to replicate natural multi-tonal sunlit depth."),
+  ("Will the blonde hair yellow over time in California water?", "We provide guidance on water filters and gentle chelating washes to prevent hard-water mineral buildup and keep your blonde bright and clean.")
+ ]
+),
+
 "invisible-bead-vs-keratin-extensions-la": dict(
  title="Invisible Bead vs. Keratin K-Tips in Los Angeles | Master Comparison",
  desc="Comprehensive guide comparing Invisible Bead Extensions (IBE) vs Keratin K-Tip micro-capsules in Los Angeles by master specialist Lana. Price, longevity, and damage breakdown.",
