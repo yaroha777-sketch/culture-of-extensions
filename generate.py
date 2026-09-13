@@ -14,6 +14,16 @@ GOOGLE_CONTACT_CONVERSION_ID = "AW-18372744603"
 GOOGLE_CONTACT_CONVERSION_SEND_TO = "AW-18372744603/ROv4CNbbhd4cEJur57hE"
 
 CSS = """
+.direct-answer{border:1px solid var(--gold);background:rgba(201,184,150,.06);padding:26px 30px;margin:28px 0;border-radius:2px}
+.direct-answer p.badge{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500}
+.direct-answer p.text{font-size:16.5px;color:var(--ink);line-height:1.65}
+.table-wrap{overflow-x:auto;margin:32px 0}
+table.matrix{width:100%;border-collapse:collapse;margin:16px 0;font-size:15px}
+table.matrix th,table.matrix td{border:1px solid var(--line);padding:14px 18px;text-align:left}
+table.matrix th{background:rgba(201,184,150,.08);color:var(--gold);font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+table.matrix td{color:var(--dim)}
+table.matrix td strong{color:var(--ink)}
+
 :root{--bg:#131210;--ink:#EDE8DC;--gold:#C9B896;--dim:#9d978a;--line:rgba(201,184,150,.18)}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -57,7 +67,7 @@ details p{color:var(--dim);padding:0 0 22px;max-width:70ch}
 .cta{padding:72px 0;text-align:center}
 .cta p{color:var(--dim);max-width:56ch;margin:0 auto 30px}
 footer.site{border-top:1px solid var(--line);padding:48px 0;font-size:14px;color:var(--dim)}
-footer.site .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+footer.site .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:32px}
 footer.site a{color:var(--dim);text-decoration:none}
 footer.site a:hover{color:var(--gold)}
 footer.site ul{list-style:none}
@@ -73,6 +83,13 @@ SERVICES = [
     ("length-transformation", "Length Transformation", "From $1,000"),
     ("bio-tape-color", "BIO Tape & Color", "From $500"),
 ]
+
+GUIDES = [
+    ("invisible-bead-vs-keratin-extensions-la", "Invisible Bead vs K-Tip", "Comparison Guide"),
+    ("slavic-hair-vs-factory-european-hair", "Slavic Hair vs Factory Hair", "Material Science"),
+    ("cost-and-maintenance-luxury-extensions-la", "Cost & Maintenance Guide", "2026 Pricing"),
+]
+
 CITIES = [
     ("hair-extensions-burbank", "Burbank"),
     ("hair-extensions-glendale", "Glendale"),
@@ -255,12 +272,14 @@ def header():
 def footer():
     svc = "".join(f'<li><a href="/services/{s}">{n}</a></li>' for s, n, _ in SERVICES)
     cit = "".join(f'<li><a href="/{s}">Hair Extensions {c}</a></li>' for s, c in CITIES)
+    gui = "".join(f'<li><a href="/guides/{s}">{n}</a></li>' for s, n, _ in GUIDES)
     return f"""<footer class="site"><div class="wrap"><div class="cols">
 <div><p class="foot-label">Culture of Extensions · by Lana</p>
 <p>{ADDR}<br><a href="tel:{PHONE_TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @culture_of_extensions</a></p>
 <p style="margin-top:14px"><a class="btn ghost" style="padding:11px 24px;font-size:11px" href="{BOOK}" rel="noopener">Book Consultation</a></p></div>
 <div><p class="foot-label">Signature Services</p><ul>{svc}<li><a href="/portfolio">Before &amp; After Gallery</a></li></ul></div>
 <div><p class="foot-label">Service Areas</p><ul>{cit}</ul></div>
+<div><p class="foot-label">Hair Science &amp; Guides</p><ul>{gui}</ul></div>
 </div></div></footer>"""
 
 def page(path, title, desc, h1, eyebrow, lead, body, faq, img, img_alt, schema_extra):
@@ -342,6 +361,14 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img, img_alt, schema_e
 LB = {"@type":"HairSalon","name":"Culture of Extensions by Lana","@id":DOMAIN+"/#business",
       "telephone":PHONE_TEL,"address":{"@type":"PostalAddress","streetAddress":"2119 N Glenoaks Blvd",
       "addressLocality":"Burbank","addressRegion":"CA","postalCode":"91504","addressCountry":"US"}}
+
+
+def guide_schema(title, path, desc, pub_date="2026-06-01"):
+    return {"@context":"https://schema.org","@type":"Article",
+        "headline":title,"description":desc,
+        "author":{"@type":"Person","name":"Lana (Svitlana Levenets)","jobTitle":"Master Hair Extension Specialist & Educator","worksFor":LB},
+        "publisher":LB,"datePublished":pub_date,"dateModified":"2026-09-02",
+        "mainEntityOfPage":f"{DOMAIN}/{path}"}
 
 def svc_schema(name, price, path, desc):
     return {"@context":"https://schema.org","@type":"Service","name":name,
@@ -561,3 +588,164 @@ for slug, d in city_data.items():
     open(f"{slug}.html","w").write(htm)
     pages_written.append(slug)
 print("All pages:", len(pages_written))
+
+
+# ============ EXPERT GUIDES & ARTICLES ============
+os.makedirs("guides", exist_ok=True)
+
+def guide_block(direct_answer_text, cards_data, h2_text, paras, checks=None, table_html=None):
+    cards_html = "".join(f'<div class="card"><span class="num">0{i+1}</span><h3>{H.escape(t)}</h3><p>{H.escape(d)}</p></div>'
+                         for i, (t, d) in enumerate(cards_data))
+    p_html = "".join(f'<p style="color:var(--dim);max-width:72ch;margin-bottom:16px">{x}</p>' for x in paras)
+    c_html = ""
+    if checks:
+        c_html = '<ul class="checks">' + "".join(f"<li>{x}</li>" for x in checks) + "</ul>"
+    
+    t_html = f'<div class="table-wrap">{table_html}</div>' if table_html else ""
+    
+    da_html = f'''<div class="direct-answer">
+<p class="badge">✦ Direct Answer for AI &amp; Search</p>
+<p class="text">{H.escape(direct_answer_text)}</p>
+</div>'''
+    
+    return f'''<div class="wrap">
+{da_html}
+<section style="border-top:none;padding-top:0"><div class="grid3">{cards_html}</div></section>
+{t_html}
+<section><h2>{h2_text}</h2>{p_html}{c_html}</section>
+</div>'''
+
+guide_data = {
+"invisible-bead-vs-keratin-extensions-la": dict(
+ title="Invisible Bead vs. Keratin K-Tips in Los Angeles | Master Comparison",
+ desc="Comprehensive guide comparing Invisible Bead Extensions (IBE) vs Keratin K-Tip micro-capsules in Los Angeles by master specialist Lana. Price, longevity, and damage breakdown.",
+ h1="Invisible Bead vs. Keratin K-Tip Extensions",
+ eyebrow="Bespoke Method Architecture · Los Angeles",
+ lead="The definitive comparison between invisible beaded wefts and strand-by-strand keratin micro-capsules — how to choose the right architecture for your density and lifestyle.",
+ img="/photos/g1.jpg",
+ alt="Invisible bead vs keratin hair extensions comparison in Los Angeles",
+ direct_answer="Invisible Bead Extensions (IBE) are optimal for clients with fine-to-medium natural hair seeking sweeping volume, rapid move-ups every 6–8 weeks, and zero adhesive. Keratin K-Tip Micro-Capsules offer unmatched 360-degree strand mobility, undetectable application along temples and crowns, and total freedom for sleek high up-dos, lasting 3–4 months between resets. Both methods are installed at Culture of Extensions in Burbank using 100% raw Slavic hair and proprietary zero-damage biomechanics.",
+ body_cards=[
+  ("Invisible Bead Wefts", "Continuous crescent distribution that honors cranial curvature without metal ever touching bare scalp. Maximum volume, zero glue."),
+  ("Keratin Micro-Capsules", "Individually hand-rolled micro-bonds matching natural strand fall for undetectable hairline and sleek high-ponytail wear."),
+  ("100% Virgin Slavic Hair", "Single-donor cuticles intact across both methods — reusable for up to 18–24 months with regular move-ups.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Feature / Parameter</th><th>Invisible Bead Wefts (IBE)</th><th>Keratin K-Tips (Micro-Capsules)</th></tr></thead>
+<tbody>
+<tr><td><strong>Primary Benefit</strong></td><td>Dense volume & rapid move-ups</td><td>360° strand mobility & hairline fill</td></tr>
+<tr><td><strong>Attachment Mechanism</strong></td><td>Tension-free hidden silicone beads</td><td>Medical-grade Italian keratin polymer</td></tr>
+<tr><td><strong>Hair Quality Used</strong></td><td>100% Raw Slavic or Virgin European Weft</td><td>Single-donor Raw Slavic cut-strands</td></tr>
+<tr><td><strong>Maintenance Interval</strong></td><td>Move-up every 6 to 8 weeks</td><td>Full reset every 3 to 4 months</td></tr>
+<tr><td><strong>Updo / Ponytail Flexibility</strong></td><td>Mid-to-high soft ponytail</td><td>Absolute freedom (ultra-high sleek buns)</td></tr>
+<tr><td><strong>Investment (Culture of Extensions)</strong></td><td>From $1,000 (Full installs $1,500–$2,800)</td><td>From $700 (Full installs $1,800–$3,500)</td></tr>
+<tr><td><strong>Hair Reusability</strong></td><td>12 to 24 months</td><td>12 to 18 months (re-tipped)</td></tr>
+</tbody></table>''',
+ block_h2="Scalp Biomechanics: Why Placement Dictates Health",
+ block_p=[
+  "In the luxury Los Angeles landscape, extensions must never compromise biological follicular health. Traction alopecia is not an inevitable consequence of extensions — it is caused by incorrect weight ratios, poor sectioning angles, and overdue maintenance.",
+  "At Culture of Extensions, Lana conducts a microscopic structural analysis of your natural hair before recommending either method or a bespoke hybrid installation."
+ ],
+ checks=[
+  "Zero bare-metal contact on the scalp (beads encased between wefts)",
+  "Strand weight calibrated 1:1 with natural anchor hair",
+  "Three-zone color blending (roots, mid-lengths, ends)",
+  "Complimentary private consultation in our Burbank studio"
+ ],
+ faq=[
+  ("Which method lasts longer?", "Invisible Bead wefts require move-up appointments every 6–8 weeks as your natural hair grows. Keratin K-Tip bonds remain in place for 3–4 months before a full reset. Both methods use reusable Slavic hair lasting 12–24 months."),
+  ("Can I wear a high ponytail with both methods?", "Yes: Keratin K-Tips allow 360-degree articulation anywhere on the head, making ultra-high sleek buns effortless. Invisible Bead rows allow beautiful mid-to-high soft ponytails when placed with Lana's hidden-bead perimeter map."),
+  ("Which method is safer for fine, thinning hair?", "Both are completely safe under Lana's zero-damage protocol. For thinning temples or crown areas, micro-capsules are ideal because they can be formed to half-size grains. For overall perimeter density, invisible wefts provide maximum fullness with minimal attachment points.")
+ ]
+),
+"slavic-hair-vs-factory-european-hair": dict(
+ title="Slavic Hair vs. Factory European Hair | The Truth Behind Extensions in LA",
+ desc="The material science of luxury hair extensions in Los Angeles. Why factory European hair mats after 6 weeks and why 100% authentic raw Slavic hair lasts 2 years.",
+ h1="Slavic Hair vs. Factory Processed Hair",
+ eyebrow="Material Science & Cuticle Chemistry",
+ lead="Why 90% of commercial 'European' hair in Los Angeles salon supply chains fails within two months — and why authentic raw Slavic virgin hair remains the gold standard of luxury.",
+ img="/photos/g3.jpg",
+ alt="Authentic raw virgin Slavic hair extensions in Los Angeles",
+ direct_answer="Factory 'European' hair sold in most salons is actually heavy-gauge Asian or Indian hair stripped in chemical acid baths and dipped in synthetic silicone. Once the silicone washes off in 4–8 weeks, the hair becomes dry, brittle, and severely matted. In contrast, authentic raw Slavic hair has 100% intact, unidirectional cuticles from a single donor, never treated with acid or silicone, lasting 12 to 24 months across multiple salon move-ups.",
+ body_cards=[
+  ("The Acid & Silicone Bath", "Industrial acid strips the protective cuticle scales; synthetic silicone masks the damage until the first few shampoos wash it away."),
+  ("Single-Donor Virgin Slavic", "Naturally fine-to-medium diameter matching American & European biological textures — smooth, lightweight, and radiant."),
+  ("True 2-Year Longevity", "Slavic hair moves, drapes, and styles like your own natural hair without matting or tangling wash after wash.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Testing Parameter</th><th>Authentic Raw Slavic Hair</th><th>Factory 'European' / Commercial Hair</th></tr></thead>
+<tbody>
+<tr><td><strong>Donor Sourcing</strong></td><td>Single donor (unmixed bundles)</td><td>Hundreds of mixed donors blended in bulk</td></tr>
+<tr><td><strong>Cuticle Condition</strong></td><td>100% Intact, aligned, untreated</td><td>Stripped via acid bath or partially reversed</td></tr>
+<tr><td><strong>Artificial Coating</strong></td><td>Zero silicone, zero synthetic wax</td><td>Heavy industrial silicone seal</td></tr>
+<tr><td><strong>Behavior in Humidity</strong></td><td>Drapes naturally, soft movement</td><td>Frizzes, tangles at nape, expands wildly</td></tr>
+<tr><td><strong>Wash Lifespan</strong></td><td>Maintains silkiness wash 1 to 200+</td><td>Degrades sharply after wash 6 to 10</td></tr>
+<tr><td><strong>18-Month Total Cost</strong></td><td>Low ($4,900 with reuse)</td><td>High ($8,900+ with 8 replacements)</td></tr>
+</tbody></table>''',
+ block_h2="The Silicone Mirage: Why Cheap Hair Costs More",
+ block_p=[
+  "Commercial hair processing facilities strip cuticles because misaligned cuticles cause severe friction. However, removing the cuticle leaves the porous cortex exposed to atmospheric moisture, causing immediate frizz and knotting.",
+  "At Culture of Extensions by Lana, we reject the industrial supply chain. We procure single-donor Slavic bundles with cuticles fully preserved, meaning the hair can be toned, air-dried, curled, and worn daily without degradation."
+ ],
+ checks=[
+  "100% ethically sourced single-donor Slavic hair",
+  "Zero industrial acid baths or synthetic silicone coatings",
+  "Naturally matched to fine and fragile biological hair",
+  "Reusable through move-ups for 12 to 24 months"
+ ],
+ faq=[
+  ("Why does Slavic hair cost more initially?", "Raw Slavic hair is a rare, finite luxury resource collected from individual donors who have never permed or bleached their hair. Because it lasts 18–24 months without needing replacement, it is significantly less expensive over time than replacing cheap hair every two months."),
+  ("How can I test if extension hair has silicone?", "A simple salon test: slide your fingers up and down a strand. Natural cuticle hair has a slight grip when sliding upward towards the root. Heavily silicone-coated hair feels unnaturally slippery in both directions, until washed with clarifying shampoo."),
+  ("Can Slavic extensions be colored or toned?", "Yes. Because the cuticle is intact and healthy, Lana customizes Slavic bundles with gentle low-temperature glosses and toners without compromising hair elasticity.")
+ ]
+),
+"cost-and-maintenance-luxury-extensions-la": dict(
+ title="The Real Cost of Hair Extensions in Los Angeles | 2026 Luxury Breakdown",
+ desc="Complete pricing transparency for luxury hair extensions in Los Angeles (Burbank, Beverly Hills). Initial install, maintenance move-ups, and 18-month investment math.",
+ h1="The Real Cost & Maintenance of Luxury Extensions",
+ eyebrow="2026 Los Angeles Pricing & Economics",
+ lead="Complete pricing transparency: initial installations, maintenance move-up intervals, and why authentic Slavic hair saves thousands of dollars over an 18-month horizon.",
+ img="/photos/g5.jpg",
+ alt="Cost and maintenance of luxury hair extensions in Los Angeles",
+ direct_answer="In the premium Los Angeles market (Burbank, Beverly Hills), bespoke hair extension installations range from $400 for targeted volume to $1,500–$3,500+ for full Slavic length transformations. Routine maintenance move-ups occur every 6–8 weeks ($250–$450). While budget salons advertise $800 installs using cheap hair that requires replacement every 2 months (totaling $8,900+ over 18 months), Culture of Extensions clients re-use their Slavic hair for up to 2 years, investing only $4,900 over the same period.",
+ body_cards=[
+  ("Initial Bespoke Install", "From $400 for volume, from $700 for K-Tip, and from $1,000 for full Slavic transformations ($1,500–$3,500 depending on length and density)."),
+  ("Maintenance Cadence", "Every 6 to 8 weeks for Invisible Bead wefts; 3 to 4 months for K-Tip resets. Protects natural hair growth."),
+  ("The 18-Month Math", "Reusing Slavic hair eliminates 8 separate hair purchases, saving over $4,000 compared to budget salons.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Metric (18-Month Horizon)</th><th>Budget / Mass-Market Salon</th><th>Culture of Extensions by Lana</th></tr></thead>
+<tbody>
+<tr><td><strong>Initial Hair & Install</strong></td><td>$800 (Low quality hair)</td><td>$2,200 (100% Virgin Slavic)</td></tr>
+<tr><td><strong>Hair Lifespan</strong></td><td>2 months (silicone washes out)</td><td>18 to 24 months (cuticles intact)</td></tr>
+<tr><td><strong>Hair Purchases Required</strong></td><td>8 new hair purchases ($4,800)</td><td><strong>0 replacements</strong> (hair is reused)</td></tr>
+<tr><td><strong>Move-Up Maintenance Visits</strong></td><td>9 visits ($1,800)</td><td>9 visits ($2,700)</td></tr>
+<tr><td><strong>TOTAL 18-MONTH INVESTMENT</strong></td><td><strong>$8,900+</strong></td><td><strong>$4,900</strong> (Saves $4,000+)</td></tr>
+<tr><td><strong>Average Daily Investment</strong></td><td>$16.48 / day</td><td><strong>$9.07 / day</strong></td></tr>
+</tbody></table>''',
+ block_h2="Deconstructing the Luxury Investment",
+ block_p=[
+  "A luxury transformation at Culture of Extensions is composed of three tangible components: 1) rare, single-donor raw virgin Slavic hair assets (which you own and keep), 2) 3 to 6 hours of unhurried master craftsmanship by Lana, and 3) multi-tonal dimensional color blending.",
+  "We provide exact, fixed quotes during your complimentary consultation before any commitment is made. No surprise add-ons or vague ranges."
+ ],
+ checks=[
+  "Exact pricing established in personalized plan at consultation",
+  "No hidden fees for finishing cut, blending, or styling",
+  "Personalized at-home maintenance schedule and care guide",
+  "Complimentary private consultation with Lana in Burbank"
+ ],
+ faq=[
+  ("What does the complimentary consultation include?", "Lana analyzes your natural hair density, scalp elasticity, and lifestyle, maps placement zones, and determines exact hair length, method, and fixed pricing before you commit."),
+  ("How much does maintenance cost?", "Routine maintenance appointments fall every 6–8 weeks for wefts and BIO tape, typically ranging from $250 to $450 depending on row count. Your original Slavic hair is re-installed directly with zero hair replacement cost."),
+  ("What happens if I delay my maintenance?", "Delaying maintenance beyond 8–10 weeks causes rows to tilt and twist natural root follicles, risking mechanical breakage. We strictly educate clients on adherence to preserve 100% natural hair health.")
+ ]
+),
+}
+
+for slug, d in guide_data.items():
+    body = guide_block(d["direct_answer"], d["body_cards"], d["block_h2"], d["block_p"], d.get("checks"), d.get("table_html"))
+    htm = page(f"guides/{slug}", d["title"], d["desc"], d["h1"], d["eyebrow"], d["lead"],
+               body, d["faq"], d["img"], d["alt"], guide_schema(d["title"], f"guides/{slug}", d["desc"]))
+    open(f"guides/{slug}.html", "w").write(htm)
+    pages_written.append(f"guides/{slug}")
+print("Generated Guide pages:", list(guide_data.keys()))
