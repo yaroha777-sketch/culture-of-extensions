@@ -44,6 +44,8 @@ nav.main a:hover,nav.main a:focus{color:var(--gold)}
 .crumbs a{color:var(--dim);text-decoration:none}
 .crumbs a:hover{color:var(--gold)}
 .hero{padding:56px 0 64px;display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:center}
+.hero.solo{display:block;max-width:840px;padding:64px 0 44px}
+.hero.solo p.lead{max-width:68ch;margin-bottom:32px}
 .hero .eyebrow{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
 h1{font-family:"Bodoni Moda",serif;font-weight:500;font-size:clamp(34px,5vw,58px);line-height:1.08;letter-spacing:.01em;background:linear-gradient(135deg,#EDE8DC 30%,#C9B896 75%,#a8946c);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px}
 .hero p.lead{color:var(--dim);max-width:54ch;margin-bottom:32px}
@@ -285,7 +287,26 @@ def footer():
 <div><p class="foot-label">Hair Science &amp; Guides</p><ul>{gui}</ul></div>
 </div></div></footer>"""
 
-def page(path, title, desc, h1, eyebrow, lead, body, faq, img, img_alt, schema_extra):
+def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", schema_extra=None):
+    if img:
+        hero_markup = f"""<div class="hero">
+<div>
+<p class="eyebrow">{eyebrow}</p>
+<h1>{h1}</h1>
+<p class="lead">{lead}</p>
+<a class="btn" href="{BOOK}" rel="noopener">Book Complimentary Consultation</a>
+</div>
+<img src="{img}" alt="{H.escape(img_alt)}" width="900" height="1200" fetchpriority="high" decoding="async">
+</div>"""
+    else:
+        hero_markup = f"""<div class="hero solo">
+<div>
+<p class="eyebrow">{eyebrow}</p>
+<h1>{h1}</h1>
+<p class="lead">{lead}</p>
+<a class="btn" href="{BOOK}" rel="noopener">Book Complimentary Consultation</a>
+</div>
+</div>"""
     faq_html = "".join(
         f"<details><summary>{H.escape(q)}</summary><p>{H.escape(a)}</p></details>" for q, a in faq)
     faq_schema = {
@@ -327,15 +348,7 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img, img_alt, schema_e
 <main>
 <div class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> · {h1}</nav>
-<div class="hero">
-<div>
-<p class="eyebrow">{eyebrow}</p>
-<h1>{h1}</h1>
-<p class="lead">{lead}</p>
-<a class="btn" href="{BOOK}" rel="noopener">Book Complimentary Consultation</a>
-</div>
-<img src="{img}" alt="{H.escape(img_alt)}" width="900" height="1200" fetchpriority="high" decoding="async">
-</div>
+{hero_markup}
 </div>
 {body}
 <div class="wrap">
@@ -408,7 +421,6 @@ svc_data = {
  h1="K-Tip Extensions, Architected for Invisibility",
  eyebrow="Signature Method · From $700",
  lead="Micro-capsule keratin bonds — our signature. Each capsule is shaped by hand around your natural strand for invisible integration, natural movement, and zero damage to your own hair.",
- img="/photos/g1.jpg", alt="K-Tip keratin bond hair extensions result on long hair, Burbank studio",
  body_cards=[("Micro-Capsule Precision","Capsules are formed smaller than industry standard and placed following your natural growth pattern — undetectable even in an updo."),
   ("Zero-Damage Protocol","Attachment points are mapped to your hair density so no strand carries more weight than it can hold. Your natural hair stays healthy underneath."),
   ("Slavic & European Hair","100% natural remy hair, color-matched to your roots, mid-lengths and ends — not just one flat tone.")],
@@ -427,7 +439,6 @@ svc_data = {
  h1="Volume & Density, Restored Naturally",
  eyebrow="Targeted Placement · From $400",
  lead="Targeted micro-capsule placement to restore fullness and natural abundance — designed for fine hair that needs body, not just length.",
- img="/photos/g3.jpg", alt="Natural volume restoration with hair extensions on fine hair, Los Angeles",
  body_cards=[("Built for Fine Hair","Lightweight micro-capsules sized for fine strands — fullness without strain on your natural hair."),
   ("Strategic Mapping","Volume is placed where your hair actually needs it: crown, sides, or perimeter — not a uniform template."),
   ("Invisible in Any Style","Placement follows your parting and styling habits so density looks born, not added.")],
@@ -446,7 +457,6 @@ svc_data = {
  h1="Length Transformation in Slavic & European Hair",
  eyebrow="Full Bespoke Installation · From $1,000",
  lead="Full-length bespoke extensions in 100% Slavic and European remy hair — the most coveted hair in the world, architected around your natural foundation.",
- img="/photos/g5.jpg", alt="Full length transformation with Slavic hair extensions, Burbank Los Angeles",
  body_cards=[("100% Slavic & European Remy","The finest natural hair available — fine cuticle, natural shine, and movement that blends seamlessly with your own."),
   ("Length Architecture","Length is designed in proportion to your features, density, and lifestyle — not pulled from a chart."),
   ("A Ritual, Not a Service","Meticulous, unhurried placement. Every bond positioned so the result is invisible and weightless.")],
@@ -465,7 +475,6 @@ svc_data = {
  h1="BIO Tape & Transparent Keratin Color",
  eyebrow="Seamless Wefts · From $500",
  lead="Ultra-thin seamless wefts and transparent keratin toning — color refinement and density with no dye and no damage.",
- img="/photos/g7.jpg", alt="Seamless BIO tape weft extensions with keratin toning, Burbank salon",
  body_cards=[("Ultra-Thin Wefts","BIO tape sits flat against the scalp — invisible at the parting, comfortable from day one."),
   ("Keratin Toning","Transparent toning refines color without oxidative dye — shine and tone, zero chemical damage."),
   ("Fast, Gentle, Reversible","Shorter installation time and gentle removal make BIO tape ideal for first-time extension clients.")],
@@ -485,7 +494,7 @@ for slug, d in svc_data.items():
     price = [p for s,_,p in SERVICES if s==slug][0]
     body = cards(d["body_cards"]) + block(d["block_h2"], d["block_p"], d["checks"])
     htm = page(f"services/{slug}", d["title"], d["desc"], d["h1"], d["eyebrow"], d["lead"],
-               body, d["faq"], d["img"], d["alt"], svc_schema(name, price, f"services/{slug}", d["desc"]))
+               body, d["faq"], d.get("img"), d.get("alt", ""), svc_schema(name, price, f"services/{slug}", d["desc"]))
     open(f"services/{slug}.html","w").write(htm)
     pages_written.append(f"services/{slug}")
 print("Service pages:", pages_written)
@@ -498,7 +507,6 @@ city_data = {
  h1="Hair Extensions in Burbank, California",
  eyebrow="Our Studio · Home Base",
  lead="Culture of Extensions is based on N Glenoaks Blvd in Burbank — a private, appointment-only studio where every transformation is architected individually by Lana.",
- img="/photos/g2.jpg", alt="Premium hair extensions result at Burbank studio, Culture of Extensions",
  local=["Our studio at 2119 N Glenoaks Blvd is the home of the Culture of Extensions methodology: K-Tip micro-capsule and BIO tape installations in 100% Slavic and European remy hair, architected around your natural hair, density, and color.",
  "Burbank clients visit us from Magnolia Park, the Rancho district, the Media District, and the hillside neighborhoods — most within a 10-minute drive. Street parking is available near the studio, and every appointment is private: one client, full attention."],
  checks=["Private appointment-only studio on N Glenoaks Blvd","Complimentary consultation before any commitment","Consultations in English, Spanish, and Russian","Direct access to Lana between appointments"],
@@ -513,7 +521,6 @@ city_data = {
  h1="Hair Extensions for Glendale, California",
  eyebrow="10 Minutes from N Brand Blvd",
  lead="A 10-minute drive from the Brand Boulevard corridor brings you to a private Burbank studio where extensions are architected, not just installed.",
- img="/photos/g4.jpg", alt="Luxury K-Tip hair extensions for Glendale client, Culture of Extensions studio",
  local=["Glendale is our closest neighboring city — clients from the Americana area, Adams Hill, Rossmoyne, and Montrose reach the studio in about 10 minutes via Glenoaks or San Fernando Blvd.",
  "Rather than fitting you into a salon chair between other appointments, the studio model is different: one client at a time, a structural analysis of your natural hair first, and a personalized plan with exact pricing before anything is installed."],
  checks=["10 minutes from Brand Blvd & the Americana","Private one-client-at-a-time studio format","K-Tip micro-capsule & BIO tape in Slavic hair","Complimentary consultation with exact pricing"],
@@ -528,7 +535,6 @@ city_data = {
  h1="Hair Extensions for Studio City",
  eyebrow="15 Minutes via Ventura Blvd / 134",
  lead="For clients along Ventura Boulevard who expect camera-ready, undetectable results — a private studio 15 minutes away where invisibility is the standard.",
- img="/photos/g6.jpg", alt="Invisible hair extension blending for Studio City client, camera-ready result",
  local=["Studio City clients — many working in front of cameras or in the industry around the studios — come to us for one reason: extensions that remain a secret. Texture, porosity, and movement are matched so precisely that even hairdressers can't find the transition.",
  "The drive is simple: Ventura Blvd to the 134 or over Barham, about 15 minutes to our private Burbank studio. Appointments are unhurried and one-on-one — no salon floor, no audience."],
  checks=["Camera-ready, undetectable blending","15 minutes from Ventura Blvd via the 134","100% Slavic & European remy hair","Private one-on-one appointments"],
@@ -543,7 +549,6 @@ city_data = {
  h1="Hair Extensions for Toluca Lake",
  eyebrow="5 Minutes · Adjacent to Toluca Lake",
  lead="Our studio sits five minutes from Toluca Lake — a discreet, appointment-only space built around privacy and unhurried, individual work.",
- img="/photos/g1.jpg", alt="Discreet luxury hair extension appointment near Toluca Lake",
  local=["Toluca Lake is effectively our neighborhood — the studio on N Glenoaks Blvd is a five-minute drive from Riverside Drive. For clients who value discretion, the format matters: private studio, one client at a time, no walk-ins.",
  "Every appointment follows the same architecture: structural analysis of your natural hair, a personalized plan with exact pricing, meticulous installation, and a care protocol with direct access to Lana between appointments."],
  checks=["5 minutes from Riverside Drive","Discreet, private, appointment-only format","Zero-damage protocol on every installation","Personalized care guide & direct access to Lana"],
@@ -558,7 +563,6 @@ city_data = {
  h1="Hair Extensions for Pasadena",
  eyebrow="25 Minutes via the 134 Freeway",
  lead="Pasadena clients take the 134 west for one thing they can't find closer: a specialist studio working exclusively in premium Slavic hair with a zero-damage methodology.",
- img="/photos/g3.jpg", alt="Premium Slavic hair extensions for Pasadena client, natural blending result",
  local=["From Old Town or Madison Heights, the drive west on the 134 takes about 25 minutes — and clients tell us it's the difference between a salon service and a specialist practice. Culture of Extensions does one discipline at the highest standard.",
  "The methodology is the draw: structural analysis before any commitment, micro-capsule placement mapped to your density, 100% Slavic hair blended across three color zones, and education so the result lives beyond the appointment."],
  checks=["Specialist practice — extensions only, nothing else","100% Slavic & European remy hair","Structural analysis & exact pricing before commitment","Education and care protocol included"],
@@ -573,7 +577,6 @@ city_data = {
  h1="Luxury Hair Extensions in Los Angeles",
  eyebrow="20 Minutes from Hollywood / WeHo",
  lead="Los Angeles has hundreds of salons that offer extensions among dozens of services. Culture of Extensions offers one discipline, architected to the highest standard — 20 minutes from Hollywood.",
- img="/photos/g5.jpg", alt="Luxury hair extensions Los Angeles — full transformation by Culture of Extensions",
  local=["Clients reach the Burbank studio from Hollywood, West Hollywood, Los Feliz, Silver Lake, and the Westside — most within 20–30 minutes via the 101 or Barham. What they come for is specialization: K-Tip micro-capsule and BIO tape installations in 100% Slavic and European hair, one client at a time.",
  "Every transformation follows the Culture of Extensions methodology: structural analysis of your natural hair, a personalized plan with exact pricing, meticulous unhurried installation, and education so the result lasts. Where modern goddesses are born — by Lana, Svitlana Levenets, 14+ years, 2,500+ transformations."],
  checks=["Serving Hollywood, WeHo, Los Feliz, Silver Lake & beyond","Signature K-Tip micro-capsule method","100% Slavic & European remy hair only","Complimentary private consultation · EN / ES / RU"],
@@ -587,7 +590,7 @@ city_data = {
 for slug, d in city_data.items():
     body = block(f"Why {d['city']} Clients Choose Culture of Extensions", d["local"], d["checks"])
     htm = page(slug, d["title"], d["desc"], d["h1"], d["eyebrow"], d["lead"],
-               body, d["faq"], d["img"], d["alt"], city_schema(d["city"], slug, d["desc"]))
+               body, d["faq"], d.get("img"), d.get("alt", ""), city_schema(d["city"], slug, d["desc"]))
     open(f"{slug}.html","w").write(htm)
     pages_written.append(slug)
 print("All pages:", len(pages_written))
@@ -626,8 +629,6 @@ guide_data = {
  h1="The Beverly Hills Standard: Private Studio Artistry",
  eyebrow="20 Minutes via the 134 / 101 Freeway",
  lead="Beverly Hills has dozens of bustling salon floors. Discerning clients choose Culture of Extensions in Burbank for something increasingly rare: absolute privacy, undivided master attention, and zero-compromise Slavic hair.",
- img="/photos/g1.jpg",
- alt="Private luxury hair extensions studio for Beverly Hills clients",
  direct_answer="For clients in Beverly Hills seeking true luxury hair extensions, Culture of Extensions by Lana in nearby Burbank offers an exclusive private sanctuary. Specializing in single-donor raw Slavic hair and tension-free K-Tip micro-capsules, Lana provides an unhurried, one-on-one transformation without the distraction or exposure of commercial salon floors. Consultations are complimentary and appointment-only.",
  body_cards=[
   ("Undivided Master Attention", "One client at a time. No assistants passing you between stations, no multi-booking, no salon audience."),
@@ -665,8 +666,6 @@ guide_data = {
  h1="Zero-Damage Extensions: The Biomechanics of Scalp Health",
  eyebrow="Follicular Health & Scientific Sectioning",
  lead="Traction alopecia is not an inevitable risk of wearing extensions — it is the direct result of poor geometry. Discover how Lana's tension-free protocol allows natural hair to thrive.",
- img="/photos/g3.jpg",
- alt="Zero-damage hair extensions biomechanics on fine hair",
  direct_answer="Hair extensions do not damage natural hair when installed with correct biomechanics. At Culture of Extensions, Lana utilizes radial sectioning that mirrors cranial curves and calibrates donor strand weight 1:1 with biological anchor hair. This eliminates root torque and tension points, ensuring zero follicular damage and promoting uninterrupted natural hair growth throughout months of wear.",
  body_cards=[
   ("1:1 Weight Calibration", "Each attachment point bears exact proportional weight, preventing follicular strain and mechanical pulling."),
@@ -704,8 +703,6 @@ guide_data = {
  h1="Blonde Slavic Hair: The Clean Lift Architecture",
  eyebrow="Platinum & Honey Tones · Zero Chemical Breakage",
  lead="Blonde extensions are the ultimate test of material quality. Discover why factory blonde hair turns brittle within weeks, and how Lana's slow-lift Slavic bundles maintain silk-like luster for up to 2 years.",
- img="/photos/g5.jpg",
- alt="Blonde Slavic hair extensions transformation in Los Angeles",
  direct_answer="Authentic blonde Slavic hair extensions are the rarest luxury hair asset in the world. Unlike mass-market commercial blonde extensions that are stripped with industrial sulfuric acid, Culture of Extensions utilizes gently lifted single-donor Slavic hair with intact cuticles. The hair accepts transparent keratin toning, never mats or frizzes, and preserves its natural elasticity across 12 to 24 months of wear.",
  body_cards=[
   ("Natural Light Pigment", "Sourced from naturally blonde and light-brown donors, requiring minimal lift to achieve luminous champagne and platinum tones."),
@@ -745,8 +742,6 @@ guide_data = {
  h1="Invisible Bead vs. Keratin K-Tip Extensions",
  eyebrow="Bespoke Method Architecture · Los Angeles",
  lead="The definitive comparison between invisible beaded wefts and strand-by-strand keratin micro-capsules — how to choose the right architecture for your density and lifestyle.",
- img="/photos/g1.jpg",
- alt="Invisible bead vs keratin hair extensions comparison in Los Angeles",
  direct_answer="Invisible Bead Extensions (IBE) are optimal for clients with fine-to-medium natural hair seeking sweeping volume, rapid move-ups every 6–8 weeks, and zero adhesive. Keratin K-Tip Micro-Capsules offer unmatched 360-degree strand mobility, undetectable application along temples and crowns, and total freedom for sleek high up-dos, lasting 3–4 months between resets. Both methods are installed at Culture of Extensions in Burbank using 100% raw Slavic hair and proprietary zero-damage biomechanics.",
  body_cards=[
   ("Invisible Bead Wefts", "Continuous crescent distribution that honors cranial curvature without metal ever touching bare scalp. Maximum volume, zero glue."),
@@ -787,8 +782,6 @@ guide_data = {
  h1="Slavic Hair vs. Factory Processed Hair",
  eyebrow="Material Science & Cuticle Chemistry",
  lead="Why 90% of commercial 'European' hair in Los Angeles salon supply chains fails within two months — and why authentic raw Slavic virgin hair remains the gold standard of luxury.",
- img="/photos/g3.jpg",
- alt="Authentic raw virgin Slavic hair extensions in Los Angeles",
  direct_answer="Factory 'European' hair sold in most salons is actually heavy-gauge Asian or Indian hair stripped in chemical acid baths and dipped in synthetic silicone. Once the silicone washes off in 4–8 weeks, the hair becomes dry, brittle, and severely matted. In contrast, authentic raw Slavic hair has 100% intact, unidirectional cuticles from a single donor, never treated with acid or silicone, lasting 12 to 24 months across multiple salon move-ups.",
  body_cards=[
   ("The Acid & Silicone Bath", "Industrial acid strips the protective cuticle scales; synthetic silicone masks the damage until the first few shampoos wash it away."),
@@ -828,8 +821,6 @@ guide_data = {
  h1="The Real Cost & Maintenance of Luxury Extensions",
  eyebrow="2026 Los Angeles Pricing & Economics",
  lead="Complete pricing transparency: initial installations, maintenance move-up intervals, and why authentic Slavic hair saves thousands of dollars over an 18-month horizon.",
- img="/photos/g5.jpg",
- alt="Cost and maintenance of luxury hair extensions in Los Angeles",
  direct_answer="In the premium Los Angeles market (Burbank, Beverly Hills), bespoke hair extension installations range from $400 for targeted volume to $1,500–$3,500+ for full Slavic length transformations. Routine maintenance move-ups occur every 6–8 weeks ($250–$450). While budget salons advertise $800 installs using cheap hair that requires replacement every 2 months (totaling $8,900+ over 18 months), Culture of Extensions clients re-use their Slavic hair for up to 2 years, investing only $4,900 over the same period.",
  body_cards=[
   ("Initial Bespoke Install", "From $400 for volume, from $700 for K-Tip, and from $1,000 for full Slavic transformations ($1,500–$3,500 depending on length and density)."),
@@ -868,7 +859,7 @@ guide_data = {
 for slug, d in guide_data.items():
     body = guide_block(d["direct_answer"], d["body_cards"], d["block_h2"], d["block_p"], d.get("checks"), d.get("table_html"))
     htm = page(f"guides/{slug}", d["title"], d["desc"], d["h1"], d["eyebrow"], d["lead"],
-               body, d["faq"], d["img"], d["alt"], guide_schema(d["title"], f"guides/{slug}", d["desc"]))
+               body, d["faq"], d.get("img"), d.get("alt", ""), guide_schema(d["title"], f"guides/{slug}", d["desc"]))
     open(f"guides/{slug}.html", "w").write(htm)
     pages_written.append(f"guides/{slug}")
 print("Generated Guide pages:", list(guide_data.keys()))
