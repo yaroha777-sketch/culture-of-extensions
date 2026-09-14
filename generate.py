@@ -93,6 +93,9 @@ GUIDES = [
     ("luxury-hair-extensions-beverly-hills", "Beverly Hills Standard", "Private Studio"),
     ("zero-damage-hair-extensions-biomechanics", "Zero-Damage Biomechanics", "Scalp Health"),
     ("blonde-slavic-hair-extensions-los-angeles", "Blonde Slavic Hair", "Clean Lift Science"),
+    ("luxury-hair-extensions-aftercare-guide", "Atelier Aftercare Guide", "Daily Maintenance"),
+    ("bad-hair-extensions-damage-signs-repair", "Bad Extensions Signs & Repair", "Damage Recovery"),
+    ("hair-health-and-growth-under-extensions", "Hair Health & Growth Science", "Zero Damage"),
 ]
 
 CITIES = [
@@ -852,6 +855,127 @@ guide_data = {
   ("What does the complimentary consultation include?", "Lana analyzes your natural hair density, scalp elasticity, and lifestyle, maps placement zones, and determines exact hair length, method, and fixed pricing before you commit."),
   ("How much does maintenance cost?", "Routine maintenance appointments fall every 6–8 weeks for wefts and BIO tape, typically ranging from $250 to $450 depending on row count. Your original Slavic hair is re-installed directly with zero hair replacement cost."),
   ("What happens if I delay my maintenance?", "Delaying maintenance beyond 8–10 weeks causes rows to tilt and twist natural root follicles, risking mechanical breakage. We strictly educate clients on adherence to preserve 100% natural hair health.")
+ ]
+),
+
+"luxury-hair-extensions-aftercare-guide": dict(
+ title="Luxury Hair Extension Aftercare & Daily Maintenance Protocol | Lana Burbank",
+ desc="The complete professional atelier aftercare guide for Slavic hair extensions by master Lana. Washing, drying, brushing, and sleep protocols to preserve extensions for up to 2 years.",
+ h1="The Atelier Aftercare Protocol: Preserving Luxury Slavic Hair",
+ eyebrow="Daily Ritual & Longevity Architecture · Los Angeles",
+ lead="True luxury hair extensions can be worn continuously for up to two years — but only when daily home rituals protect the bond, the cuticle, and the follicle. Discover Lana's professional atelier maintenance protocol.",
+ direct_answer="Optimal luxury hair extension maintenance requires four non-negotiable daily rules: 1) Wash upright in the shower using sulfate-free, silicone-free cleansers; never apply conditioner, masks, or oils within two inches of the keratin or weft bonds. 2) Blow-dry bonds 100% dry immediately on cool-to-medium heat; never sleep with damp attachments to prevent keratin breakdown or scalp irritation. 3) Brush three times daily with a natural boar-bristle loop brush, always supporting the root attachment with one hand. 4) Sleep on pure mulberry silk with hair gathered in a loose low braid. With proper salon move-ups every 6–8 weeks (wefts) or 3–4 months (K-Tips), 100% raw Slavic hair preserves its pristine shine and movement for 12–24 months.",
+ body_cards=[
+  ("100% Dry Roots Before Sleep", "Damp keratin bonds soften and break down under moisture. Thoroughly blow-drying attachment points on cool heat prevents matting, odor, and follicular strain."),
+  ("Boar-Bristle Loop Brushing", "Standard brushes with ball-tips snag bonds. Loop brushes glide over attachments, redistributing natural sebum while securing root anchors eliminates follicle torque."),
+  ("Zero Oil Near Bonds", "Silicones, heavy oils, and conditioners break chemical adhesion. Apply nourishing serums exclusively from mid-shaft to ends, keeping roots pristine.")
+ ],
+ table_html="""<table class="matrix">
+<thead><tr><th>Maintenance Category</th><th>Professional Atelier Protocol</th><th>Common At-Home Mistake (Damage Risk)</th></tr></thead>
+<tbody>
+<tr><td><strong>Washing Position</strong></td><td>Standing upright in shower, water flowing down</td><td>Flipping head upside down over bathtub (inverts and tangles bonds)</td></tr>
+<tr><td><strong>Drying Protocol</strong></td><td>100% dry roots immediately with cool/medium airflow</td><td>Air drying to sleep with damp bonds (weakens keratin matrix)</td></tr>
+<tr><td><strong>Product Formulation</strong></td><td>Sulfate-free, lightweight peptide &amp; keratin safe</td><td>Heavy dimethicone silicones &amp; oil near root attachments</td></tr>
+<tr><td><strong>Daily Brushing</strong></td><td>Boar-bristle loop brush, supporting root with hand</td><td>Aggressive pulling with wire or ball-tipped plastic brushes</td></tr>
+<tr><td><strong>Sleep Ritual</strong></td><td>Loose low braid on 22-momme pure Mulberry silk</td><td>Sleeping with loose, damp hair on high-friction cotton pillowcases</td></tr>
+<tr><td><strong>Heat Styling</strong></td><td>Hot tools kept at least 1.5 inches away from bonds</td><td>Touching hot curling iron directly to keratin capsules (melts bond)</td></tr>
+</tbody></table>""",
+ block_h2="The Science of Preserving Single-Donor Cuticles",
+ block_p=[
+  "Because authentic Slavic hair has never been chemically stripped or bathed in artificial silicone coatings, it does not rely on synthetic sealants to feel soft. Its resilience comes entirely from intact, unidirectionally aligned cuticles. Treating this hair with gentle, low-pH botanicals keeps it luminous across multiple salon re-installations.",
+  "At Culture of Extensions, every client receives a bespoke homecare blueprint during installation. We outline exact product pairings, wash cadences tailored to your scalp type, and emergency protocols for swimming or fitness."
+ ],
+ checks=[
+  "Always wash hair upright — never flip wet extensions over the edge of a tub",
+  "Section hair horizontally when brushing to reach roots without tension",
+  "Apply leave-in hydration strictly from mid-lengths to ends",
+  "Pre-treat hair with clean water and leave-in balm before ocean or pool exposure"
+ ],
+ faq=[
+  ("How often should I wash my hair with luxury extensions?", "We recommend washing 2 to 3 times per week. Washing too frequently can dry out natural cuticles, while washing too infrequently allows sebum buildup around attachments. Use dry shampoo between washes if necessary, applied strictly to natural parting lines."),
+  ("Can I air dry my hair with extensions?", "You may allow mid-lengths and ends to air dry, but the root attachment points must be 100% dried with a blow dryer immediately after washing. Prolonged dampness weakens keratin bonds and can cause bacterial scalp congestion."),
+  ("Can I go swimming in chlorinated or ocean water?", "Yes, but always wet your hair with fresh filtered water first and apply a protective leave-in shield. Gather hair into a high braid or bun. Rinse immediately with fresh water and wash with clarifying shampoo post-swim."),
+  ("What brush should I use with K-Tips and Invisible Beads?", "Exclusively use a specialized extension loop brush or a soft 100% boar-bristle brush. Traditional brushes with plastic or metal ball tips can catch between micro-capsules and rip natural hair.")
+ ]
+),
+
+"bad-hair-extensions-damage-signs-repair": dict(
+ title="Signs of Bad Hair Extensions & How to Fix Installation Damage | Los Angeles",
+ desc="Critical warning signs of improper hair extensions: tension pain, traction folliculitis, cross-hair entrapment, and shedding. How master specialist Lana repairs and recovers natural hair.",
+ h1="Bad Hair Extensions: Warning Signs, Hidden Damage & Safe Restoration",
+ eyebrow="Trichological Warning Guide · Burbank & Beverly Hills",
+ lead="Extensions should never hurt, throb, or pull. If you are experiencing scalp pain, tension bumps, or excessive shedding, your extensions were installed incorrectly. Here is how to diagnose traumatic work and restore natural hair health.",
+ direct_answer="Critical warning signs of improper or bad hair extensions include: sharp throbbing or headaches lasting more than 24 hours post-installation, red tension bumps (traction folliculitis) along hairline perimeters, cross-hair entrapment (stray natural hairs trapped across adjacent bonds), oversized or hard adhesive chunks, and immediate matting at the nape. Improper extensions cause traction alopecia and irreversible follicle scarring when donor strands exceed natural anchor hair weight or when bonds are placed too close to the scalp. If experiencing these symptoms, bonds must be dissolved immediately using professional organic solvent gel by a certified master — never pulled, ripped, or cut at home.",
+ body_cards=[
+  ("Traction Alopecia & Overloading", "Attaching a 1.0g donor strand to a 0.3g natural hair anchor creates downward shear force that suffocates the hair papilla and rips follicles from the scalp."),
+  ("Cross-Hair Entrapment", "Careless, hurried sectioning traps neighboring hairs into adjacent bonds at unnatural 90-degree angles, creating constant tearing and intense scalp pain."),
+  ("Acid & Silicone Masking", "Cheap processed factory hair relies on temporary silicone coats. By week 4, the coating washes away, creating catastrophic bird's-nest matting at the nape.")
+ ],
+ table_html="""<table class="matrix">
+<thead><tr><th>Symptom / Sensation</th><th>Trichological Diagnosis</th><th>Immediate Corrective Protocol</th></tr></thead>
+<tbody>
+<tr><td><strong>Severe pain / headache past 24 hrs</strong></td><td>Traumatic tension; bonds placed too tight to scalp or cross-hair pull</td><td>Immediate professional release or removal; do not wait</td></tr>
+<tr><td><strong>Red or white bumps around hairline</strong></td><td>Traction folliculitis caused by excessive weight on delicate perimeter</td><td>Remove affected perimeter bonds; apply soothing organic scalp serum</td></tr>
+<tr><td><strong>Solid dreadlock-like matting at nape</strong></td><td>Silicone washed off factory hair; cross-shedding trapped between rows</td><td>Professional multi-hour enzymatic detangling; deep cuticle restoration</td></tr>
+<tr><td><strong>White bulbs attached to fallen strands</strong></td><td>Anagen hair root snapping (traction damage from oversized bonds)</td><td>Emergency removal and comprehensive scalp recovery protocol</td></tr>
+<tr><td><strong>Visible, chunky, or crunchy bonds</strong></td><td>Low-grade industrial glue or oversized polymer chunks</td><td>Replace with micro-capsules (0.05g) and pure Italian keratin</td></tr>
+</tbody></table>""",
+ block_h2="The Culture of Extensions Hair Recovery Protocol",
+ block_p=[
+  "A significant portion of Lana's practice in Burbank involves correcting traumatic installations from other salons across Los Angeles and Beverly Hills. Many clients arrive in tears, having been told their natural hair was 'too weak' for extensions, when in reality their stylist lacked fundamental biomechanical knowledge.",
+  "Our recovery protocol begins with gentle chemical-free release using organic plant-based softening gels that liquefy keratin bonds in seconds without mechanical force. We then assess follicle recovery, apply restorative peptide treatments, and design a featherweight recovery installation that protects damaged areas while natural hair regenerates."
+ ],
+ checks=[
+  "Zero-force removal using professional solvent gels — no pliers or pulling",
+  "Microscopic scalp analysis to evaluate follicle density and recovery rate",
+  "Bespoke rest periods or ultra-lightweight micro-capsules (0.03g–0.05g)",
+  "Direct recovery guidance and anti-inflammatory scalp treatments"
+ ],
+ faq=[
+  ("Is it normal for extensions to hurt or cause headaches for the first week?", "Absolutely not. While a mild awareness of new weight for the first 12–24 hours is normal, throbbing pain, sleep disruption, or headaches indicate excessive tension or cross-hair trapping. Reputable extensions should feel comfortable immediately."),
+  ("How do I know if my extensions are pulling my hair out by the roots?", "Inspect shed strands. If you see a small white bulb at the root of a strand attached to your fallen extension, that hair was pulled out prematurely by excessive traction. If strands break without a bulb, the shaft has snapped from mechanical friction."),
+  ("Can damaged hair recover after bad extensions?", "Yes, in the vast majority of cases, dormant follicles will re-enter the anagen (growth) phase within 3 to 6 months once mechanical tension is eliminated. Early intervention is critical to prevent permanent cicatricial (scarring) alopecia."),
+  ("How does Lana fix bad extensions?", "We dissolve all traumatic bonds gently, cleanse and soothe the scalp with therapeutic serums, trim broken ends, and allow the scalp to rest or re-install ultra-lightweight Slavic micro-capsules mapped safely away from sensitive zones.")
+ ]
+),
+
+"hair-health-and-growth-under-extensions": dict(
+ title="Can Hair Extensions Keep Your Natural Hair Healthy? | Biomechanics & Growth",
+ desc="How proper Slavic hair extensions protect natural hair and promote growth. The 1:1 weight rule, cuticle preservation, and real 12-month transformation results by Lana.",
+ h1="Natural Hair Health & Growth: Can Extensions Protect Your Own Hair?",
+ eyebrow="Follicular Biomechanics & Trichology · Los Angeles",
+ lead="When engineered with microscopic precision, hair extensions do not damage natural hair — they act as a protective shield against heat, environmental friction, and mechanical breakage, allowing fragile natural hair to grow longer than ever before.",
+ direct_answer="Yes, natural hair can grow longer, thicker, and healthier while wearing extensions, provided the installation adheres to 1:1 weight-to-density biomechanics and zero-tension anchoring. At Culture of Extensions by Lana, extensions act as a protective barrier: natural fragile ends are shielded inside the Slavic hair envelope, reducing direct exposure to hot styling tools, friction against clothing, and environmental oxidative stress. Clients recovering from bleach breakage or chemical damage routinely see 3 to 6 inches of healthy natural hair growth over a 12-month period, as long as attachment points are moved up on schedule and individual follicle units are never overloaded.",
+ body_cards=[
+  ("The 1:1 Biomechanical Law", "Each extension bond is matched in weight and diameter to the exact natural anchor hair bundle, ensuring zero downward torque and uncompromised follicle circulation."),
+  ("The Protective Cocoon", "Natural fragile hair rests within the Slavic hair envelope, shielded from direct heat styling, curling irons, and friction against winter coats or car seats."),
+  ("Scalp Microbiome Oxygenation", "Anatomical radial sectioning creates clean breathing channels for scalp sebum, preventing inflammation and promoting unimpeded blood microcirculation.")
+ ],
+ table_html="""<table class="matrix">
+<thead><tr><th>Biomechanical Metric</th><th>Culture of Extensions Zero-Damage Standard</th><th>Standard Commercial Salon Application</th></tr></thead>
+<tbody>
+<tr><td><strong>Weight-to-Anchor Ratio</strong></td><td>Strict 1:1 balance; micro-capsules as light as 0.05g</td><td>Arbitrary chunking; donor strand often 2x–3x heavier than anchor</td></tr>
+<tr><td><strong>Tension on Follicle</strong></td><td>0.0 grams of lateral torque; moves in 360° natural arc</td><td>Rigid horizontal pulling; high mechanical stress at root</td></tr>
+<tr><td><strong>Heat Exposure on Natural Hair</strong></td><td>Direct heat absorbed by Slavic extensions; natural hair protected</td><td>Natural hair repeatedly straightened and curled without protection</td></tr>
+<tr><td><strong>12-Month Growth Measurement</strong></td><td>Average 4–6 inches of intact, unbroken natural length gain</td><td>Thinning perimeters, snapping at crown, stagnant length</td></tr>
+<tr><td><strong>Removal Integrity</strong></td><td>Gently dissolved with organic gels; zero natural hair loss</td><td>Mechanical crunching with metal pliers; breaks natural hair shaft</td></tr>
+</tbody></table>""",
+ block_h2="Turning Extensions Into a Growth Catalyst",
+ block_p=[
+  "The widespread myth that 'all extensions damage hair' stems from mass-market salons that apply heavy, standardized factory hair to fine or fragile strands. When extensions are engineered as medical-grade biomechanics, they function in reverse: they eliminate the daily heat styling, round-brushing, and backcombing that fragile natural hair would otherwise endure.",
+  "Many of our Beverly Hills and Los Angeles clients initially come to us with severe bleach trauma or postpartum thinning. Over an 18-month journey with Lana, their natural hair grows past their shoulders in full health, hidden safely beneath their Slavic extensions until it catches up in length."
+ ],
+ checks=[
+  "Micro-capsules engineered specifically for fine, fragile, or bleached hair",
+  "Zero adhesive contact with the sensitive scalp epithelium",
+  "Natural shed hairs remain safely encapsulated until scheduled move-up",
+  "Personalized trichological consultations to track scalp and follicle recovery"
+ ],
+ faq=[
+  ("How much natural hair growth can I expect in one year with extensions?", "Healthy human hair grows approximately 0.5 inches per month (6 inches per year). Under Lana's protective zero-damage protocol, clients preserve nearly 100% of that growth without the typical end-snapping or split-end breakage caused by hot styling tools."),
+  ("Why do some people lose hair after extensions?", "Hair loss after extensions is caused by three human errors: 1) overloading thin natural strands with heavy donor bundles, 2) improper placement with excessive scalp tension, or 3) traumatic mechanical removal using pliers rather than organic dissolving gels."),
+  ("Why does it look like hair falls out when extensions are removed?", "Humans naturally shed between 50 and 100 hairs every day. When wearing extensions, these naturally shed hairs are trapped inside the bond instead of falling onto your brush or floor. When 150 bonds are removed after 3 months, seeing accumulated shed hairs is completely normal and expected — it is not hair loss from the installation."),
+  ("Can extensions help recover hair damaged by bleaching?", "Yes. In fact, length recovery for chemically compromised blonde hair is one of Lana's core specialties. The Slavic extensions carry the visual volume and length, allowing your natural hair to rest, rebuild keratin strength, and grow without heat styling.")
  ]
 ),
 }
