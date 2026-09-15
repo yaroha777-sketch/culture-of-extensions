@@ -96,6 +96,9 @@ GUIDES = [
     ("luxury-hair-extensions-aftercare-guide", "Atelier Aftercare Guide", "Daily Maintenance"),
     ("bad-hair-extensions-damage-signs-repair", "Bad Extensions Signs & Repair", "Damage Recovery"),
     ("hair-health-and-growth-under-extensions", "Hair Health & Growth Science", "Zero Damage"),
+    ("washing-and-drying-slavic-hair-extensions", "Washing & Drying Protocols", "Hair Care Science"),
+    ("summer-and-winter-care-hair-extensions", "Seasonal Protection Guide", "Seasonal Trichology"),
+    ("sleeping-and-active-lifestyle-hair-extensions", "Sleep & Workout Protocols", "Lifestyle Care"),
 ]
 
 CITIES = [
@@ -623,6 +626,97 @@ def guide_block(direct_answer_text, cards_data, h2_text, paras, checks=None, tab
 </div>'''
 
 guide_data = {
+    "washing-and-drying-slavic-hair-extensions": dict(
+        title="Washing, Drying & Thermal Styling Protocols for Slavic Extensions | Culture of Extensions",
+        desc="Trichological guide on washing, drying, and heat styling Slavic hair extensions in Los Angeles. Sulfate-free cleansing, 100% dry bond rule, and 350°F thermal protection.",
+        eyebrow="Hair Care Science · Trichology Protocol",
+        h1="Washing, Drying & Thermal Styling Science for Slavic Extensions",
+        subtitle="The Atelier Cleansing & Heat Protection Ritual · Los Angeles",
+        lead="Improper washing and incomplete blow-drying are the #1 causes of keratin capsule softening and premature extension shedding. Master specialist Lana details the exact trichological rules for cleansing, drying, and heat-styling 100% raw Slavic hair.",
+        direct_answer="To preserve 100% raw Slavic hair extensions for up to 2 years, wash strictly in an upright shower position using pH-balanced (5.5) sulfate-free shampoo. Never tilt your head upside down over a sink. Always dry keratin micro-capsules to 100% dry immediately with cool-to-warm air, and apply thermal protectants up to 350°F (175°C) avoiding direct contact with bond attachments.",
+        body_cards=[
+            ("Upright Cleansing Mechanics", "Wash standing in the shower. Water flow must direct downward from crown to ends. Lather shampoo gently in hands and press into the scalp between sections without circular scrubbing."),
+            ("Conditioner & Mask Chemistry", "Apply moisture-rich masks and silk proteins strictly from mid-shaft to ends. Never apply silicones, heavy oils, or lipid conditioners within 2 inches of keratin micro-capsules or BIO tape adhesives."),
+            ("The 100% Dry Bond Imperative", "Trapped moisture around bonds causes keratin degradation, swelling, and bacterial buildup. Towel-blot with microfiber, then blow-dry bonds on medium heat until completely moisture-free before detangling."),
+            ("Thermal Protection & Styling Physics", "Slavic hair tolerates heat styling up to 350°F (175°C) when shielded with light protein thermal sprays. Always keep flat irons and curling wands 1.5 inches away from extension bonds.")
+        ],
+        block_h2="Cleansing & Blow-Drying Precision",
+        block_p="Master trichological washing and drying standards to prevent keratin breakdown, preserve cuticle alignment, and enjoy weightless, flowing Slavic extensions.",
+        checks=[
+            "Always wash upright in the shower to prevent weight leverage and bond tangling",
+            "Use pH-balanced 5.5 sulfate-free & paraben-free salon shampoos",
+            "Dry keratin bonds to 100% dryness immediately after every wash",
+            "Never exceed 350°F (175°C) thermal styling and keep hot tools away from bonds"
+        ],
+        table_html='''<div class="table-wrap"><table class="matrix"><thead><tr><th>Care Parameter</th><th>Master Atelier Protocol</th><th>Common Violation &amp; Risk</th></tr></thead><tbody><tr><td><strong>Shower Position</strong></td><td>Upright standing posture; downward water flow</td><td>Flipping head upside down over sink (traction stress)</td></tr><tr><td><strong>Shampoo Chemistry</strong></td><td>Sulfate-free, pH 5.5 gentle chelating cleanser</td><td>Clarity/sulfate shampoos (strips cuticle moisture)</td></tr><tr><td><strong>Conditioner Placement</strong></td><td>Mid-lengths to ends only (2+ inches below bonds)</td><td>Conditioner applied to scalp (softens keratin/tape)</td></tr><tr><td><strong>Drying Protocol</strong></td><td>Microfiber press, immediate 100% root blowout</td><td>Air-drying wet bonds (keratin breakdown &amp; matting)</td></tr><tr><td><strong>Heat Styling</strong></td><td>350°F max with thermal barrier spray</td><td>400°F+ hot tools directly touching bonds (melts keratin)</td></tr></tbody></table></div>''',
+        faq=[
+            ("Can I air-dry my hair extensions?", "You may air-dry the lengths of raw Slavic hair, but the keratin micro-capsules at your scalp MUST be blow-dried to 100% dryness immediately after washing to prevent moisture trapping and bond softening."),
+            ("What happens if conditioner touches my keratin bonds?", "Emollients, oils, and silicones break down the keratin matrix and adhesive polymers, causing micro-capsules to slip and shed prematurely."),
+            ("How often should I wash my Slavic hair extensions?", "Wash 2 to 3 times per week based on your scalp oil production. Slavic hair does not trap oils like synthetic hair, so over-washing is unnecessary."),
+            ("Which shampoo brands does Lana recommend?", "Lana recommends professional salon-grade sulfate-free formulas enriched with keratin proteins and hydration, such as Milbon, Oribe Gold Lust, or Shu Uemura Silk Bloom.")
+        ]
+    ),
+    "summer-and-winter-care-hair-extensions": dict(
+        title="Summer & Winter Care for Slavic Hair Extensions | Seasonal Protection",
+        desc="Complete seasonal protection guide for Slavic hair extensions in Los Angeles. Protecting hair against salt water, chlorine, UV damage, copper discoloration, and winter static.",
+        eyebrow="Seasonal Trichology · Climate Defense",
+        h1="Summer & Winter Climate Protection for Luxury Extensions",
+        subtitle="Sun, Pool, Ocean & Dry Air Shielding Protocols · Los Angeles",
+        lead="Extreme climate conditions—from Southern California summer UV rays and pool chlorine to winter indoor heating—can alter hair color and compromise hair moisture. Master specialist Lana explains how to shield Slavic hair in every season.",
+        direct_answer="To protect Slavic hair extensions during summer swimming, saturate hair with fresh tap water and apply a leave-in conditioner before entering ocean or pool water to block chlorine and salt absorption. Avoid sunscreen containing Avobenzone, which oxidizes extension hair to a peachy-pink tone. In winter, combat static and dryness by incorporating weekly deep conditioning treatment masks and silk sleep bonnets.",
+        body_cards=[
+            ("Pre-Swim Hydration Barrier", "Hair acts like a sponge. Saturating extensions with clean fresh water and leave-in conditioner prior to swimming blocks salt and chlorine absorption by up to 85%."),
+            ("The Avobenzone Sunscreen Hazard", "Chemical sunscreens containing Avobenzone react with trace minerals in pool water, causing blonde extensions to turn brassy peachy-orange. Use mineral zinc sunscreens exclusively."),
+            ("Hard Water & Copper Mineral Chelating", "SoCal hard water contains copper and calcium deposits that dull Slavic hair. Treat hair monthly with gentle chelating sprays (e.g. Malibu C) to neutralize mineral buildup."),
+            ("Winter Static & Humidity Controls", "Cold winter winds and dry indoor heating strip natural humidity, causing static friction. Protect strands with lightweight squalane oil on ends and silk sleep wraps.")
+        ],
+        block_h2="Year-Round Hair Defense Science",
+        block_p="Keep your luxury Slavic extensions vibrant, silky, and damage-free through Southern California summers and dry winter seasons.",
+        checks=[
+            "Saturate hair with fresh water + leave-in treatment prior to ocean or pool swimming",
+            "Use 100% mineral sunscreen (Zinc Oxide / Titanium Dioxide) to prevent pink discoloration",
+            "Braid hair into a secure high braid before water activities or beach days",
+            "Apply weekly hydrating masks during dry winter months to lock in cuticle moisture"
+        ],
+        table_html='''<div class="table-wrap"><table class="matrix"><thead><tr><th>Seasonal Factor</th><th>Damage Mechanism</th><th>Lana's Protection Protocol</th></tr></thead><tbody><tr><td><strong>Avobenzone Sunscreen</strong></td><td>Chemical reaction with iron/copper turning hair orange</td><td>Switch to 100% Mineral (Zinc/Titanium) sunscreen</td></tr><tr><td><strong>Ocean Salt &amp; Chlorine</strong></td><td>Dehydrates cuticle, causes rough texture and friction</td><td>Pre-wet with fresh water + leave-in barrier cream</td></tr><tr><td><strong>LA Hard Water Minerals</strong></td><td>Calcium &amp; copper buildup causing dullness &amp; stiffness</td><td>Monthly Malibu C Hard Water Wellness chelating rinse</td></tr><tr><td><strong>Winter Dry Air &amp; Heating</strong></td><td>Static electricity, cuticle lifting, end snapping</td><td>Weekly lipid masks + Mulberry silk night wrap</td></tr></tbody></table></div>''',
+        faq=[
+            ("Why did my blonde extensions turn pinkish-orange after vacation?", "Avobenzone in sunscreen reacts with copper and minerals in water, causing chemical oxidation on blonde hair. Use mineral sunscreens to prevent this."),
+            ("Can I swim in the ocean or pool with K-Tip extensions?", "Yes, provided you pre-saturate hair with fresh water, apply leave-in conditioner, braid your hair securely, and wash/blow-dry bonds immediately after swimming."),
+            ("How do I restore shine after a beach trip?", "Use a chelating treatment to lift mineral deposits, followed by an intensive moisture mask and cold rinse."),
+            ("Is a hard water filter necessary in Los Angeles?", "Highly recommended. Installing a shower filter in Burbank/LA removes chlorine and heavy metals that degrade extension quality over time.")
+        ]
+    ),
+    "sleeping-and-active-lifestyle-hair-extensions": dict(
+        title="Sleeping, Exercise & Active Lifestyle Guide for Extensions | Culture of Extensions",
+        desc="Active lifestyle protocols for luxury hair extensions in Los Angeles. Gym workouts, sweat neutralization, tension-free ponytails, and Mulberry silk sleep braids.",
+        eyebrow="Lifestyle Protocols · Daily Maintenance",
+        h1="Active Lifestyle, Exercise & Sleep Care for Hair Extensions",
+        subtitle="Workout Styling, Sweat Neutralization & Sleep Science · Los Angeles",
+        lead="Maintaining an active lifestyle in Los Angeles with luxury hair extensions requires specific techniques to avoid scalp tension, sweat salt buildup, and nighttime friction. Master specialist Lana shares complete workout and sleep protocols.",
+        direct_answer="To maintain luxury hair extensions during workouts and sleep, secure hair in a low loose braid or soft silk scrunchie high bun to eliminate scalp tension. After high-intensity exercise, dry sweat from root bonds immediately using cool air to prevent salt crystallization from weakening bonds. Always sleep on a 22-momme Mulberry silk pillowcase with hair loosely braided to prevent friction matting.",
+        body_cards=[
+            ("Tension-Free Workout Styling", "Never pull extensions into tight high ponytails during workouts. High leverage creates traction force on natural roots. Opt for low braids or claw clips that distribute weight evenly."),
+            ("Post-Workout Sweat Neutralization", "Perspiration contains sodium chloride (salt) and lactic acid which dehydrate hair and erode keratin bonds if left damp. Cool blow-dry scalp roots immediately after exercise."),
+            ("Mulberry Silk Sleep Architecture", "Cotton pillowcases absorb moisture and cause friction tangling. Sleeping on 22-momme Mulberry silk lets strands glide, preserving hair cuticles for up to 2 years."),
+            ("Sauna & Hot Yoga Protections", "High ambient heat and steam can soften keratin bonds and tape adhesive. Wrap hair in a dry microfiber towel and avoid touching or pulling bonds while in hot environments.")
+        ],
+        block_h2="Active Lifestyle & Sleep Preservation",
+        block_p="Protect your investment while training, swimming, and sleeping with trichologist-approved hair care protocols.",
+        checks=[
+            "Secure hair in a loose low braid or soft silk scrunchie before workouts",
+            "Cool blow-dry root bonds immediately after sweating to remove salt dampness",
+            "Sleep on 100% Mulberry silk pillowcases to prevent nighttime friction and matting",
+            "Never go to sleep with damp or wet hair extensions under any circumstances"
+        ],
+        table_html='''<div class="table-wrap"><table class="matrix"><thead><tr><th>Activity</th><th>Physical Risk Factor</th><th>Master Lifestyle Protocol</th></tr></thead><tbody><tr><td><strong>High-Intensity Cardio</strong></td><td>Scalp sweat salt buildup &amp; moisture around bonds</td><td>Cool blow-dry roots post-workout; dry shampoo at roots</td></tr><tr><td><strong>Weight Training &amp; Gym</strong></td><td>Traction leverage from tight ponytails</td><td>Low loose braid or gentle claw clip styling</td></tr><tr><td><strong>Nighttime Sleep</strong></td><td>Cotton friction matting &amp; root twisting</td><td>22-Momme Mulberry silk pillowcase + loose braid</td></tr><tr><td><strong>Sauna / Hot Yoga</strong></td><td>High heat softening keratin &amp; tape adhesive</td><td>Dry towel wrap; avoid touching hair while heated</td></tr></tbody></table></div>''',
+        faq=[
+            ("Can I go to bed with damp hair extensions?", "Never. Sleeping on damp extensions causes severe root matting, friction tangling, and fungal/bacterial growth near the scalp."),
+            ("How should I style my hair for heavy workouts?", "Wear a low loose braid or a soft silk scrunchie bun at the crown without tight pulling on the hairline or nape."),
+            ("What should I do right after hot yoga or spinning?", "Unbraid your hair, towel-press damp scalp roots, and blow-dry the bonds on cool/medium setting until completely dry."),
+            ("Why is Mulberry silk better than satin for extensions?", "Authentic Mulberry silk is a natural protein fiber that regulates moisture without robbing your hair of lipids, unlike synthetic satin which generates static.")
+        ]
+    ),
+
 
 "luxury-hair-extensions-beverly-hills": dict(
  title="Luxury Hair Extensions Beverly Hills & LA | The Private Studio Standard",
