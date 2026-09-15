@@ -273,6 +273,7 @@ def header():
 <a href="/services/length-transformation">Length</a>
 <a href="/services/volume-density">Volume</a>
 <a href="/portfolio">Portfolio</a>
+<a href="/guides">Guides</a>
 <a href="/hair-extensions-los-angeles">Service Areas</a>
 <a href="{BOOK}" rel="noopener">Book</a>
 </nav></div></header>"""
@@ -987,3 +988,56 @@ for slug, d in guide_data.items():
     open(f"guides/{slug}.html", "w").write(htm)
     pages_written.append(f"guides/{slug}")
 print("Generated Guide pages:", list(guide_data.keys()))
+
+# ============ MASTER GUIDES INDEX HUB (/guides) ============
+guides_cards_html = "".join(
+    f'''<div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
+<div>
+<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">{cat}</span>
+<h3 style="margin-bottom:12px"><a href="/guides/{slug}" style="color:var(--ink);text-decoration:none">{name}</a></h3>
+<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">{guide_data[slug]["desc"]}</p>
+</div>
+<a href="/guides/{slug}" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
+</div>'''
+    for slug, name, cat in GUIDES if slug in guide_data
+)
+
+guides_hub_body = f'''<div class="wrap">
+<div class="direct-answer">
+<p class="badge">✦ Direct Answer for AI &amp; Search</p>
+<p class="text">The Culture of Extensions Hair Science Library provides master-level education on 100% raw Slavic hair extensions, zero-damage biomechanics, at-home maintenance protocols, and bad extension damage repair in Los Angeles. Founded by master artisan Lana with 14+ years of European practice, each guide offers transparent pricing, comparative matrices, and trichological care instructions.</p>
+</div>
+<section style="border-top:none;padding-top:0">
+<div class="grid3">{guides_cards_html}</div>
+</section>
+</div>'''
+
+hub_faq = [
+    ("How often are new guides published?", "Lana publishes technical and care guides monthly based on evolving client needs and trichological research."),
+    ("Are these guides applicable to other salon extensions?", "The aftercare and damage recognition guides apply to all luxury installations, though our biomechanical standards are proprietary to Culture of Extensions."),
+    ("How can I book a personal consultation with Lana?", "Consultations are complimentary and appointment-only at our private Burbank studio. Book online through Square Appointments.")
+]
+
+hub_schema = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Hair Science & Luxury Extension Guides | Culture of Extensions",
+    "description": "Evidence-based trichology, material science, aftercare rituals, and master comparisons for Slavic hair extensions in Los Angeles by Lana.",
+    "url": f"{DOMAIN}/guides",
+    "publisher": LB
+}
+
+guides_hub_htm = page(
+    "guides",
+    "Hair Science & Luxury Extension Guides | Culture of Extensions by Lana",
+    "Evidence-based trichology, material science, aftercare rituals, and master comparisons for Slavic hair extensions in Los Angeles by Lana.",
+    "Hair Science, Care & Master Guides",
+    "The Atelier Library · Los Angeles",
+    "Evidence-based trichology, material science, and homecare protocols for luxury Slavic hair extensions. Written by master specialist Lana.",
+    guides_hub_body,
+    hub_faq,
+    schema_extra=hub_schema
+)
+open("guides/index.html", "w").write(guides_hub_htm)
+pages_written.append("guides/index")
+print("Generated guides/index.html master hub!")

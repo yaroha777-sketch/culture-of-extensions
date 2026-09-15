@@ -140,6 +140,12 @@ Error generating stack: `+a.message+`
 <a href="/hair-extensions-toluca-lake" style="color:#9d978a;text-decoration:none">Hair Extensions Toluca Lake</a><br>
 <a href="/hair-extensions-pasadena" style="color:#9d978a;text-decoration:none">Hair Extensions Pasadena</a><br>
 <a href="/hair-extensions-los-angeles" style="color:#9d978a;text-decoration:none">Hair Extensions Los Angeles</a></p></div>
+<div><p style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#C9B896;margin-bottom:12px">Hair Science &amp; Guides</p>
+<p><a href="/guides" style="color:#9d978a;text-decoration:none">All Master Guides</a><br>
+<a href="/guides/luxury-hair-extensions-aftercare-guide" style="color:#9d978a;text-decoration:none">Aftercare Guide</a><br>
+<a href="/guides/bad-hair-extensions-damage-signs-repair" style="color:#9d978a;text-decoration:none">Bad Extensions Repair</a><br>
+<a href="/guides/hair-health-and-growth-under-extensions" style="color:#9d978a;text-decoration:none">Hair Health &amp; Growth</a><br>
+<a href="/portfolio" style="color:#9d978a;text-decoration:none">Before &amp; After Portfolio</a></p></div>
 </div></footer>
 <script>
   (function() {
@@ -255,19 +261,31 @@ Error generating stack: `+a.message+`
 <script defer src="/chat-widget.js"></script>
 <script>
 (function(){
-  function addPortfolioLink(){
-    if(document.querySelector('nav a[href="/portfolio"]')) return;
-    var ref = document.querySelector('nav a[href="#consultation"]') || document.querySelector('nav a[href^="#"]');
+  function addNavLinks(){
+    var nav = document.querySelector('nav');
+    if(!nav) return;
+    var ref = document.querySelector('nav a[href="#consultation"]') || document.querySelector('nav a[href^="#"]') || nav.lastElementChild;
     if(!ref) return;
-    var a = document.createElement('a');
-    a.href = '/portfolio';
-    a.textContent = 'Portfolio';
-    a.className = ref.className;
-    ref.parentElement.insertBefore(a, ref);
+
+    if(!document.querySelector('nav a[href="/portfolio"]')){
+      var a = document.createElement('a');
+      a.href = '/portfolio';
+      a.textContent = 'Portfolio';
+      a.className = ref.className;
+      ref.parentElement.insertBefore(a, ref);
+    }
+
+    if(!document.querySelector('nav a[href="/guides"]')){
+      var g = document.createElement('a');
+      g.href = '/guides';
+      g.textContent = 'Guides';
+      g.className = ref.className;
+      ref.parentElement.insertBefore(g, ref);
+    }
   }
-  var obs = new MutationObserver(addPortfolioLink);
+  var obs = new MutationObserver(addNavLinks);
   if(document.body) obs.observe(document.body, {childList:true, subtree:true});
-  addPortfolioLink();
+  addNavLinks();
 })();
 </script>
 </body>
