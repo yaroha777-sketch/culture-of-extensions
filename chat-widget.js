@@ -4,7 +4,7 @@ var LEAD_ENDPOINT = "https://formsubmit.co/ajax/cultureofextensions@gmail.com";
 
 var css = `
 #coe-chat-btn{position:fixed;bottom:22px;right:22px;z-index:9999;background:#C9B896;color:#141516;
-border:none;padding:14px 22px;border-radius:999px;font:500 13px/1 'Jost',system-ui,sans-serif;
+border:none;padding:14px 22px;border-radius:999px;font:500 13px/1 'Inter',system-ui,sans-serif;
 letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 28px rgba(0,0,0,.45);
 display:flex;align-items:center;gap:8px;transition:transform .2s,opacity .2s}
 #coe-chat-btn:hover{transform:translateY(-2px)}
@@ -12,7 +12,7 @@ display:flex;align-items:center;gap:8px;transition:transform .2s,opacity .2s}
 #coe-chat-win{position:fixed;bottom:22px;right:22px;z-index:9999;width:340px;max-width:calc(100vw - 32px);
 max-height:min(560px,calc(100vh - 100px));background:#1c1d1f;border:1px solid rgba(201,184,150,.22);
 border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;
-font-family:'Jost',system-ui,sans-serif}
+font-family:'Inter',system-ui,sans-serif}
 #coe-chat-win.open{display:flex}
 #coe-chat-head{background:#151617;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;
 border-bottom:1px solid rgba(201,184,150,.16)}
@@ -25,17 +25,17 @@ border-bottom:1px solid rgba(201,184,150,.16)}
 .coe-msg.user{background:#C9B896;color:#141516;align-self:flex-end;border-bottom-right-radius:3px}
 #coe-quick{display:flex;flex-direction:column;gap:8px;margin-top:2px}
 .coe-action{background:transparent;border:1px solid #C9B896;color:#C9B896;padding:11px 14px;border-radius:9px;
-cursor:pointer;font:500 13px/1.3 'Jost',sans-serif;letter-spacing:.03em;text-align:center;text-decoration:none;
+cursor:pointer;font:500 13px/1.3 'Inter',sans-serif;letter-spacing:.03em;text-align:center;text-decoration:none;
 transition:background .2s,color .2s}
 .coe-action:hover{background:#C9B896;color:#141516}
 .coe-action.solid{background:#C9B896;color:#141516}
 .coe-action.solid:hover{opacity:.85;background:#C9B896}
 #coe-chat-inputs{display:none;padding:14px 18px;border-top:1px solid rgba(201,184,150,.16);gap:8px;flex-direction:column}
 #coe-chat-inputs input{background:#151617;border:1px solid rgba(201,184,150,.22);border-radius:8px;
-padding:11px 12px;color:#F2EFE7;font:400 14px 'Jost',sans-serif;outline:none}
+padding:11px 12px;color:#F2EFE7;font:400 14px 'Inter',sans-serif;outline:none}
 #coe-chat-inputs input:focus{border-color:#C9B896}
 #coe-chat-inputs button{background:#C9B896;color:#141516;border:none;padding:11px;border-radius:8px;
-font:500 13px 'Jost',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+font:500 13px 'Inter',sans-serif;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
 #coe-chat-inputs button:hover{opacity:.85}
 @media(max-width:420px){#coe-chat-win{right:16px;bottom:16px;width:calc(100vw - 32px)}#coe-chat-btn{right:16px;bottom:16px}}
 `;
