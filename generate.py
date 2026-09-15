@@ -343,6 +343,7 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Inter:wght@200..500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/luxury-animations.css">
 <style>{CSS}</style>
 {tracking_head()}
 {schemas}
@@ -375,6 +376,7 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", 
 </main>
 {footer()}
 {tracking_body()}
+<script defer src="/luxury-animations.js"></script>
 </body>
 </html>"""
 

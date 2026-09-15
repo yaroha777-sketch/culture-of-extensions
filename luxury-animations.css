@@ -1,0 +1,167 @@
+/* ==========================================================================
+   CULTURE OF EXTENSIONS — LUXURY MOTION & ANIMATION SYSTEM
+   ========================================================================== */
+
+/* 1. Golden Reading Progress Bar (Option 5) */
+#lux-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #C9B896 0%, #EDE8DC 50%, #C9B896 100%);
+  box-shadow: 0 0 10px rgba(201, 184, 150, 0.7);
+  z-index: 100000;
+  pointer-events: none;
+  transition: width 0.12s ease-out;
+}
+
+/* 2. Ambient Gold Cursor Glow (Option 3) */
+@media (hover: hover) and (pointer: fine) {
+  #lux-cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 360px;
+    height: 360px;
+    margin-top: -180px;
+    margin-left: -180px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(201, 184, 150, 0.15) 0%,
+      rgba(201, 184, 150, 0.04) 45%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 99998;
+    mix-blend-mode: screen;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 0.4s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  body.lux-cursor-hover #lux-cursor-glow {
+    transform: scale(1.35);
+    background: radial-gradient(
+      circle,
+      rgba(201, 184, 150, 0.22) 0%,
+      rgba(201, 184, 150, 0.06) 50%,
+      transparent 70%
+    );
+  }
+}
+
+/* 3. Parallax Image Mask Reveal (Option 2) */
+.lux-reveal {
+  opacity: 0;
+  clip-path: inset(8% 0 8% 0);
+  transform: translateY(24px) scale(1.03);
+  transition: clip-path 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: clip-path, transform, opacity;
+}
+
+.lux-reveal.is-revealed {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transform: translateY(0) scale(1);
+}
+
+/* Fade variation for content blocks */
+.lux-reveal-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lux-reveal-fade.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 4. Tactile Hover on Portfolio Cards & Content Elements (Option 6) */
+.gallery-card, .card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease;
+}
+
+/* Card shimmer sweep overlay */
+.gallery-card::after, .card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 35%,
+    rgba(201, 184, 150, 0.18) 50%,
+    transparent 65%
+  );
+  transform: rotate(25deg);
+  transition: left 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.gallery-card:hover::after, .card:hover::after {
+  left: 150%;
+}
+
+/* Image zoom inside cards */
+.gallery-card img, .card img {
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.gallery-card:hover img, .card:hover img {
+  transform: scale(1.05);
+}
+
+/* Card hover glow shadow */
+.gallery-card:hover, .card:hover {
+  border-color: rgba(201, 184, 150, 0.4);
+  box-shadow: 0 12px 36px -10px rgba(201, 184, 150, 0.16);
+}
+
+/* Tag & Badge Lift */
+.gallery-card .tag, .gallery-card .badge, .card .num, .card h3 {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.gallery-card:hover .tag, .gallery-card:hover .badge, .card:hover .num {
+  transform: translateY(-3px);
+}
+
+/* Magnetic buttons & Interactive elements base */
+.btn, nav.main a, button {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s ease,
+              background-color 0.3s ease,
+              color 0.3s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 6px 20px -4px rgba(201, 184, 150, 0.35);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  #lux-cursor-glow { display: none !important; }
+  #lux-progress-bar { transition: none !important; }
+  .lux-reveal, .lux-reveal-fade {
+    opacity: 1 !important;
+    clip-path: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .gallery-card::after, .card::after { display: none !important; }
+  .gallery-card img, .card img { transform: none !important; }
+}
