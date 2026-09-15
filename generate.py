@@ -75,7 +75,7 @@ footer.site a:hover{color:var(--gold)}
 footer.site ul{list-style:none}
 footer.site li{padding:4px 0}
 .foot-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-@media(max-width:840px){.hero{grid-template-columns:1fr;padding:40px 0}.grid2,.grid3,footer.site .cols{grid-template-columns:1fr}nav.main{display:none}section{padding:44px 0}}
+@media(max-width:840px){.hero{grid-template-columns:1fr;padding:40px 0}.grid2,.grid3,footer.site .cols{grid-template-columns:1fr}nav.main{gap:16px}nav.main a{font-size:11px}section{padding:44px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 """
 
@@ -266,17 +266,14 @@ def tracking_body():
     )
 
 def header():
-    return f"""<header class="site"><div class="wrap">
-<a class="logo" href="/">CULTURE <em>of</em> EXTENSIONS</a>
-<nav class="main" aria-label="Primary">
-<a href="/services/k-tip-extensions">K-Tip</a>
-<a href="/services/length-transformation">Length</a>
-<a href="/services/volume-density">Volume</a>
-<a href="/portfolio">Portfolio</a>
-<a href="/guides">Guides</a>
-<a href="/hair-extensions-los-angeles">Service Areas</a>
-<a href="{BOOK}" rel="noopener">Book</a>
-</nav></div></header>"""
+    return f"""<header class="site"><div class="wrap" style="display:flex;justify-content:space-between;align-items:center">
+<nav class="main" aria-label="Primary" style="display:flex;gap:28px;align-items:center">
+<a href="/#services" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">SERVICES</a>
+<a href="/guides" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">GUIDES</a>
+<a href="/portfolio" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">PORTFOLIO</a>
+</nav>
+<a class="btn" style="padding:10px 24px;font-size:11px;letter-spacing:.16em" href="{BOOK}" rel="noopener">BOOK</a>
+</div></header>"""
 
 def footer():
     svc = "".join(f'<li><a href="/services/{s}">{n}</a></li>' for s, n, _ in SERVICES)
