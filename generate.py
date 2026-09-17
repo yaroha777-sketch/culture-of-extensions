@@ -338,7 +338,8 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", 
 <meta property="og:description" content="{H.escape(desc)}">
 <meta property="og:url" content="{DOMAIN}/{path}">
 <meta property="og:site_name" content="Culture of Extensions by Lana">
-<meta name="geo.region" content="US-CA"><meta name="geo.placename" content="Burbank">
+<link rel="alternate" type="text/plain" title="LLM Context Summary" href="/llms.txt">
+<link rel="alternate" type="text/plain" title="Full LLM Knowledge Base" href="/llms-full.txt">
 <link rel="icon" href="/icon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

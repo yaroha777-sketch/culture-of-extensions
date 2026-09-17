@@ -1,7 +1,11 @@
 User-agent: *
 Allow: /
 
-# Explicit AI Crawlers & Answer Engines permissions
+# ==========================================================================
+# EXPLICIT AI SEARCH & ANSWER ENGINE CRAWLER PERMISSIONS (GEO / AIO)
+# ==========================================================================
+
+# OpenAI ChatGPT Search & GPT-4o / GPT-5 Retrieval
 User-agent: GPTBot
 Allow: /
 Allow: /llms.txt
@@ -10,18 +14,47 @@ Allow: /llms-full.txt
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Anthropic Claude & Search
 User-agent: ClaudeBot
 Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 
-User-agent: PerplexityBot
+User-agent: Claude-Web
 Allow: /
 
+# Perplexity AI Search
+User-agent: PerplexityBot
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+# Google AI Overviews & Gemini Search
 User-agent: Google-Extended
 Allow: /
 
+User-agent: GoogleOther
+Allow: /
+
+# Apple Intelligence & Siri AI Search
 User-agent: Applebot-Extended
 Allow: /
 
+# Meta AI Search
+User-agent: Meta-ExternalAgent
+Allow: /
+
+# Cohere & Diffbot AI Retrieval
+User-agent: Cohere-ai
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+# LLM Directives & Context Files
 Sitemap: https://www.cultureofextensions.com/sitemap.xml
