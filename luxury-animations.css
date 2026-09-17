@@ -152,6 +152,69 @@
   box-shadow: 0 6px 20px -4px rgba(201, 184, 150, 0.35);
 }
 
+/* 5. Luxury Language Switcher (EN · ES · RU) */
+.lux-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  background: rgba(201, 184, 150, 0.08);
+  border: 1px solid rgba(201, 184, 150, 0.22);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--gold, #C9B896);
+  margin-left: 12px;
+  vertical-align: middle;
+}
+
+.lux-lang-btn {
+  background: none;
+  border: none;
+  color: var(--dim, #9d978a);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: color 0.2s, background-color 0.2s;
+  outline: none;
+}
+
+.lux-lang-btn:hover {
+  color: var(--gold, #C9B896);
+}
+
+.lux-lang-btn.active {
+  color: #131210 !important;
+  background: var(--gold, #C9B896) !important;
+  font-weight: 600 !important;
+}
+
+.lux-lang-sep {
+  color: rgba(201, 184, 150, 0.35);
+  font-size: 10px;
+  user-select: none;
+}
+
+/* Hide Google Translate UI elements for seamless integration */
+.goog-te-banner-frame,
+.goog-te-balloon-frame,
+#goog-gt-tt,
+.goog-text-highlight,
+#lux-gt-element,
+.skiptranslate:not(.lux-lang-switcher) {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
   #lux-cursor-glow { display: none !important; }

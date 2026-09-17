@@ -383,7 +383,8 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", 
 
 LB = {"@type":"HairSalon","name":"Culture of Extensions by Lana","@id":DOMAIN+"/#business",
       "telephone":PHONE_TEL,"address":{"@type":"PostalAddress","streetAddress":"2119 N Glenoaks Blvd",
-      "addressLocality":"Burbank","addressRegion":"CA","postalCode":"91504","addressCountry":"US"}}
+      "addressLocality":"Burbank","addressRegion":"CA","postalCode":"91504","addressCountry":"US"},
+      "knowsLanguage":["en","es","ru"],"availableLanguage":["English","Spanish","Russian"]}
 
 
 def guide_schema(title, path, desc, pub_date="2026-06-01"):

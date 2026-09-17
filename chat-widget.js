@@ -2,6 +2,70 @@
 var BOOK_URL = "https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start";
 var LEAD_ENDPOINT = "https://formsubmit.co/ajax/cultureofextensions@gmail.com";
 
+function getLang() {
+  var v = document.cookie.match('(^|;) ?googtrans=([^;]*)(;|$)');
+  if (v) {
+    var parts = v[2].split('/');
+    var l = parts[parts.length - 1];
+    if (l === 'es' || l === 'ru' || l === 'en') return l;
+  }
+  var stored = localStorage.getItem('coe_lang');
+  if (stored && (stored === 'es' || stored === 'ru' || stored === 'en')) return stored;
+  return 'en';
+}
+
+var lang = getLang();
+
+var i18n = {
+  en: {
+    btn: 'Contact Us',
+    title: 'Culture of Extensions — Concierge',
+    welcome: 'Welcome to Culture of Extensions!<br><br>Consultations available in <b>English, Spanish, and Russian</b>.<br><br>Would you like to book a <b>Free Consultation</b> — we\'ll match your ideal method & hair — or request a call back from Lana?',
+    book: 'Book Free Consultation',
+    callback: 'Request a Call Back',
+    namePh: 'Your name',
+    phonePh: 'Phone number',
+    send: 'Send',
+    userBook: 'I\'d like to book a Free Consultation.',
+    aiBook: 'Perfect — choose a time that works for you:<br><br><a href="'+BOOK_URL+'" target="_blank" rel="noopener" class="coe-action solid" style="display:block">Open Booking System</a>',
+    userCall: 'I\'d like a call back.',
+    aiCall: 'Of course — leave your name and phone number below and Lana will reach out shortly.',
+    sent: 'Thank you! Your details have been received — Lana will call you soon.'
+  },
+  es: {
+    btn: 'Contacto',
+    title: 'Culture of Extensions — Atención',
+    welcome: '¡Bienvenido a Culture of Extensions!<br><br>Consultas disponibles en <b>Inglés, Español y Ruso</b>.<br><br>¿Le gustaría reservar una <b>Consulta Gratuita</b> para personalizar su método y cabello, o solicitar que Lana le llame?',
+    book: 'Reservar Consulta Gratis',
+    callback: 'Solicitar Llamada',
+    namePh: 'Su nombre',
+    phonePh: 'Teléfono',
+    send: 'Enviar',
+    userBook: 'Me gustaría reservar una Consulta Gratuita.',
+    aiBook: 'Excelente — elija el horario que prefiera:<br><br><a href="'+BOOK_URL+'" target="_blank" rel="noopener" class="coe-action solid" style="display:block">Abrir Sistema de Citas</a>',
+    userCall: 'Deseo que me llamen.',
+    aiCall: 'Por supuesto — deje su nombre y teléfono abajo y Lana le llamará muy pronto.',
+    sent: '¡Gracias! Hemos recibido sus datos — Lana se pondrá en contacto pronto.'
+  },
+  ru: {
+    btn: 'Связаться',
+    title: 'Culture of Extensions — Консьерж',
+    welcome: 'Добро пожаловать в Culture of Extensions!<br><br>Консультации проводятся на <b>английском, испанском и русском</b>.<br><br>Желаете записаться на <b>бесплатную консультацию</b> — мы подберем идеальный метод и волосы — или заказать обратный звонок от Ланы?',
+    book: 'Записаться на консультацию',
+    callback: 'Заказать звонок',
+    namePh: 'Ваше имя',
+    phonePh: 'Номер телефона',
+    send: 'Отправить',
+    userBook: 'Я хочу записаться на бесплатную консультацию.',
+    aiBook: 'Отлично — выберите удобное время для визита:<br><br><a href="'+BOOK_URL+'" target="_blank" rel="noopener" class="coe-action solid" style="display:block">Открыть онлайн-запись</a>',
+    userCall: 'Хочу заказать обратный звонок.',
+    aiCall: 'Конечно — укажите ваше имя и телефон ниже, и Лана свяжется с вами в ближайшее время.',
+    sent: 'Спасибо! Ваши данные получены — Лана скоро вам перезвонит.'
+  }
+};
+
+var txt = i18n[lang] || i18n.en;
+
 var css = `
 #coe-chat-btn{position:fixed;bottom:22px;right:22px;z-index:9999;background:#C9B896;color:#141516;
 border:none;padding:14px 22px;border-radius:999px;font:500 13px/1 'Inter',system-ui,sans-serif;
@@ -43,23 +107,23 @@ var style = document.createElement('style'); style.textContent = css; document.h
 
 var btn = document.createElement('button');
 btn.id = 'coe-chat-btn';
-btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Contact Us';
+btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>' + txt.btn;
 
 var win = document.createElement('div');
 win.id = 'coe-chat-win';
 win.innerHTML = `
-<div id="coe-chat-head"><span>Culture of Extensions — Concierge</span><button id="coe-close" aria-label="Close">✕</button></div>
+<div id="coe-chat-head"><span>` + txt.title + `</span><button id="coe-close" aria-label="Close">✕</button></div>
 <div id="coe-chat-msgs">
-  <div class="coe-msg ai">Welcome to Culture of Extensions! <br><br>Would you like to book a <b>Free Consultation</b> — we'll walk through the process, match your ideal method and hair, and go over pricing — or leave your details so Lana can call you back?</div>
+  <div class="coe-msg ai">` + txt.welcome + `</div>
   <div id="coe-quick">
-    <button class="coe-action solid" id="coe-book">Book Free Consultation</button>
-    <button class="coe-action" id="coe-callback">Request a Call Back</button>
+    <button class="coe-action solid" id="coe-book">` + txt.book + `</button>
+    <button class="coe-action" id="coe-callback">` + txt.callback + `</button>
   </div>
 </div>
 <div id="coe-chat-inputs">
-  <input type="text" id="coe-name" placeholder="Your name" autocomplete="name">
-  <input type="tel" id="coe-phone" placeholder="Phone number" autocomplete="tel">
-  <button id="coe-send">Send</button>
+  <input type="text" id="coe-name" placeholder="` + txt.namePh + `" autocomplete="name">
+  <input type="tel" id="coe-phone" placeholder="` + txt.phonePh + `" autocomplete="tel">
+  <button id="coe-send">` + txt.send + `</button>
 </div>`;
 
 document.body.appendChild(btn);
@@ -83,17 +147,17 @@ function addMsg(text, who){
 
 win.querySelector('#coe-book').addEventListener('click', function(){
   win.querySelector('#coe-quick').style.display = 'none';
-  addMsg('I\'d like to book a Free Consultation.', 'user');
+  addMsg(txt.userBook, 'user');
   setTimeout(function(){
-    addMsg('Perfect — choose a time that works for you:<br><br><a href="'+BOOK_URL+'" target="_blank" rel="noopener" class="coe-action solid" style="display:block">Open Booking System</a>', 'ai');
+    addMsg(txt.aiBook, 'ai');
   }, 450);
 });
 
 win.querySelector('#coe-callback').addEventListener('click', function(){
   win.querySelector('#coe-quick').style.display = 'none';
-  addMsg('I\'d like a call back.', 'user');
+  addMsg(txt.userCall, 'user');
   setTimeout(function(){
-    addMsg('Of course — leave your name and phone number below and Lana will reach out shortly.', 'ai');
+    addMsg(txt.aiCall, 'ai');
     win.querySelector('#coe-chat-inputs').style.display = 'flex';
     win.querySelector('#coe-name').focus();
   }, 450);
@@ -106,28 +170,23 @@ async function sendLead(){
   addMsg(name + ' — ' + phone, 'user');
   win.querySelector('#coe-chat-inputs').style.display = 'none';
   setTimeout(function(){
-    addMsg('Thank you, ' + name.split(' ')[0] + '! Your details have been received — we\'ll call you soon.', 'ai');
+    addMsg(txt.sent, 'ai');
   }, 400);
-  var payload = { name: name, phone: phone, page: window.location.href };
-  try{
-    await fetch('/api/lead', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-  }catch(err){ console.error('Notion lead delivery error:', err); }
-  try{
+
+  try {
     await fetch(LEAD_ENDPOINT, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        name: name, phone: phone,
-        _subject: 'New callback request — Culture of Extensions site',
-        source: 'Website concierge chat', page: window.location.href
+        name: name,
+        phone: phone,
+        lang: lang,
+        _subject: 'New Hair Extension Consultation Lead (' + lang.toUpperCase() + ')'
       })
     });
-  }catch(err){ console.error('Email lead delivery error:', err); }
+  } catch(e){}
 }
+
 win.querySelector('#coe-send').addEventListener('click', sendLead);
 win.querySelector('#coe-phone').addEventListener('keypress', function(e){ if(e.key==='Enter') sendLead(); });
 })();
