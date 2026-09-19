@@ -270,10 +270,11 @@ def tracking_body():
 
 def header():
     return f"""<header class="site"><div class="wrap" style="display:flex;justify-content:space-between;align-items:center">
-<nav class="main" aria-label="Primary" style="display:flex;gap:28px;align-items:center">
+<nav class="main" aria-label="Primary" style="display:flex;gap:24px;align-items:center">
 <a href="/#services" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">SERVICES</a>
 <a href="/guides" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">GUIDES</a>
 <a href="/portfolio" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">PORTFOLIO</a>
+<div class="lux-lang-switcher" aria-label="Language Switcher"><button type="button" class="lux-lang-btn active" data-lang="en">EN</button><span class="lux-lang-sep">·</span><button type="button" class="lux-lang-btn" data-lang="es">ES</button><span class="lux-lang-sep">·</span><button type="button" class="lux-lang-btn" data-lang="ru">RU</button></div>
 </nav>
 <a class="btn" style="padding:10px 24px;font-size:11px;letter-spacing:.16em" href="{BOOK}" rel="noopener">BOOK</a>
 </div></header>"""

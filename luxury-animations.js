@@ -229,13 +229,16 @@
     }
 
     function renderSwitcher() {
-      if (document.querySelector('.lux-lang-switcher')) return;
+      if (document.getElementById('lux-lang-fixed') || document.querySelector('.lux-lang-switcher')) {
+        bindButtons();
+        return;
+      }
 
       var navContainer = document.querySelector('header nav, nav.main, header .wrap, header');
-      if (!navContainer) return;
 
       var container = document.createElement('div');
-      container.className = 'lux-lang-switcher';
+      container.className = navContainer ? 'lux-lang-switcher' : '';
+      container.id = navContainer ? '' : 'lux-lang-fixed';
       container.setAttribute('aria-label', 'Language Switcher');
 
       ['en', 'es', 'ru'].forEach(function (lang, idx) {
@@ -258,16 +261,35 @@
         container.appendChild(btn);
       });
 
-      if (navContainer.tagName === 'NAV') {
-        navContainer.appendChild(container);
-      } else {
-        var nav = navContainer.querySelector('nav');
-        if (nav) {
-          nav.appendChild(container);
-        } else {
+      if (navContainer) {
+        if (navContainer.tagName === 'NAV') {
           navContainer.appendChild(container);
+        } else {
+          var nav = navContainer.querySelector('nav');
+          if (nav) {
+            nav.appendChild(container);
+          } else {
+            navContainer.appendChild(container);
+          }
         }
+      } else {
+        document.body.appendChild(container);
       }
+    }
+
+    function bindButtons() {
+      document.querySelectorAll('.lux-lang-btn').forEach(function (btn) {
+        var lang = btn.getAttribute('data-lang');
+        btn.classList.toggle('active', activeLang === lang);
+        if (!btn.hasAttribute('data-bound')) {
+          btn.setAttribute('data-bound', 'true');
+          btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            setLanguage(lang);
+          });
+        }
+      });
     }
 
     renderSwitcher();

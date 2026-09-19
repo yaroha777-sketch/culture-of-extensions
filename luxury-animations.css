@@ -153,20 +153,38 @@
 }
 
 /* 5. Luxury Language Switcher (EN · ES · RU) */
-.lux-lang-switcher {
+.lux-lang-switcher, #lux-lang-fixed {
   display: inline-flex;
   align-items: center;
   gap: 3px;
-  background: rgba(201, 184, 150, 0.08);
-  border: 1px solid rgba(201, 184, 150, 0.22);
+  background: rgba(19, 18, 16, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 184, 150, 0.3);
   border-radius: 20px;
   padding: 4px 10px;
   font-size: 11px;
   letter-spacing: 0.1em;
   font-family: 'Inter', system-ui, sans-serif;
   color: var(--gold, #C9B896);
-  margin-left: 12px;
   vertical-align: middle;
+}
+
+#lux-lang-fixed {
+  position: fixed;
+  top: 14px;
+  right: 115px;
+  z-index: 99999;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 640px) {
+  #lux-lang-fixed {
+    top: 12px;
+    right: 75px;
+    padding: 3px 8px;
+    font-size: 10px;
+  }
 }
 
 .lux-lang-btn {
@@ -177,7 +195,7 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   cursor: pointer;
-  padding: 2px 5px;
+  padding: 2px 6px;
   border-radius: 3px;
   transition: color 0.2s, background-color 0.2s;
   outline: none;
