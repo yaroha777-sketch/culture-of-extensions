@@ -99,6 +99,9 @@ GUIDES = [
     ("washing-and-drying-slavic-hair-extensions", "Washing & Drying Protocols", "Hair Care Science"),
     ("summer-and-winter-care-hair-extensions", "Seasonal Protection Guide", "Seasonal Trichology"),
     ("sleeping-and-active-lifestyle-hair-extensions", "Sleep & Workout Protocols", "Lifestyle Care"),
+    ("bridal-and-special-event-hair-extensions-timeline", "Bridal & Event Extensions Timeline", "Event Planning"),
+    ("custom-color-blending-and-balayage-extensions", "Custom Color & Balayage Extensions", "Color Architecture"),
+    ("fine-hair-and-hair-thinning-extension-solutions", "Fine Hair & Thinning Extension Solutions", "Density & Restoration"),
 ]
 
 CITIES = [
@@ -292,7 +295,70 @@ def footer():
 <div><p class="foot-label">Hair Science &amp; Guides</p><ul>{gui}</ul></div>
 </div></div></footer>"""
 
-def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", schema_extra=None):
+LIGHT_THEME_CSS = """
+body.light-theme { background-color: #FAF8F5 !important; color: #1F1E1C !important; }
+body.light-theme header.site { background: rgba(250, 248, 245, 0.94) !important; border-bottom: 1px solid rgba(184, 159, 112, 0.25) !important; }
+body.light-theme .logo { color: #1F1E1C !important; }
+body.light-theme nav.main a { color: #5A564F !important; }
+body.light-theme nav.main a:hover { color: #A68A56 !important; }
+body.light-theme .crumbs { color: #7D786E !important; }
+body.light-theme .crumbs a { color: #5A564F !important; }
+body.light-theme h1 { background: linear-gradient(135deg, #1F1E1C 20%, #7A653E 75%, #A68A56) !important; -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important; }
+body.light-theme h2 { color: #1F1E1C !important; }
+body.light-theme h3 { color: #8C7343 !important; }
+body.light-theme p.lead { color: #5A564F !important; }
+body.light-theme section { border-top: 1px solid rgba(184, 159, 112, 0.2) !important; }
+body.light-theme details summary { color: #1F1E1C !important; border-bottom-color: rgba(184, 159, 112, 0.2) !important; }
+body.light-theme details p { color: #5A564F !important; }
+body.light-theme footer.site { background: #F3EFE7 !important; border-top: 1px solid rgba(184, 159, 112, 0.25) !important; color: #1F1E1C !important; }
+body.light-theme footer.site p, body.light-theme footer.site a { color: #5A564F !important; }
+body.light-theme footer.site a:hover { color: #A68A56 !important; }
+body.light-theme footer.site .foot-label { color: #8C7343 !important; }
+body.light-theme .direct-answer { background: rgba(201, 184, 150, 0.12) !important; border: 1px solid #C9B896 !important; border-radius: 8px !important; }
+body.light-theme .direct-answer p.text { color: #2D2B28 !important; }
+body.light-theme .direct-answer p.badge { color: #8C7343 !important; }
+
+.blog-filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin: 36px 0 44px; justify-content: center; }
+.blog-filter-btn { background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.32); color: #5A564F; padding: 10px 22px; border-radius: 30px; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(30, 25, 15, 0.03); }
+.blog-filter-btn:hover, .blog-filter-btn.active { background: #A68A56; color: #FFFFFF; border-color: #A68A56; box-shadow: 0 6px 18px rgba(166, 138, 86, 0.25); }
+
+.blog-featured-card { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0; background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.35); border-radius: 16px; overflow: hidden; margin-bottom: 56px; box-shadow: 0 16px 44px rgba(30, 25, 15, 0.05); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease; }
+.blog-featured-card:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(30, 25, 15, 0.09); }
+.blog-featured-img-wrap { position: relative; min-height: 400px; overflow: hidden; background: #F0EAE1; }
+.blog-featured-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.blog-featured-card:hover .blog-featured-img-wrap img { transform: scale(1.04); }
+.blog-featured-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+.blog-spotlight-tag { display: inline-flex; align-items: center; gap: 8px; color: #A68A56; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; }
+.blog-featured-title { font-family: "Bodoni Moda", serif; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.25; color: #1F1E1C; margin-bottom: 16px; font-weight: 500; }
+.blog-featured-title a { color: inherit; text-decoration: none; transition: color 0.2s; }
+.blog-featured-title a:hover { color: #8C7343; }
+.blog-featured-desc { color: #5A564F; font-size: 16px; line-height: 1.65; margin-bottom: 28px; }
+
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+@media (max-width: 992px) { .blog-featured-card { grid-template-columns: 1fr; } .blog-featured-img-wrap { min-height: 280px; } .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } .blog-featured-content { padding: 28px 20px; } }
+
+.blog-card { background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.3); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 28px rgba(30, 25, 15, 0.035); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease; }
+.blog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(30, 25, 15, 0.09); border-color: #A68A56; }
+.blog-card-img-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; background: #F0EAE1; }
+.blog-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.blog-card:hover .blog-card-img-wrap img { transform: scale(1.07); }
+.blog-cat-pill { position: absolute; top: 14px; left: 14px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); color: #7A6234; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; font-weight: 600; border: 1px solid rgba(184, 159, 112, 0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.blog-read-time { position: absolute; bottom: 12px; right: 12px; background: rgba(31, 30, 28, 0.78); backdrop-filter: blur(6px); color: #FAF7F2; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 9px; border-radius: 10px; }
+.blog-card-body { padding: 24px 24px 18px; flex-grow: 1; display: flex; flex-direction: column; }
+.blog-card-title { font-family: "Bodoni Moda", serif; font-size: 19.5px; line-height: 1.35; color: #1F1E1C; margin-bottom: 10px; font-weight: 500; transition: color 0.2s; }
+.blog-card-title a { color: inherit; text-decoration: none; }
+.blog-card:hover .blog-card-title { color: #7A6234; }
+.blog-card-excerpt { color: #5A564F; font-size: 14.5px; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+.blog-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(184, 159, 112, 0.18); }
+.blog-author-meta { display: flex; align-items: center; gap: 8px; }
+.blog-author-avatar { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid #C9B896; }
+.blog-author-name { font-size: 11px; letter-spacing: 0.06em; color: #7D786E; text-transform: uppercase; }
+.blog-read-link { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C7343; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: color 0.2s, transform 0.2s; }
+.blog-card:hover .blog-read-link { color: #5C4820; transform: translateX(3px); }
+"""
+
+def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", schema_extra=None, light_mode=False):
     if img:
         hero_markup = f"""<div class="hero">
 <div>
@@ -325,6 +391,10 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", 
             {"@type": "ListItem", "position": 2, "name": h1, "item": f"{DOMAIN}/{path}"}]}
     schemas = "".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>'
                       for s in [schema_extra, faq_schema, crumbs_schema] if s)
+    
+    body_class = ' class="light-theme blog-hub"' if light_mode else ''
+    extra_style = LIGHT_THEME_CSS if light_mode else ''
+
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -346,11 +416,11 @@ def page(path, title, desc, h1, eyebrow, lead, body, faq, img=None, img_alt="", 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400..700;1,400..700&family=Inter:wght@200..500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/luxury-animations.css">
-<style>{CSS}</style>
+<style>{CSS}{extra_style}</style>
 {tracking_head()}
 {schemas}
 </head>
-<body>
+<body{body_class}>
 {header()}
 <main>
 <div class="wrap">
@@ -1075,6 +1145,121 @@ guide_data = {
   ("Can extensions help recover hair damaged by bleaching?", "Yes. In fact, length recovery for chemically compromised blonde hair is one of Lana's core specialties. The Slavic extensions carry the visual volume and length, allowing your natural hair to rest, rebuild keratin strength, and grow without heat styling.")
  ]
 ),
+"bridal-and-special-event-hair-extensions-timeline": dict(
+ title="Bridal & Special Event Hair Extensions Timeline | Wedding Hair Science by Lana",
+ desc="Complete bridal hair extension timeline for brides in Los Angeles & Beverly Hills. Initial consultation, hair matching, trial styling, and installation timing by Lana.",
+ h1="Bridal & Special Event Extensions: The Master Timeline",
+ eyebrow="Event Planning & Bridal Trichology · Los Angeles",
+ lead="Your wedding or red carpet appearance requires flawless hair that holds up through 14+ hours of photography, veil placement, and dancing. Discover Lana's strategic timeline for bespoke bridal Slavic hair extensions.",
+ direct_answer="The ideal bridal hair extension timeline begins 3 to 6 months prior to your wedding day with an initial structural consultation and custom single-donor Slavic hair order. The first installation should occur 8 to 12 weeks before the wedding to allow your hair trial and bridal portraits with your full volume and length. A final refresh and precision adjustment is scheduled 7 to 10 days before the event, ensuring pristine, invisible bonds, weightless comfort, and maximum longevity throughout your wedding weekend.",
+ body_cards=[
+  ("Month 3 to 6: Structural Consultation", "Custom color matching, length determination, and single-donor Slavic hair selection tailored to your chosen wedding hairstyle and dress neckline."),
+  ("Week 8 to 12: Initial Install & Hair Trial", "First installation and wear-in period. Conduct your hair trial with your bridal stylist using your real extensions so veil and updo placement is flawless."),
+  ("Days 7 to 10: Final Pre-Wedding Refresh", "Precision move-up or capsule refresh right before the ceremony. Attachment points are invisible, fresh, and completely comfortable for your big day.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Timeline Milestone</th><th>Strategic Atelier Action</th><th>Bridal Result</th></tr></thead>
+<tbody>
+<tr><td><strong>3 to 6 Months Before</strong></td><td>Initial Consultation &amp; Slavic Bundle Order</td><td>Secures rare single-donor hair matching exact root &amp; end tones</td></tr>
+<tr><td><strong>8 to 12 Weeks Before</strong></td><td>First Installation &amp; Bridal Trial Run</td><td>Allows 2–3 weeks of wear-in; hairstyle trial with actual extension volume</td></tr>
+<tr><td><strong>3 to 4 Weeks Before</strong></td><td>Bridal Portraits &amp; Dress Fitting</td><td>Flawless photographic test; verifies hair movement with dress straps</td></tr>
+<tr><td><strong>7 to 10 Days Before</strong></td><td>Final Pre-Wedding Refresh &amp; Gloss</td><td>Pristine invisible bonds; zero scalp tightness on your wedding day</td></tr>
+<tr><td><strong>Post-Honeymoon</strong></td><td>Post-Event Check &amp; Care Maintenance</td><td>Hair remains pristine through tropical humidity &amp; honeymoon travel</td></tr>
+</tbody></table>''',
+ block_h2="Architecting Flawless Bridal Volume & Updos",
+ block_p=[
+  "Bridal hairstyles demand extraordinary structural balance. High updos, romantic half-up styles, and Hollywood waves require density that natural fine hair often cannot support on its own, especially when holding a heavy veil or headpiece for 12+ hours.",
+  "At Culture of Extensions, Lana crafts custom micro-capsules and tension-free rows designed specifically for high-mobility updo flexibility. Attachment points are mapped away from perimeter necklines and partings so no bonds are visible from any camera angle."
+ ],
+ checks=[
+  "360-degree invisible placement designed specifically for updos & veils",
+  "100% Raw Virgin Slavic hair that holds curls through 14+ hours of events",
+  "Custom multi-tonal color matching for high-definition photography",
+  "Complimentary honeymoon aftercare kit and travel maintenance guide"
+ ],
+ faq=[
+  ("When should I get hair extensions installed before my wedding?", "We strongly recommend getting your first installation 8 to 12 weeks before the wedding for your trial styling, followed by a quick refresh 7 to 10 days before the ceremony. This ensures complete comfort and zero last-minute stress."),
+  ("Can I wear a high wedding updo or veil with K-Tip extensions?", "Yes! Lana's micro-capsules allow 360-degree rotation. We map placement specifically around your intended bridal hairstyle so bonds remain 100% hidden even in sleek high updos or intricate braids."),
+  ("Will extensions hold curls during an outdoor Los Angeles or beach wedding?", "100% authentic raw Slavic hair holds hot-tool curls effortlessly because its cuticle layer is completely intact. Unlike synthetic or heavily processed hair that drops in humidity, Slavic hair behaves like high-grade natural hair."),
+  ("Can my bridal stylist spray hairspray and use hot tools on Slavic extensions?", "Yes. Raw Slavic hair can be blow-dried, curled, and styled with professional products just like your natural hair. We only advise keeping hot tools 1.5 inches away from keratin attachment bonds.")
+ ]
+),
+"custom-color-blending-and-balayage-extensions": dict(
+ title="Custom Color Blending & Balayage Extensions in LA | Multi-Tonal Slavic Hair",
+ desc="Master color architecture for hair extensions in Los Angeles by Lana. Hand-painted shadow roots, balayage integration, and 3-zone color blending with zero damage.",
+ h1="Custom Color Blending & Balayage Extensions",
+ eyebrow="Multi-Tonal Color Architecture · Los Angeles & Burbank",
+ lead="Natural hair is never a single flat tone — it is a symphony of roots, mid-lengths, highlights, and undertones. Discover how Lana blends 2 to 4 custom Slavic shades for invisible integration.",
+ direct_answer="Custom color blending at Culture of Extensions combines multi-tonal Slavic hair bundles with 3-zone root-to-tip color mapping. Rather than applying a uniform shade, master artisan Lana mixes custom highlight, lowlight, and shadow-root strands (2 to 4 distinct tones) directly into each installation. This eliminates the telltale 'block color' boundary of commercial extensions, seamlessly dissolving the transition between natural growth and luxury length without bleaching or damaging your biological hair.",
+ body_cards=[
+  ("3-Zone Root-to-Tip Mapping", "Color is calibrated across three zones: natural root depth, dimensional mid-lengths, and luminous sun-kissed ends for realistic light reflection."),
+  ("Zero-Chemical Balayage Effect", "Add bright blonde ribbons, dimensional lowlights, or sun-bleached pops of color purely through extension strand placement — zero bleach touch on your own hair."),
+  ("Hand-Painted Shadow Roots", "Slavic donor bundles are hand-smudged with translucent root glosses that match your exact biological root depth for seamless regrowth transition.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Color Method</th><th>Standard Salon Flat Color</th><th>Lana Multi-Tonal Color Architecture</th></tr></thead>
+<tbody>
+<tr><td><strong>Strand Composition</strong></td><td>Single monochrome factory shade</td><td>2 to 4 custom Slavic tones hand-blended per row/capsule</td></tr>
+<tr><td><strong>Natural Hair Bleaching</strong></td><td>Frequent bleaching of client hair to match extensions</td><td>Zero bleach required; color added via extension strands</td></tr>
+<tr><td><strong>Regrowth Transition</strong></td><td>Harsh demarcation line as natural roots grow</td><td>Hand-painted shadow root that dissolves naturally into growth</td></tr>
+<tr><td><strong>Light Reflection</strong></td><td>Flat, opaque appearance in photos</td><td>Multi-dimensional depth with high-definition camera luster</td></tr>
+</tbody></table>''',
+ block_h2="The Art of Chemical-Free Color Transformations",
+ block_p=[
+  "Many clients dream of dimensional balayage or bright honey-blonde ribbons but fear the severe damage caused by repeated bleach foils on fine natural hair. Extension color architecture turns this dynamic on its head.",
+  "By incorporating lighter Slavic strands into your installation, Lana creates a sun-drenched balayage or high-contrast dimensional effect without a single drop of chemical lightener touching your natural hair. Your own hair remains completely unbleached and healthy underneath."
+ ],
+ checks=[
+  "Custom hand-blending of 2 to 4 distinct Slavic tones per installation",
+  "Translucent keratin glosses that preserve natural hair cuticle luster",
+  "Zero chemical bleaching required on your natural anchor hair",
+  "Seamless color match across outdoor sunlight and studio lighting"
+ ],
+ faq=[
+  ("Can I get balayage hair extensions if my natural hair has a dark root?", "Yes! This is one of our signatures. Lana applies custom hand-painted shadow roots to lighter Slavic extension strands so they melt perfectly into your dark root base."),
+  ("Can extensions be custom colored after they are installed?", "Slavic virgin hair accepts gentle low-pH glosses and toners beautifully. However, we pre-color and blend your bundles prior to installation for precise results and zero mess."),
+  ("Will the color fade or turn brassy in California sun?", "Because we use naturally light raw Slavic hair rather than chemically bleached factory hair, the color holds its rich tone without turning orange or brassy."),
+  ("How do you match complex multidimensional blonde or brunette hair?", "During your consultation, Lana analyzes your hair under multi-spectrum lighting and selects multiple complementary Slavic bundles to recreate your exact highlights and lowlights.")
+ ]
+),
+"fine-hair-and-hair-thinning-extension-solutions": dict(
+ title="Fine Hair & Hair Thinning Extension Solutions | Micro-Capsule Density by Lana",
+ desc="Specialized hair extensions for fine, fragile, and thinning hair in Los Angeles. Micro-capsule weight ratios (0.03g-0.05g), scalp health, and density restoration by Lana.",
+ h1="Fine Hair & Thinning Solutions: Micro-Capsule Architecture",
+ eyebrow="Trichological Density & Fine Hair Mastery · Burbank & LA",
+ lead="Fine or thinning hair requires a completely different approach to extensions. Heavy wefts and thick bonds pull on fragile roots. Discover Lana's featherweight micro-capsule methodology.",
+ direct_answer="Hair extension solutions for fine and thinning hair require featherweight micro-capsules (weighing as little as 0.03g to 0.05g) and micro-parting sectioning that distributes weight precisely 1:1 with natural anchor hair. At Culture of Extensions in Burbank, master specialist Lana creates bespoke micro-bond placements that add lush perimeter fullness and crown volume without placing mechanical tension on fragile follicles, allowing thin or recovering natural hair to thrive safely beneath.",
+ body_cards=[
+  ("Featherweight Micro-Capsules (0.03g)", "Bond sizes are custom-cut to half or quarter-grain dimensions, eliminating root strain and remaining completely invisible in thin hair."),
+  ("Crown & Temple Fill Architecture", "Precision placement engineered for sparse temples, fine crown partings, and post-partum shedding zones where standard extensions cannot be hidden."),
+  ("Zero Follicular Stress", "Radial sectioning follows natural cranial growth patterns, preventing cross-tension pulling and promoting uninterrupted natural follicle growth.")
+ ],
+ table_html='''<table class="matrix">
+<thead><tr><th>Parameter</th><th>Standard Commercial Extensions</th><th>Lana Fine-Hair Micro-Capsule Protocol</th></tr></thead>
+<tbody>
+<tr><td><strong>Bond Weight</strong></td><td>0.8g to 1.0g per strand (Too heavy for fine hair)</td><td>0.03g to 0.05g micro-capsules (Featherweight)</td></tr>
+<tr><td><strong>Visibility in Fine Hair</strong></td><td>Bonds show through thin top layers</td><td>Undetectable even when fine hair parts or blows in wind</td></tr>
+<tr><td><strong>Scalp Tension</strong></td><td>High point-load tension causing headaches</td><td>Zero scalp tension or tenderness from day one</td></tr>
+<tr><td><strong>Follicle Safety</strong></td><td>Risk of traction thinning</td><td>Strict 1:1 weight balance; natural hair grows safely</td></tr>
+</tbody></table>''',
+ block_h2="Restoring Abundance to Fragile Strands",
+ block_p=[
+  "Women with fine or thinning hair are often told by traditional salons that extensions are impossible for them. This is only true for mass-market, heavy commercial extensions. When bonds are downsized to micro-grain capsules, extensions become the safest way to restore youthful volume.",
+  "Whether you are experiencing natural fine hair texture, post-partum shedding, stress-induced thinning, or recovery from illness, Lana designs a customized density restoration plan that respects your scalp's physical boundaries."
+ ],
+ checks=[
+  "Custom micro-grain capsules (0.03g–0.05g) designed for ultra-fine hair",
+  "Precision perimeter and temple placement for seamless invisibility",
+  "1:1 weight-to-density ratio that protects delicate follicle anchors",
+  "Complimentary private consultation with trichological scalp analysis"
+ ],
+ faq=[
+  ("Are extensions safe for extremely fine or thin hair?", "Yes, when installed using Lana's featherweight micro-capsule protocol. By reducing bond weight to 0.03g–0.05g and matching anchor density 1:1, there is zero risk of traction pulling or damage."),
+  ("Can micro-capsule extensions fill in sparse temples or crown areas?", "Yes! Micro-capsules are so small they can be placed in delicate areas near the crown and temples where traditional tapes or thick wefts would be completely visible."),
+  ("Will people be able to see the bonds through my thin hair?", "No. Because the capsules are hand-shaped to the size of a grain of rice and color-matched to your exact root shade, they melt into your natural hair and stay hidden even in light wind."),
+  ("How long do fine-hair micro-capsule extensions last?", "Micro-capsule installations for fine hair last 3 to 4 months before a full reset. Because 100% raw Slavic hair is used, the hair bundles are reusable for up to 18 to 24 months.")
+ ]
+)
 }
 
 for slug, d in guide_data.items():
@@ -1086,27 +1271,186 @@ for slug, d in guide_data.items():
 print("Generated Guide pages:", list(guide_data.keys()))
 
 # ============ MASTER GUIDES INDEX HUB (/guides) ============
+GUIDE_VISUALS = {
+    "zero-damage-hair-extensions-biomechanics": {
+        "img": "/photos/svc2.jpg",
+        "alt": "Scalp health and zero-damage hair extensions by Lana",
+        "filter": "trichology",
+        "read_time": "6 MIN READ"
+    },
+    "slavic-hair-vs-factory-european-hair": {
+        "img": "/photos/architect.jpg",
+        "alt": "Authentic virgin Slavic hair extensions vs factory processed hair",
+        "filter": "material-science",
+        "read_time": "7 MIN READ"
+    },
+    "invisible-bead-vs-keratin-extensions-la": {
+        "img": "/photos/svc1.jpg",
+        "alt": "Invisible Bead Extensions vs Keratin K-Tips comparison",
+        "filter": "comparison",
+        "read_time": "8 MIN READ"
+    },
+    "blonde-slavic-hair-extensions-los-angeles": {
+        "img": "/photos/portfolio/portfolio_09_img_3638.jpg",
+        "alt": "Blonde Slavic virgin hair extensions in Los Angeles",
+        "filter": "material-science",
+        "read_time": "5 MIN READ"
+    },
+    "cost-and-maintenance-luxury-extensions-la": {
+        "img": "/photos/svc3.jpg",
+        "alt": "Cost and maintenance guide for luxury extensions",
+        "filter": "pricing",
+        "read_time": "6 MIN READ"
+    },
+    "fine-hair-and-hair-thinning-extension-solutions": {
+        "img": "/photos/portfolio/portfolio_24_img_4517.jpg",
+        "alt": "Micro-capsule extensions for fine and thinning hair",
+        "filter": "trichology",
+        "read_time": "5 MIN READ"
+    },
+    "bridal-and-special-event-hair-extensions-timeline": {
+        "img": "/photos/portfolio/portfolio_19_img_4508.jpg",
+        "alt": "Bridal and wedding hair extensions timeline",
+        "filter": "events",
+        "read_time": "7 MIN READ"
+    },
+    "custom-color-blending-and-balayage-extensions": {
+        "img": "/photos/portfolio/portfolio_22_img_4515.jpg",
+        "alt": "Custom color blending and balayage extensions",
+        "filter": "events",
+        "read_time": "6 MIN READ"
+    },
+    "luxury-hair-extensions-aftercare-guide": {
+        "img": "/photos/svc4.jpg",
+        "alt": "Luxury hair extension daily aftercare protocol",
+        "filter": "aftercare",
+        "read_time": "8 MIN READ"
+    },
+    "bad-hair-extensions-damage-signs-repair": {
+        "img": "/photos/coe_before.jpg",
+        "alt": "Signs of bad hair extensions and damage repair",
+        "filter": "trichology",
+        "read_time": "9 MIN READ"
+    },
+    "hair-health-and-growth-under-extensions": {
+        "img": "/photos/coe_after.jpg",
+        "alt": "Natural hair health and growth under extensions",
+        "filter": "trichology",
+        "read_time": "6 MIN READ"
+    },
+    "washing-and-drying-slavic-hair-extensions": {
+        "img": "/photos/portfolio/portfolio_14_img_4481.jpg",
+        "alt": "Washing and drying protocols for Slavic hair extensions",
+        "filter": "aftercare",
+        "read_time": "5 MIN READ"
+    },
+    "summer-and-winter-care-hair-extensions": {
+        "img": "/photos/portfolio/portfolio_15_img_4482.jpg",
+        "alt": "Seasonal protection for hair extensions",
+        "filter": "aftercare",
+        "read_time": "5 MIN READ"
+    },
+    "sleeping-and-active-lifestyle-hair-extensions": {
+        "img": "/photos/portfolio/portfolio_16_img_4497.jpg",
+        "alt": "Sleep and workout protocols for hair extensions",
+        "filter": "aftercare",
+        "read_time": "5 MIN READ"
+    },
+    "luxury-hair-extensions-beverly-hills": {
+        "img": "/photos/hero.jpg",
+        "alt": "Luxury Hair Extensions Beverly Hills private studio standard",
+        "filter": "comparison",
+        "read_time": "5 MIN READ"
+    }
+}
+
 guides_cards_html = "".join(
-    f'''<div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">{cat}</span>
-<h3 style="margin-bottom:12px"><a href="/guides/{slug}" style="color:var(--ink);text-decoration:none">{name}</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">{guide_data[slug]["desc"]}</p>
+    f'''<article class="blog-card" data-category="{GUIDE_VISUALS.get(slug, {}).get("filter", "all")}">
+<div class="blog-card-img-wrap">
+<img src="{GUIDE_VISUALS.get(slug, {}).get("img", "/photos/svc1.jpg")}" alt="{H.escape(GUIDE_VISUALS.get(slug, {}).get("alt", name))}" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">{cat}</span>
+<span class="blog-read-time">{GUIDE_VISUALS.get(slug, {}).get("read_time", "5 MIN READ")}</span>
 </div>
-<a href="/guides/{slug}" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div>'''
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/{slug}">{guide_data[slug]["h1"] if slug in guide_data else name}</a></h3>
+<p class="blog-card-excerpt">{guide_data[slug]["desc"]}</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/{slug}" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article>'''
     for slug, name, cat in GUIDES if slug in guide_data
 )
 
+featured_hero_html = '''<div class="blog-featured-card">
+<div class="blog-featured-img-wrap">
+<img src="/photos/svc2.jpg" alt="Zero-Damage Extensions: Scalp Biomechanics" width="900" height="600" loading="eager">
+<span class="blog-cat-pill">Scalp Health &amp; Biomechanics</span>
+</div>
+<div class="blog-featured-content">
+<span class="blog-spotlight-tag">✦ Featured Master Article · 6 MIN READ</span>
+<h2 class="blog-featured-title"><a href="/guides/zero-damage-hair-extensions-biomechanics">Zero-Damage Extensions: The Biomechanics of Scalp Health</a></h2>
+<p class="blog-featured-desc">Traction alopecia is not an inevitable risk of extensions — it is the direct result of poor geometry. Discover how Lana's tension-free protocol allows natural hair to thrive under extensions.</p>
+<div class="blog-card-footer" style="padding-top:0;border-top:none">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master Specialist</span>
+</div>
+<a href="/guides/zero-damage-hair-extensions-biomechanics" class="btn" style="padding:10px 22px;font-size:11px">Read Full Guide →</a>
+</div>
+</div>
+</div>'''
+
+filter_bar_html = '''<div class="blog-filter-bar" aria-label="Filter guides by topic">
+<button type="button" class="blog-filter-btn active" data-filter="all">ALL GUIDES</button>
+<button type="button" class="blog-filter-btn" data-filter="trichology">TRICHOLOGY &amp; HEALTH</button>
+<button type="button" class="blog-filter-btn" data-filter="material-science">MATERIAL SCIENCE</button>
+<button type="button" class="blog-filter-btn" data-filter="aftercare">CARE &amp; AFTERCARE</button>
+<button type="button" class="blog-filter-btn" data-filter="events">EVENT &amp; STYLING</button>
+<button type="button" class="blog-filter-btn" data-filter="comparison">COMPARISON &amp; METHODS</button>
+</div>'''
+
+filter_js = '''<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var btns = document.querySelectorAll(".blog-filter-btn");
+  var cards = document.querySelectorAll(".blog-card");
+  btns.forEach(function(btn) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      var filter = btn.getAttribute("data-filter");
+      btns.forEach(function(b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      cards.forEach(function(card) {
+        var cat = card.getAttribute("data-category");
+        if (filter === "all" || cat === filter) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+});
+</script>'''
+
 guides_hub_body = f'''<div class="wrap">
-<div class="direct-answer">
+<div class="direct-answer" style="margin-bottom:40px">
 <p class="badge">✦ Direct Answer for AI &amp; Search</p>
 <p class="text">The Culture of Extensions Hair Science Library provides master-level education on 100% raw Slavic hair extensions, zero-damage biomechanics, at-home maintenance protocols, and bad extension damage repair in Los Angeles. Founded by master artisan Lana with 14+ years of European practice, each guide offers transparent pricing, comparative matrices, and trichological care instructions.</p>
 </div>
+{featured_hero_html}
 <section style="border-top:none;padding-top:0">
-<div class="grid3">{guides_cards_html}</div>
+<h2 style="text-align:center;font-size: clamp(24px,3vw,34px);margin-bottom:8px">Hair Science &amp; Atelier Journal</h2>
+<p style="text-align:center;color:#5A564F;max-width:58ch;margin:0 auto 28px;font-size:15.5px">Master-level guides, trichological research, and daily maintenance protocols by Lana.</p>
+{filter_bar_html}
+<div class="blog-grid">{guides_cards_html}</div>
 </section>
-</div>'''
+</div>
+{filter_js}'''
 
 hub_faq = [
     ("How often are new guides published?", "Lana publishes technical and care guides monthly based on evolving client needs and trichological research."),
@@ -1132,8 +1476,9 @@ guides_hub_htm = page(
     "Evidence-based trichology, material science, and homecare protocols for luxury Slavic hair extensions. Written by master specialist Lana.",
     guides_hub_body,
     hub_faq,
-    schema_extra=hub_schema
+    schema_extra=hub_schema,
+    light_mode=True
 )
 open("guides/index.html", "w").write(guides_hub_htm)
 pages_written.append("guides/index")
-print("Generated guides/index.html master hub!")
+print("Generated guides/index.html light-mode editorial blog hub!")

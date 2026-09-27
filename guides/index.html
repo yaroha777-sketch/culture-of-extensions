@@ -83,6 +83,67 @@ footer.site li{padding:4px 0}
 .foot-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 @media(max-width:840px){.hero{grid-template-columns:1fr;padding:40px 0}.grid2,.grid3,footer.site .cols{grid-template-columns:1fr}nav.main{gap:16px}nav.main a{font-size:11px}section{padding:44px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body.light-theme { background-color: #FAF8F5 !important; color: #1F1E1C !important; }
+body.light-theme header.site { background: rgba(250, 248, 245, 0.94) !important; border-bottom: 1px solid rgba(184, 159, 112, 0.25) !important; }
+body.light-theme .logo { color: #1F1E1C !important; }
+body.light-theme nav.main a { color: #5A564F !important; }
+body.light-theme nav.main a:hover { color: #A68A56 !important; }
+body.light-theme .crumbs { color: #7D786E !important; }
+body.light-theme .crumbs a { color: #5A564F !important; }
+body.light-theme h1 { background: linear-gradient(135deg, #1F1E1C 20%, #7A653E 75%, #A68A56) !important; -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important; }
+body.light-theme h2 { color: #1F1E1C !important; }
+body.light-theme h3 { color: #8C7343 !important; }
+body.light-theme p.lead { color: #5A564F !important; }
+body.light-theme section { border-top: 1px solid rgba(184, 159, 112, 0.2) !important; }
+body.light-theme details summary { color: #1F1E1C !important; border-bottom-color: rgba(184, 159, 112, 0.2) !important; }
+body.light-theme details p { color: #5A564F !important; }
+body.light-theme footer.site { background: #F3EFE7 !important; border-top: 1px solid rgba(184, 159, 112, 0.25) !important; color: #1F1E1C !important; }
+body.light-theme footer.site p, body.light-theme footer.site a { color: #5A564F !important; }
+body.light-theme footer.site a:hover { color: #A68A56 !important; }
+body.light-theme footer.site .foot-label { color: #8C7343 !important; }
+body.light-theme .direct-answer { background: rgba(201, 184, 150, 0.12) !important; border: 1px solid #C9B896 !important; border-radius: 8px !important; }
+body.light-theme .direct-answer p.text { color: #2D2B28 !important; }
+body.light-theme .direct-answer p.badge { color: #8C7343 !important; }
+
+.blog-filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin: 36px 0 44px; justify-content: center; }
+.blog-filter-btn { background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.32); color: #5A564F; padding: 10px 22px; border-radius: 30px; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(30, 25, 15, 0.03); }
+.blog-filter-btn:hover, .blog-filter-btn.active { background: #A68A56; color: #FFFFFF; border-color: #A68A56; box-shadow: 0 6px 18px rgba(166, 138, 86, 0.25); }
+
+.blog-featured-card { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0; background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.35); border-radius: 16px; overflow: hidden; margin-bottom: 56px; box-shadow: 0 16px 44px rgba(30, 25, 15, 0.05); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease; }
+.blog-featured-card:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(30, 25, 15, 0.09); }
+.blog-featured-img-wrap { position: relative; min-height: 400px; overflow: hidden; background: #F0EAE1; }
+.blog-featured-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.blog-featured-card:hover .blog-featured-img-wrap img { transform: scale(1.04); }
+.blog-featured-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+.blog-spotlight-tag { display: inline-flex; align-items: center; gap: 8px; color: #A68A56; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; }
+.blog-featured-title { font-family: "Bodoni Moda", serif; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.25; color: #1F1E1C; margin-bottom: 16px; font-weight: 500; }
+.blog-featured-title a { color: inherit; text-decoration: none; transition: color 0.2s; }
+.blog-featured-title a:hover { color: #8C7343; }
+.blog-featured-desc { color: #5A564F; font-size: 16px; line-height: 1.65; margin-bottom: 28px; }
+
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+@media (max-width: 992px) { .blog-featured-card { grid-template-columns: 1fr; } .blog-featured-img-wrap { min-height: 280px; } .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } .blog-featured-content { padding: 28px 20px; } }
+
+.blog-card { background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.3); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 28px rgba(30, 25, 15, 0.035); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease; }
+.blog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(30, 25, 15, 0.09); border-color: #A68A56; }
+.blog-card-img-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; background: #F0EAE1; }
+.blog-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.blog-card:hover .blog-card-img-wrap img { transform: scale(1.07); }
+.blog-cat-pill { position: absolute; top: 14px; left: 14px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); color: #7A6234; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; font-weight: 600; border: 1px solid rgba(184, 159, 112, 0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.blog-read-time { position: absolute; bottom: 12px; right: 12px; background: rgba(31, 30, 28, 0.78); backdrop-filter: blur(6px); color: #FAF7F2; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 9px; border-radius: 10px; }
+.blog-card-body { padding: 24px 24px 18px; flex-grow: 1; display: flex; flex-direction: column; }
+.blog-card-title { font-family: "Bodoni Moda", serif; font-size: 19.5px; line-height: 1.35; color: #1F1E1C; margin-bottom: 10px; font-weight: 500; transition: color 0.2s; }
+.blog-card-title a { color: inherit; text-decoration: none; }
+.blog-card:hover .blog-card-title { color: #7A6234; }
+.blog-card-excerpt { color: #5A564F; font-size: 14.5px; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+.blog-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(184, 159, 112, 0.18); }
+.blog-author-meta { display: flex; align-items: center; gap: 8px; }
+.blog-author-avatar { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid #C9B896; }
+.blog-author-name { font-size: 11px; letter-spacing: 0.06em; color: #7D786E; text-transform: uppercase; }
+.blog-read-link { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C7343; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: color 0.2s, transform 0.2s; }
+.blog-card:hover .blog-read-link { color: #5C4820; transform: translateX(3px); }
 </style>
 <!-- Google tag (Google Ads) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18195839181"></script>
@@ -120,12 +181,13 @@ footer.site li{padding:4px 0}
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "name": "Hair Science & Luxury Extension Guides | Culture of Extensions", "description": "Evidence-based trichology, material science, aftercare rituals, and master comparisons for Slavic hair extensions in Los Angeles by Lana.", "url": "https://www.cultureofextensions.com/guides", "publisher": {"@type": "HairSalon", "name": "Culture of Extensions by Lana", "@id": "https://www.cultureofextensions.com/#business", "telephone": "+14244289074", "address": {"@type": "PostalAddress", "streetAddress": "2119 N Glenoaks Blvd", "addressLocality": "Burbank", "addressRegion": "CA", "postalCode": "91504", "addressCountry": "US"}, "knowsLanguage": ["en", "es", "ru"], "availableLanguage": ["English", "Spanish", "Russian"]}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How often are new guides published?", "acceptedAnswer": {"@type": "Answer", "text": "Lana publishes technical and care guides monthly based on evolving client needs and trichological research."}}, {"@type": "Question", "name": "Are these guides applicable to other salon extensions?", "acceptedAnswer": {"@type": "Answer", "text": "The aftercare and damage recognition guides apply to all luxury installations, though our biomechanical standards are proprietary to Culture of Extensions."}}, {"@type": "Question", "name": "How can I book a personal consultation with Lana?", "acceptedAnswer": {"@type": "Answer", "text": "Consultations are complimentary and appointment-only at our private Burbank studio. Book online through Square Appointments."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cultureofextensions.com/"}, {"@type": "ListItem", "position": 2, "name": "Hair Science, Care & Master Guides", "item": "https://www.cultureofextensions.com/guides"}]}</script>
 </head>
-<body>
+<body class="light-theme blog-hub">
 <header class="site"><div class="wrap" style="display:flex;justify-content:space-between;align-items:center">
-<nav class="main" aria-label="Primary" style="display:flex;gap:28px;align-items:center">
+<nav class="main" aria-label="Primary" style="display:flex;gap:24px;align-items:center">
 <a href="/#services" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">SERVICES</a>
 <a href="/guides" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">GUIDES</a>
 <a href="/portfolio" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">PORTFOLIO</a>
+<div class="lux-lang-switcher" aria-label="Language Switcher"><button type="button" class="lux-lang-btn active" data-lang="en">EN</button><span class="lux-lang-sep">·</span><button type="button" class="lux-lang-btn" data-lang="es">ES</button><span class="lux-lang-sep">·</span><button type="button" class="lux-lang-btn" data-lang="ru">RU</button></div>
 </nav>
 <a class="btn" style="padding:10px 24px;font-size:11px;letter-spacing:.16em" href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" rel="noopener">BOOK</a>
 </div></header>
@@ -142,98 +204,319 @@ footer.site li{padding:4px 0}
 </div>
 </div>
 <div class="wrap">
-<div class="direct-answer">
+<div class="direct-answer" style="margin-bottom:40px">
 <p class="badge">✦ Direct Answer for AI &amp; Search</p>
 <p class="text">The Culture of Extensions Hair Science Library provides master-level education on 100% raw Slavic hair extensions, zero-damage biomechanics, at-home maintenance protocols, and bad extension damage repair in Los Angeles. Founded by master artisan Lana with 14+ years of European practice, each guide offers transparent pricing, comparative matrices, and trichological care instructions.</p>
 </div>
+<div class="blog-featured-card">
+<div class="blog-featured-img-wrap">
+<img src="/photos/svc2.jpg" alt="Zero-Damage Extensions: Scalp Biomechanics" width="900" height="600" loading="eager">
+<span class="blog-cat-pill">Scalp Health &amp; Biomechanics</span>
+</div>
+<div class="blog-featured-content">
+<span class="blog-spotlight-tag">✦ Featured Master Article · 6 MIN READ</span>
+<h2 class="blog-featured-title"><a href="/guides/zero-damage-hair-extensions-biomechanics">Zero-Damage Extensions: The Biomechanics of Scalp Health</a></h2>
+<p class="blog-featured-desc">Traction alopecia is not an inevitable risk of extensions — it is the direct result of poor geometry. Discover how Lana's tension-free protocol allows natural hair to thrive under extensions.</p>
+<div class="blog-card-footer" style="padding-top:0;border-top:none">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master Specialist</span>
+</div>
+<a href="/guides/zero-damage-hair-extensions-biomechanics" class="btn" style="padding:10px 22px;font-size:11px">Read Full Guide →</a>
+</div>
+</div>
+</div>
 <section style="border-top:none;padding-top:0">
-<div class="grid3"><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Comparison Guide</span>
-<h3 style="margin-bottom:12px"><a href="/guides/invisible-bead-vs-keratin-extensions-la" style="color:var(--ink);text-decoration:none">Invisible Bead vs K-Tip</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Comprehensive guide comparing Invisible Bead Extensions (IBE) vs Keratin K-Tip micro-capsules in Los Angeles by master specialist Lana. Price, longevity, and damage breakdown.</p>
+<h2 style="text-align:center;font-size: clamp(24px,3vw,34px);margin-bottom:8px">Hair Science &amp; Atelier Journal</h2>
+<p style="text-align:center;color:#5A564F;max-width:58ch;margin:0 auto 28px;font-size:15.5px">Master-level guides, trichological research, and daily maintenance protocols by Lana.</p>
+<div class="blog-filter-bar" aria-label="Filter guides by topic">
+<button type="button" class="blog-filter-btn active" data-filter="all">ALL GUIDES</button>
+<button type="button" class="blog-filter-btn" data-filter="trichology">TRICHOLOGY &amp; HEALTH</button>
+<button type="button" class="blog-filter-btn" data-filter="material-science">MATERIAL SCIENCE</button>
+<button type="button" class="blog-filter-btn" data-filter="aftercare">CARE &amp; AFTERCARE</button>
+<button type="button" class="blog-filter-btn" data-filter="events">EVENT &amp; STYLING</button>
+<button type="button" class="blog-filter-btn" data-filter="comparison">COMPARISON &amp; METHODS</button>
 </div>
-<a href="/guides/invisible-bead-vs-keratin-extensions-la" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Material Science</span>
-<h3 style="margin-bottom:12px"><a href="/guides/slavic-hair-vs-factory-european-hair" style="color:var(--ink);text-decoration:none">Slavic Hair vs Factory Hair</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">The material science of luxury hair extensions in Los Angeles. Why factory European hair mats after 6 weeks and why 100% authentic raw Slavic hair lasts 2 years.</p>
+<div class="blog-grid"><article class="blog-card" data-category="comparison">
+<div class="blog-card-img-wrap">
+<img src="/photos/svc1.jpg" alt="Invisible Bead Extensions vs Keratin K-Tips comparison" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Comparison Guide</span>
+<span class="blog-read-time">8 MIN READ</span>
 </div>
-<a href="/guides/slavic-hair-vs-factory-european-hair" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">2026 Pricing</span>
-<h3 style="margin-bottom:12px"><a href="/guides/cost-and-maintenance-luxury-extensions-la" style="color:var(--ink);text-decoration:none">Cost & Maintenance Guide</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Complete pricing transparency for luxury hair extensions in Los Angeles (Burbank, Beverly Hills). Initial install, maintenance move-ups, and 18-month investment math.</p>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/invisible-bead-vs-keratin-extensions-la">Invisible Bead vs. Keratin K-Tip Extensions</a></h3>
+<p class="blog-card-excerpt">Comprehensive guide comparing Invisible Bead Extensions (IBE) vs Keratin K-Tip micro-capsules in Los Angeles by master specialist Lana. Price, longevity, and damage breakdown.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
 </div>
-<a href="/guides/cost-and-maintenance-luxury-extensions-la" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Private Studio</span>
-<h3 style="margin-bottom:12px"><a href="/guides/luxury-hair-extensions-beverly-hills" style="color:var(--ink);text-decoration:none">Beverly Hills Standard</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Why Beverly Hills clients drive 20 minutes to Burbank for Lana's private bespoke hair extensions. 100% Slavic hair, zero-damage K-Tips, and unhurried artistry.</p>
+<a href="/guides/invisible-bead-vs-keratin-extensions-la" class="blog-read-link">Read Guide →</a>
 </div>
-<a href="/guides/luxury-hair-extensions-beverly-hills" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Scalp Health</span>
-<h3 style="margin-bottom:12px"><a href="/guides/zero-damage-hair-extensions-biomechanics" style="color:var(--ink);text-decoration:none">Zero-Damage Biomechanics</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">How tension-free sectioning and 1:1 weight matching protect fine natural hair from traction alopecia. The science of damage-free extensions by Lana.</p>
 </div>
-<a href="/guides/zero-damage-hair-extensions-biomechanics" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Clean Lift Science</span>
-<h3 style="margin-bottom:12px"><a href="/guides/blonde-slavic-hair-extensions-los-angeles" style="color:var(--ink);text-decoration:none">Blonde Slavic Hair</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Authentic blonde virgin Slavic hair extensions in Los Angeles. Slow-lift cold bleaching, intact cuticles, and bespoke balayage color blending by Lana.</p>
+</article><article class="blog-card" data-category="material-science">
+<div class="blog-card-img-wrap">
+<img src="/photos/architect.jpg" alt="Authentic virgin Slavic hair extensions vs factory processed hair" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Material Science</span>
+<span class="blog-read-time">7 MIN READ</span>
 </div>
-<a href="/guides/blonde-slavic-hair-extensions-los-angeles" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Daily Maintenance</span>
-<h3 style="margin-bottom:12px"><a href="/guides/luxury-hair-extensions-aftercare-guide" style="color:var(--ink);text-decoration:none">Atelier Aftercare Guide</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">The complete professional atelier aftercare guide for Slavic hair extensions by master Lana. Washing, drying, brushing, and sleep protocols to preserve extensions for up to 2 years.</p>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/slavic-hair-vs-factory-european-hair">Slavic Hair vs. Factory Processed Hair</a></h3>
+<p class="blog-card-excerpt">The material science of luxury hair extensions in Los Angeles. Why factory European hair mats after 6 weeks and why 100% authentic raw Slavic hair lasts 2 years.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
 </div>
-<a href="/guides/luxury-hair-extensions-aftercare-guide" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Damage Recovery</span>
-<h3 style="margin-bottom:12px"><a href="/guides/bad-hair-extensions-damage-signs-repair" style="color:var(--ink);text-decoration:none">Bad Extensions Signs & Repair</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Critical warning signs of improper hair extensions: tension pain, traction folliculitis, cross-hair entrapment, and shedding. How master specialist Lana repairs and recovers natural hair.</p>
+<a href="/guides/slavic-hair-vs-factory-european-hair" class="blog-read-link">Read Guide →</a>
 </div>
-<a href="/guides/bad-hair-extensions-damage-signs-repair" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Zero Damage</span>
-<h3 style="margin-bottom:12px"><a href="/guides/hair-health-and-growth-under-extensions" style="color:var(--ink);text-decoration:none">Hair Health & Growth Science</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">How proper Slavic hair extensions protect natural hair and promote growth. The 1:1 weight rule, cuticle preservation, and real 12-month transformation results by Lana.</p>
 </div>
-<a href="/guides/hair-health-and-growth-under-extensions" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Hair Care Science</span>
-<h3 style="margin-bottom:12px"><a href="/guides/washing-and-drying-slavic-hair-extensions" style="color:var(--ink);text-decoration:none">Washing & Drying Protocols</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Trichological guide on washing, drying, and heat styling Slavic hair extensions in Los Angeles. Sulfate-free cleansing, 100% dry bond rule, and 350°F thermal protection.</p>
+</article><article class="blog-card" data-category="pricing">
+<div class="blog-card-img-wrap">
+<img src="/photos/svc3.jpg" alt="Cost and maintenance guide for luxury extensions" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">2026 Pricing</span>
+<span class="blog-read-time">6 MIN READ</span>
 </div>
-<a href="/guides/washing-and-drying-slavic-hair-extensions" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Seasonal Trichology</span>
-<h3 style="margin-bottom:12px"><a href="/guides/summer-and-winter-care-hair-extensions" style="color:var(--ink);text-decoration:none">Seasonal Protection Guide</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Complete seasonal protection guide for Slavic hair extensions in Los Angeles. Protecting hair against salt water, chlorine, UV damage, copper discoloration, and winter static.</p>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/cost-and-maintenance-luxury-extensions-la">The Real Cost & Maintenance of Luxury Extensions</a></h3>
+<p class="blog-card-excerpt">Complete pricing transparency for luxury hair extensions in Los Angeles (Burbank, Beverly Hills). Initial install, maintenance move-ups, and 18-month investment math.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
 </div>
-<a href="/guides/summer-and-winter-care-hair-extensions" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div><div class="card" style="display:flex;flex-direction:column;justify-content:space-between">
-<div>
-<span style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:12px">Lifestyle Care</span>
-<h3 style="margin-bottom:12px"><a href="/guides/sleeping-and-active-lifestyle-hair-extensions" style="color:var(--ink);text-decoration:none">Sleep & Workout Protocols</a></h3>
-<p style="color:var(--dim);font-size:15px;line-height:1.6;margin-bottom:20px">Active lifestyle protocols for luxury hair extensions in Los Angeles. Gym workouts, sweat neutralization, tension-free ponytails, and Mulberry silk sleep braids.</p>
+<a href="/guides/cost-and-maintenance-luxury-extensions-la" class="blog-read-link">Read Guide →</a>
 </div>
-<a href="/guides/sleeping-and-active-lifestyle-hair-extensions" style="font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:500">Read Master Guide ✦</a>
-</div></div>
+</div>
+</article><article class="blog-card" data-category="comparison">
+<div class="blog-card-img-wrap">
+<img src="/photos/hero.jpg" alt="Luxury Hair Extensions Beverly Hills private studio standard" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Private Studio</span>
+<span class="blog-read-time">5 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/luxury-hair-extensions-beverly-hills">The Beverly Hills Standard: Private Studio Artistry</a></h3>
+<p class="blog-card-excerpt">Why Beverly Hills clients drive 20 minutes to Burbank for Lana's private bespoke hair extensions. 100% Slavic hair, zero-damage K-Tips, and unhurried artistry.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/luxury-hair-extensions-beverly-hills" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="trichology">
+<div class="blog-card-img-wrap">
+<img src="/photos/svc2.jpg" alt="Scalp health and zero-damage hair extensions by Lana" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Scalp Health</span>
+<span class="blog-read-time">6 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/zero-damage-hair-extensions-biomechanics">Zero-Damage Extensions: The Biomechanics of Scalp Health</a></h3>
+<p class="blog-card-excerpt">How tension-free sectioning and 1:1 weight matching protect fine natural hair from traction alopecia. The science of damage-free extensions by Lana.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/zero-damage-hair-extensions-biomechanics" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="material-science">
+<div class="blog-card-img-wrap">
+<img src="/photos/portfolio/portfolio_09_img_3638.jpg" alt="Blonde Slavic virgin hair extensions in Los Angeles" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Clean Lift Science</span>
+<span class="blog-read-time">5 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/blonde-slavic-hair-extensions-los-angeles">Blonde Slavic Hair: The Clean Lift Architecture</a></h3>
+<p class="blog-card-excerpt">Authentic blonde virgin Slavic hair extensions in Los Angeles. Slow-lift cold bleaching, intact cuticles, and bespoke balayage color blending by Lana.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/blonde-slavic-hair-extensions-los-angeles" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="aftercare">
+<div class="blog-card-img-wrap">
+<img src="/photos/svc4.jpg" alt="Luxury hair extension daily aftercare protocol" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Daily Maintenance</span>
+<span class="blog-read-time">8 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/luxury-hair-extensions-aftercare-guide">The Atelier Aftercare Protocol: Preserving Luxury Slavic Hair</a></h3>
+<p class="blog-card-excerpt">The complete professional atelier aftercare guide for Slavic hair extensions by master Lana. Washing, drying, brushing, and sleep protocols to preserve extensions for up to 2 years.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/luxury-hair-extensions-aftercare-guide" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="trichology">
+<div class="blog-card-img-wrap">
+<img src="/photos/coe_before.jpg" alt="Signs of bad hair extensions and damage repair" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Damage Recovery</span>
+<span class="blog-read-time">9 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/bad-hair-extensions-damage-signs-repair">Bad Hair Extensions: Warning Signs, Hidden Damage & Safe Restoration</a></h3>
+<p class="blog-card-excerpt">Critical warning signs of improper hair extensions: tension pain, traction folliculitis, cross-hair entrapment, and shedding. How master specialist Lana repairs and recovers natural hair.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/bad-hair-extensions-damage-signs-repair" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="trichology">
+<div class="blog-card-img-wrap">
+<img src="/photos/coe_after.jpg" alt="Natural hair health and growth under extensions" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Zero Damage</span>
+<span class="blog-read-time">6 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/hair-health-and-growth-under-extensions">Natural Hair Health & Growth: Can Extensions Protect Your Own Hair?</a></h3>
+<p class="blog-card-excerpt">How proper Slavic hair extensions protect natural hair and promote growth. The 1:1 weight rule, cuticle preservation, and real 12-month transformation results by Lana.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/hair-health-and-growth-under-extensions" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="aftercare">
+<div class="blog-card-img-wrap">
+<img src="/photos/portfolio/portfolio_14_img_4481.jpg" alt="Washing and drying protocols for Slavic hair extensions" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Hair Care Science</span>
+<span class="blog-read-time">5 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/washing-and-drying-slavic-hair-extensions">Washing, Drying & Thermal Styling Science for Slavic Extensions</a></h3>
+<p class="blog-card-excerpt">Trichological guide on washing, drying, and heat styling Slavic hair extensions in Los Angeles. Sulfate-free cleansing, 100% dry bond rule, and 350°F thermal protection.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/washing-and-drying-slavic-hair-extensions" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="aftercare">
+<div class="blog-card-img-wrap">
+<img src="/photos/portfolio/portfolio_15_img_4482.jpg" alt="Seasonal protection for hair extensions" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Seasonal Trichology</span>
+<span class="blog-read-time">5 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/summer-and-winter-care-hair-extensions">Summer & Winter Climate Protection for Luxury Extensions</a></h3>
+<p class="blog-card-excerpt">Complete seasonal protection guide for Slavic hair extensions in Los Angeles. Protecting hair against salt water, chlorine, UV damage, copper discoloration, and winter static.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/summer-and-winter-care-hair-extensions" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="aftercare">
+<div class="blog-card-img-wrap">
+<img src="/photos/portfolio/portfolio_16_img_4497.jpg" alt="Sleep and workout protocols for hair extensions" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Lifestyle Care</span>
+<span class="blog-read-time">5 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/sleeping-and-active-lifestyle-hair-extensions">Active Lifestyle, Exercise & Sleep Care for Hair Extensions</a></h3>
+<p class="blog-card-excerpt">Active lifestyle protocols for luxury hair extensions in Los Angeles. Gym workouts, sweat neutralization, tension-free ponytails, and Mulberry silk sleep braids.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/sleeping-and-active-lifestyle-hair-extensions" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="events">
+<div class="blog-card-img-wrap">
+<img src="/photos/portfolio/portfolio_19_img_4508.jpg" alt="Bridal and wedding hair extensions timeline" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Event Planning</span>
+<span class="blog-read-time">7 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/bridal-and-special-event-hair-extensions-timeline">Bridal & Special Event Extensions: The Master Timeline</a></h3>
+<p class="blog-card-excerpt">Complete bridal hair extension timeline for brides in Los Angeles & Beverly Hills. Initial consultation, hair matching, trial styling, and installation timing by Lana.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/bridal-and-special-event-hair-extensions-timeline" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="events">
+<div class="blog-card-img-wrap">
+<img src="/photos/portfolio/portfolio_22_img_4515.jpg" alt="Custom color blending and balayage extensions" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Color Architecture</span>
+<span class="blog-read-time">6 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/custom-color-blending-and-balayage-extensions">Custom Color Blending & Balayage Extensions</a></h3>
+<p class="blog-card-excerpt">Master color architecture for hair extensions in Los Angeles by Lana. Hand-painted shadow roots, balayage integration, and 3-zone color blending with zero damage.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/custom-color-blending-and-balayage-extensions" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article><article class="blog-card" data-category="trichology">
+<div class="blog-card-img-wrap">
+<img src="/photos/portfolio/portfolio_24_img_4517.jpg" alt="Micro-capsule extensions for fine and thinning hair" width="600" height="400" loading="lazy">
+<span class="blog-cat-pill">Density & Restoration</span>
+<span class="blog-read-time">5 MIN READ</span>
+</div>
+<div class="blog-card-body">
+<h3 class="blog-card-title"><a href="/guides/fine-hair-and-hair-thinning-extension-solutions">Fine Hair & Thinning Solutions: Micro-Capsule Architecture</a></h3>
+<p class="blog-card-excerpt">Specialized hair extensions for fine, fragile, and thinning hair in Los Angeles. Micro-capsule weight ratios (0.03g-0.05g), scalp health, and density restoration by Lana.</p>
+<div class="blog-card-footer">
+<div class="blog-author-meta">
+<img src="/photos/lana.jpg" alt="Lana Svitlana" class="blog-author-avatar">
+<span class="blog-author-name">Lana · Master</span>
+</div>
+<a href="/guides/fine-hair-and-hair-thinning-extension-solutions" class="blog-read-link">Read Guide →</a>
+</div>
+</div>
+</article></div>
 </section>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var btns = document.querySelectorAll(".blog-filter-btn");
+  var cards = document.querySelectorAll(".blog-card");
+  btns.forEach(function(btn) {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      var filter = btn.getAttribute("data-filter");
+      btns.forEach(function(b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      cards.forEach(function(card) {
+        var cat = card.getAttribute("data-category");
+        if (filter === "all" || cat === filter) {
+          card.style.display = "flex";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    });
+  });
+});
+</script>
 <div class="wrap">
 <section class="cta" style="border-top:none">
 <p style="font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:18px">Real Results</p>
@@ -258,7 +541,7 @@ footer.site li{padding:4px 0}
 <p style="margin-top:14px"><a class="btn ghost" style="padding:11px 24px;font-size:11px" href="https://app.squareup.com/appointments/book/oireayuannjp07/LQYSJW8GJE1Y6/start" rel="noopener">Book Consultation</a></p></div>
 <div><p class="foot-label">Signature Services</p><ul><li><a href="/services/k-tip-extensions">K-Tip Extensions</a></li><li><a href="/services/volume-density">Volume & Density</a></li><li><a href="/services/length-transformation">Length Transformation</a></li><li><a href="/services/bio-tape-color">BIO Tape & Color</a></li><li><a href="/portfolio">Before &amp; After Gallery</a></li></ul></div>
 <div><p class="foot-label">Service Areas</p><ul><li><a href="/hair-extensions-burbank">Hair Extensions Burbank</a></li><li><a href="/hair-extensions-glendale">Hair Extensions Glendale</a></li><li><a href="/hair-extensions-studio-city">Hair Extensions Studio City</a></li><li><a href="/hair-extensions-toluca-lake">Hair Extensions Toluca Lake</a></li><li><a href="/hair-extensions-pasadena">Hair Extensions Pasadena</a></li><li><a href="/hair-extensions-los-angeles">Hair Extensions Los Angeles</a></li></ul></div>
-<div><p class="foot-label">Hair Science &amp; Guides</p><ul><li><a href="/guides/invisible-bead-vs-keratin-extensions-la">Invisible Bead vs K-Tip</a></li><li><a href="/guides/slavic-hair-vs-factory-european-hair">Slavic Hair vs Factory Hair</a></li><li><a href="/guides/cost-and-maintenance-luxury-extensions-la">Cost & Maintenance Guide</a></li><li><a href="/guides/luxury-hair-extensions-beverly-hills">Beverly Hills Standard</a></li><li><a href="/guides/zero-damage-hair-extensions-biomechanics">Zero-Damage Biomechanics</a></li><li><a href="/guides/blonde-slavic-hair-extensions-los-angeles">Blonde Slavic Hair</a></li><li><a href="/guides/luxury-hair-extensions-aftercare-guide">Atelier Aftercare Guide</a></li><li><a href="/guides/bad-hair-extensions-damage-signs-repair">Bad Extensions Signs & Repair</a></li><li><a href="/guides/hair-health-and-growth-under-extensions">Hair Health & Growth Science</a></li><li><a href="/guides/washing-and-drying-slavic-hair-extensions">Washing & Drying Protocols</a></li><li><a href="/guides/summer-and-winter-care-hair-extensions">Seasonal Protection Guide</a></li><li><a href="/guides/sleeping-and-active-lifestyle-hair-extensions">Sleep & Workout Protocols</a></li></ul></div>
+<div><p class="foot-label">Hair Science &amp; Guides</p><ul><li><a href="/guides/invisible-bead-vs-keratin-extensions-la">Invisible Bead vs K-Tip</a></li><li><a href="/guides/slavic-hair-vs-factory-european-hair">Slavic Hair vs Factory Hair</a></li><li><a href="/guides/cost-and-maintenance-luxury-extensions-la">Cost & Maintenance Guide</a></li><li><a href="/guides/luxury-hair-extensions-beverly-hills">Beverly Hills Standard</a></li><li><a href="/guides/zero-damage-hair-extensions-biomechanics">Zero-Damage Biomechanics</a></li><li><a href="/guides/blonde-slavic-hair-extensions-los-angeles">Blonde Slavic Hair</a></li><li><a href="/guides/luxury-hair-extensions-aftercare-guide">Atelier Aftercare Guide</a></li><li><a href="/guides/bad-hair-extensions-damage-signs-repair">Bad Extensions Signs & Repair</a></li><li><a href="/guides/hair-health-and-growth-under-extensions">Hair Health & Growth Science</a></li><li><a href="/guides/washing-and-drying-slavic-hair-extensions">Washing & Drying Protocols</a></li><li><a href="/guides/summer-and-winter-care-hair-extensions">Seasonal Protection Guide</a></li><li><a href="/guides/sleeping-and-active-lifestyle-hair-extensions">Sleep & Workout Protocols</a></li><li><a href="/guides/bridal-and-special-event-hair-extensions-timeline">Bridal & Event Extensions Timeline</a></li><li><a href="/guides/custom-color-blending-and-balayage-extensions">Custom Color & Balayage Extensions</a></li><li><a href="/guides/fine-hair-and-hair-thinning-extension-solutions">Fine Hair & Thinning Extension Solutions</a></li></ul></div>
 </div></div></footer>
 <script>
   (function() {

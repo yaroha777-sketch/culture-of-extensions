@@ -295,6 +295,66 @@
     renderSwitcher();
     setTimeout(renderSwitcher, 300);
     setTimeout(renderSwitcher, 1000);
+
+    if (activeLang === 'ru') {
+      applyNativeRussianTranslations();
+    }
+  }
+
+  // --- 5. High-Quality Native Russian UI Translation Layer ---
+  function applyNativeRussianTranslations() {
+    var ruMap = {
+      "SERVICES": "Услуги",
+      "GUIDES": "Гайды",
+      "PORTFOLIO": "Портфолио",
+      "BOOK": "Записаться",
+      "Book Consultation": "Записаться на консультацию",
+      "Book Complimentary Consultation": "Записаться на бесплатную консультацию",
+      "View Full Gallery": "Смотреть всю галерею",
+      "Read Master Guide ✦": "Читать гайд ✦",
+      "Read Guide →": "Читать гайд →",
+      "Read Full Guide →": "Читать полную статью →",
+      "Questions, Answered": "Вопросы и ответы",
+      "See the Transformations": "Галерея преображений",
+      "Begin Your Transformation": "Запишитесь на консультацию",
+      "Real Results": "Реальные результаты",
+      "The Atelier Library · Los Angeles": "Библиотека ателье · Лос-Анджелес",
+      "✦ Direct Answer for AI & Search": "✦ Прямой ответ для ИИ и поиска",
+      "Hair Science, Care & Master Guides": "Наука о волосах, уход и гайды",
+      "Home": "Главная",
+      "Signature Services": "Фирменные услуги",
+      "Service Areas": "Районы обслуживания",
+      "Hair Science & Guides": "Наука о волосах и гайды",
+      "Before & After Gallery": "Галерея До и После",
+      "Culture of Extensions · by Lana": "Culture of Extensions · от Ланы",
+      // Blog filter buttons
+      "ALL GUIDES": "ВСЕ СТАТЬИ",
+      "MATERIAL SCIENCE": "МАТЕРИАЛОВЕДЕНИЕ",
+      "TRICHOLOGY & HEALTH": "ТРИХОЛОГИЯ И ЗДОРОВЬЕ",
+      "CARE & AFTERCARE": "УХОД И ЗАБОТА",
+      "EVENT & STYLING": "СОБЫТИЯ И СТИЛЬ",
+      "COMPARISON & METHODS": "СРАВНЕНИЕ И МЕТОДЫ",
+      "PRICING & GUIDES": "ЦЕНЫ И ГАЙДЫ",
+      "Featured Master Article": "Главная статья номера",
+      "Lana · Master Specialist": "Лана · Мастер-специалист",
+      "Lana Svitlana": "Лана Светлана"
+    };
+
+    function replaceTextInNodes() {
+      var selectors = 'nav.main a, .btn, h1, h2, h3, .badge, .eyebrow, .crumbs a, .foot-label, footer a, .card a, .blog-filter-btn, .blog-cat-pill, .blog-spotlight-tag, .blog-author-name, .blog-read-link';
+      var nodes = document.querySelectorAll(selectors);
+      nodes.forEach(function (el) {
+        var txt = (el.innerText || el.textContent || "").trim();
+        if (ruMap[txt]) {
+          el.textContent = ruMap[txt];
+        }
+      });
+    }
+
+    replaceTextInNodes();
+    setTimeout(replaceTextInNodes, 400);
+    setTimeout(replaceTextInNodes, 1200);
+    setTimeout(replaceTextInNodes, 2500);
   }
 
   // --- Initialize on DOMContentLoaded ---
