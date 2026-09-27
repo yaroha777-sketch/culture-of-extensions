@@ -83,6 +83,78 @@ footer.site li{padding:4px 0}
 .foot-label{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
 @media(max-width:840px){.hero{grid-template-columns:1fr;padding:40px 0}.grid2,.grid3,footer.site .cols{grid-template-columns:1fr}nav.main{gap:16px}nav.main a{font-size:11px}section{padding:44px 0}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body.light-theme { background-color: #FAF8F5 !important; color: #1F1E1C !important; }
+body.light-theme header.site { background: rgba(250, 248, 245, 0.94) !important; border-bottom: 1px solid rgba(184, 159, 112, 0.25) !important; }
+body.light-theme .logo { color: #1F1E1C !important; }
+body.light-theme nav.main a { color: #5A564F !important; }
+body.light-theme nav.main a:hover { color: #A68A56 !important; }
+body.light-theme .crumbs { color: #7D786E !important; }
+body.light-theme .crumbs a { color: #5A564F !important; }
+body.light-theme h1 { background: linear-gradient(135deg, #1F1E1C 20%, #7A653E 75%, #A68A56) !important; -webkit-background-clip: text !important; background-clip: text !important; color: transparent !important; }
+body.light-theme h2 { color: #1F1E1C !important; }
+body.light-theme h3 { color: #8C7343 !important; }
+body.light-theme p.lead { color: #5A564F !important; }
+body.light-theme section { border-top: 1px solid rgba(184, 159, 112, 0.2) !important; }
+body.light-theme details summary { color: #1F1E1C !important; border-bottom-color: rgba(184, 159, 112, 0.2) !important; }
+body.light-theme details p { color: #5A564F !important; }
+body.light-theme footer.site { background: #F3EFE7 !important; border-top: 1px solid rgba(184, 159, 112, 0.25) !important; color: #1F1E1C !important; }
+body.light-theme footer.site p, body.light-theme footer.site a { color: #5A564F !important; }
+body.light-theme footer.site a:hover { color: #A68A56 !important; }
+body.light-theme footer.site .foot-label { color: #8C7343 !important; }
+body.light-theme .direct-answer { background: rgba(201, 184, 150, 0.12) !important; border: 1px solid #C9B896 !important; border-radius: 8px !important; }
+body.light-theme .direct-answer p.text { color: #2D2B28 !important; }
+body.light-theme .direct-answer p.badge { color: #8C7343 !important; }
+body.light-theme .card { background: #FFFFFF !important; border-color: rgba(184, 159, 112, 0.3) !important; color: #1F1E1C !important; }
+body.light-theme .card p { color: #5A564F !important; }
+body.light-theme table.matrix th { background: rgba(201, 184, 150, 0.14) !important; color: #8C7343 !important; border-color: rgba(184, 159, 112, 0.25) !important; }
+body.light-theme table.matrix td { color: #5A564F !important; border-color: rgba(184, 159, 112, 0.25) !important; }
+body.light-theme table.matrix td strong { color: #1F1E1C !important; }
+body.light-theme ul.checks { color: #5A564F !important; }
+body.light-theme ul.checks li { border-bottom-color: rgba(184, 159, 112, 0.2) !important; }
+body.light-theme ul.checks li::before { color: #A68A56 !important; }
+body.light-theme .btn.ghost { border-color: #A68A56 !important; color: #8C7343 !important; }
+body.light-theme .btn.ghost:hover { background: #A68A56 !important; color: #FFFFFF !important; }
+body.light-theme .cta p { color: #5A564F !important; }
+
+.blog-filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin: 36px 0 44px; justify-content: center; }
+.blog-filter-btn { background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.32); color: #5A564F; padding: 10px 22px; border-radius: 30px; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; font-weight: 500; transition: all 0.25s ease; box-shadow: 0 2px 8px rgba(30, 25, 15, 0.03); }
+.blog-filter-btn:hover, .blog-filter-btn.active { background: #A68A56; color: #FFFFFF; border-color: #A68A56; box-shadow: 0 6px 18px rgba(166, 138, 86, 0.25); }
+
+.blog-featured-card { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 0; background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.35); border-radius: 16px; overflow: hidden; margin-bottom: 56px; box-shadow: 0 16px 44px rgba(30, 25, 15, 0.05); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease; }
+.blog-featured-card:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(30, 25, 15, 0.09); }
+.blog-featured-img-wrap { position: relative; min-height: 400px; overflow: hidden; background: #F0EAE1; }
+.blog-featured-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.blog-featured-card:hover .blog-featured-img-wrap img { transform: scale(1.04); }
+.blog-featured-content { padding: 44px 40px; display: flex; flex-direction: column; justify-content: center; }
+.blog-spotlight-tag { display: inline-flex; align-items: center; gap: 8px; color: #A68A56; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; margin-bottom: 16px; }
+.blog-featured-title { font-family: "Bodoni Moda", serif; font-size: clamp(26px, 2.6vw, 36px); line-height: 1.25; color: #1F1E1C; margin-bottom: 16px; font-weight: 500; }
+.blog-featured-title a { color: inherit; text-decoration: none; transition: color 0.2s; }
+.blog-featured-title a:hover { color: #8C7343; }
+.blog-featured-desc { color: #5A564F; font-size: 16px; line-height: 1.65; margin-bottom: 28px; }
+
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+@media (max-width: 992px) { .blog-featured-card { grid-template-columns: 1fr; } .blog-featured-img-wrap { min-height: 280px; } .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } .blog-featured-content { padding: 28px 20px; } }
+
+.blog-card { background: #FFFFFF; border: 1px solid rgba(184, 159, 112, 0.3); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 28px rgba(30, 25, 15, 0.035); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease; }
+.blog-card:hover { transform: translateY(-6px); box-shadow: 0 20px 44px rgba(30, 25, 15, 0.09); border-color: #A68A56; }
+.blog-card-img-wrap { position: relative; width: 100%; height: 220px; overflow: hidden; background: #F0EAE1; }
+.blog-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.blog-card:hover .blog-card-img-wrap img { transform: scale(1.07); }
+.blog-cat-pill { position: absolute; top: 14px; left: 14px; background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(8px); color: #7A6234; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; font-weight: 600; border: 1px solid rgba(184, 159, 112, 0.4); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.blog-read-time { position: absolute; bottom: 12px; right: 12px; background: rgba(31, 30, 28, 0.78); backdrop-filter: blur(6px); color: #FAF7F2; font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 9px; border-radius: 10px; }
+.blog-card-body { padding: 24px 24px 18px; flex-grow: 1; display: flex; flex-direction: column; }
+.blog-card-title { font-family: "Bodoni Moda", serif; font-size: 19.5px; line-height: 1.35; color: #1F1E1C; margin-bottom: 10px; font-weight: 500; transition: color 0.2s; }
+.blog-card-title a { color: inherit; text-decoration: none; }
+.blog-card:hover .blog-card-title { color: #7A6234; }
+.blog-card-excerpt { color: #5A564F; font-size: 14.5px; line-height: 1.6; margin-bottom: 20px; flex-grow: 1; }
+.blog-card-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(184, 159, 112, 0.18); }
+.blog-author-meta { display: flex; align-items: center; gap: 8px; }
+.blog-author-avatar { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1px solid #C9B896; }
+.blog-author-name { font-size: 11px; letter-spacing: 0.06em; color: #7D786E; text-transform: uppercase; }
+.blog-read-link { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8C7343; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 4px; transition: color 0.2s, transform 0.2s; }
+.blog-card:hover .blog-read-link { color: #5C4820; transform: translateX(3px); }
 </style>
 <!-- Google tag (Google Ads) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18195839181"></script>
@@ -120,7 +192,7 @@ footer.site li{padding:4px 0}
 </script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Washing, Drying & Thermal Styling Protocols for Slavic Extensions | Culture of Extensions", "description": "Trichological guide on washing, drying, and heat styling Slavic hair extensions in Los Angeles. Sulfate-free cleansing, 100% dry bond rule, and 350°F thermal protection.", "author": {"@type": "Person", "name": "Lana (Svitlana Levenets)", "jobTitle": "Master Hair Extension Specialist & Educator", "worksFor": {"@type": "HairSalon", "name": "Culture of Extensions by Lana", "@id": "https://www.cultureofextensions.com/#business", "telephone": "+14244289074", "address": {"@type": "PostalAddress", "streetAddress": "2119 N Glenoaks Blvd", "addressLocality": "Burbank", "addressRegion": "CA", "postalCode": "91504", "addressCountry": "US"}, "knowsLanguage": ["en", "es", "ru"], "availableLanguage": ["English", "Spanish", "Russian"]}}, "publisher": {"@type": "HairSalon", "name": "Culture of Extensions by Lana", "@id": "https://www.cultureofextensions.com/#business", "telephone": "+14244289074", "address": {"@type": "PostalAddress", "streetAddress": "2119 N Glenoaks Blvd", "addressLocality": "Burbank", "addressRegion": "CA", "postalCode": "91504", "addressCountry": "US"}, "knowsLanguage": ["en", "es", "ru"], "availableLanguage": ["English", "Spanish", "Russian"]}, "datePublished": "2026-06-01", "dateModified": "2026-09-02", "mainEntityOfPage": "https://www.cultureofextensions.com/guides/washing-and-drying-slavic-hair-extensions"}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I air-dry my hair extensions?", "acceptedAnswer": {"@type": "Answer", "text": "You may air-dry the lengths of raw Slavic hair, but the keratin micro-capsules at your scalp MUST be blow-dried to 100% dryness immediately after washing to prevent moisture trapping and bond softening."}}, {"@type": "Question", "name": "What happens if conditioner touches my keratin bonds?", "acceptedAnswer": {"@type": "Answer", "text": "Emollients, oils, and silicones break down the keratin matrix and adhesive polymers, causing micro-capsules to slip and shed prematurely."}}, {"@type": "Question", "name": "How often should I wash my Slavic hair extensions?", "acceptedAnswer": {"@type": "Answer", "text": "Wash 2 to 3 times per week based on your scalp oil production. Slavic hair does not trap oils like synthetic hair, so over-washing is unnecessary."}}, {"@type": "Question", "name": "Which shampoo brands does Lana recommend?", "acceptedAnswer": {"@type": "Answer", "text": "Lana recommends professional salon-grade sulfate-free formulas enriched with keratin proteins and hydration, such as Milbon, Oribe Gold Lust, or Shu Uemura Silk Bloom."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cultureofextensions.com/"}, {"@type": "ListItem", "position": 2, "name": "Washing, Drying & Thermal Styling Science for Slavic Extensions", "item": "https://www.cultureofextensions.com/guides/washing-and-drying-slavic-hair-extensions"}]}</script>
 </head>
-<body>
+<body class="light-theme blog-hub">
 <header class="site"><div class="wrap" style="display:flex;justify-content:space-between;align-items:center">
 <nav class="main" aria-label="Primary" style="display:flex;gap:24px;align-items:center">
 <a href="/#services" style="font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);font-weight:500;text-decoration:none">SERVICES</a>
