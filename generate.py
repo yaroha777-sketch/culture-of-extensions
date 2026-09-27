@@ -1291,8 +1291,8 @@ GUIDE_VISUALS = {
         "read_time": "8 MIN READ"
     },
     "blonde-slavic-hair-extensions-los-angeles": {
-        "img": "/photos/portfolio/portfolio_09_img_3638.jpg",
-        "alt": "Blonde Slavic virgin hair extensions in Los Angeles",
+        "img": "/photos/portfolio/portfolio_26_golden_blonde.jpg",
+        "alt": "Blonde Slavic virgin hair extensions in Los Angeles by Lana",
         "filter": "material-science",
         "read_time": "5 MIN READ"
     },
@@ -1303,7 +1303,7 @@ GUIDE_VISUALS = {
         "read_time": "6 MIN READ"
     },
     "fine-hair-and-hair-thinning-extension-solutions": {
-        "img": "/photos/portfolio/portfolio_24_img_4517.jpg",
+        "img": "/photos/portfolio/portfolio_27_chocolate_brunette.jpg",
         "alt": "Micro-capsule extensions for fine and thinning hair",
         "filter": "trichology",
         "read_time": "5 MIN READ"
@@ -1315,7 +1315,7 @@ GUIDE_VISUALS = {
         "read_time": "7 MIN READ"
     },
     "custom-color-blending-and-balayage-extensions": {
-        "img": "/photos/portfolio/portfolio_22_img_4515.jpg",
+        "img": "/photos/portfolio/portfolio_25_balayage_waves.jpg",
         "alt": "Custom color blending and balayage extensions",
         "filter": "events",
         "read_time": "6 MIN READ"
@@ -1333,7 +1333,7 @@ GUIDE_VISUALS = {
         "read_time": "9 MIN READ"
     },
     "hair-health-and-growth-under-extensions": {
-        "img": "/photos/coe_after.jpg",
+        "img": "/photos/portfolio/portfolio_28_espresso_sleek.jpg",
         "alt": "Natural hair health and growth under extensions",
         "filter": "trichology",
         "read_time": "6 MIN READ"
