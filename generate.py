@@ -80,10 +80,10 @@ footer.site li{padding:4px 0}
 """
 
 SERVICES = [
-    ("k-tip-extensions", "K-Tip Extensions", "From $700"),
-    ("volume-density", "Volume & Density", "From $400"),
-    ("length-transformation", "Length Transformation", "From $1,000"),
-    ("bio-tape-color", "BIO Tape & Color", "From $500"),
+    ("k-tip-extensions", "K-Tip Extensions", "From $400"),
+    ("volume-density", "Volume & Density", "Price on request"),
+    ("length-transformation", "Length Transformation", "Price on request"),
+    ("bio-tape-color", "BIO Tape & Color", "Price on request"),
 ]
 
 GUIDES = [
@@ -480,7 +480,7 @@ def svc_schema(name, price, path, desc):
     return {"@context":"https://schema.org","@type":"Service","name":name,
         "serviceType":"Hair extensions","url":f"{DOMAIN}/{path}","description":desc,
         "provider":LB,"areaServed":[{"@type":"City","name":c} for _,c in CITIES],
-        "offers":{"@type":"Offer","priceCurrency":"USD","price":price.replace("From $","").replace(",","")}}
+        "offers":({"@type":"Offer","priceCurrency":"USD","priceSpecification":{"@type":"PriceSpecification","minPrice":price.replace("From $","").replace(",",""),"priceCurrency":"USD","description":"Starting price per 100 capsules, hair not included; final price set after complimentary consultation"}} if price.startswith("From $") else {"@type":"Offer","priceCurrency":"USD","description":"Price on request after complimentary consultation"})}
 
 def city_schema(city, path, desc):
     return {"@context":"https://schema.org","@type":"Service","name":f"Hair Extensions in {city}, CA",
@@ -507,9 +507,9 @@ pages_written = []
 svc_data = {
 "k-tip-extensions": dict(
  title="K-Tip Hair Extensions in Burbank & Los Angeles | Culture of Extensions",
- desc="Signature K-Tip micro-capsule keratin extensions in Burbank, LA by Lana. Invisible bonds, zero-damage protocol, 100% Slavic & European hair. From $700.",
+ desc="Signature K-Tip micro-capsule keratin extensions in Burbank, LA by Lana. Invisible bonds, zero-damage protocol, 100% Slavic & European hair. From $400 per 100 capsules, hair not included.",
  h1="K-Tip Extensions, Architected for Invisibility",
- eyebrow="Signature Method · From $700",
+ eyebrow="Signature Method · From $400",
  lead="Micro-capsule keratin bonds — our signature. Each capsule is shaped by hand around your natural strand for invisible integration, natural movement, and zero damage to your own hair.",
  body_cards=[("Micro-Capsule Precision","Capsules are formed smaller than industry standard and placed following your natural growth pattern — undetectable even in an updo."),
   ("Zero-Damage Protocol","Attachment points are mapped to your hair density so no strand carries more weight than it can hold. Your natural hair stays healthy underneath."),
@@ -520,14 +520,14 @@ svc_data = {
  checks=["Invisible K-Tip integration — undetectable transition","Custom color blending across roots, lengths and ends","Personalized care guide and maintenance schedule included","Consultations in English, Spanish, and Russian"],
  faq=[("How long do K-Tip extensions last?","With proper care, K-Tip installations typically last 3–4 months before a move-up appointment. The hair itself can often be reused for multiple installations — your personalized maintenance schedule is included."),
   ("Will K-Tip extensions damage my natural hair?","No — when installed correctly. Our zero-damage protocol maps every attachment point to your natural density so no strand is overloaded. Protecting your natural hair is the first principle of every plan."),
-  ("How much do K-Tip extensions cost in Los Angeles?","At Culture of Extensions, K-Tip installations start from $700. The exact quote depends on strand count, length, and hair selected — you receive a personalized plan and exact price at your complimentary consultation."),
+  ("How much do K-Tip extensions cost in Los Angeles?","At Culture of Extensions, K-Tip installation starts from $400 per 100 capsules with Seda and from $500 per 100 capsules with Lana — hair not included. Your final price depends on strand count, length, and hair selected, and is set individually at your complimentary consultation."),
   ("Can K-Tip bonds be seen in thin or fine hair?","Our micro-capsules are smaller than standard and placed following your natural fall, so they remain invisible even in fine hair. Volume restoration in fine hair is one of our most requested transformations."),
   ("How do I prepare for a K-Tip appointment?","Arrive with clean, dry hair, washed with clarifying shampoo and no conditioner or styling products. Everything else — analysis, color match, placement map — happens at the consultation.")]),
 "volume-density": dict(
  title="Volume & Density Hair Extensions in Burbank, LA | Culture of Extensions",
- desc="Targeted volume and density restoration for fine hair in Burbank & Los Angeles. Micro-capsule placement by Lana — natural fullness, zero damage. From $400.",
+ desc="Targeted volume and density restoration for fine hair in Burbank & Los Angeles. Micro-capsule placement by Lana — natural fullness, zero damage. Price on request.",
  h1="Volume & Density, Restored Naturally",
- eyebrow="Targeted Placement · From $400",
+ eyebrow="Targeted Placement · Price on request",
  lead="Targeted micro-capsule placement to restore fullness and natural abundance — designed for fine hair that needs body, not just length.",
  body_cards=[("Built for Fine Hair","Lightweight micro-capsules sized for fine strands — fullness without strain on your natural hair."),
   ("Strategic Mapping","Volume is placed where your hair actually needs it: crown, sides, or perimeter — not a uniform template."),
@@ -535,17 +535,17 @@ svc_data = {
  block_h2="Density Without Compromise",
  block_p=["Fine hair carries extensions differently — which is why volume work demands more precision than any other installation. Lana's approach starts with an honest structural analysis: where your hair can hold weight, where it cannot, and how much density it can carry while staying healthy.",
  "The result is fullness that moves naturally, photographs beautifully, and protects the hair you grow yourself. This is the difference between adding hair and architecting density."],
- checks=["Featherweight micro-capsules for fine hair","Placement mapped to your parting and lifestyle","Natural hair health monitored at every appointment","From $400 — exact plan at complimentary consultation"],
+ checks=["Featherweight micro-capsules for fine hair","Placement mapped to your parting and lifestyle","Natural hair health monitored at every appointment","Price on request — personalized plan at complimentary consultation"],
  faq=[("Is my hair too thin for extensions?","In most cases, no — it needs the right method, not more hair. Micro-capsule volume work is specifically designed for fine hair. The consultation includes an honest assessment; if extensions would compromise your hair, Lana will tell you."),
   ("How is volume placement different from length extensions?","Volume placement targets specific zones — crown, sides, perimeter — with fewer, lighter strands. Length transformation extends your entire perimeter. Many clients combine both in one plan."),
-  ("What does volume restoration cost?","Volume and density work starts from $400. Your exact quote depends on the zones treated and strand count — defined in your personalized plan at the complimentary consultation."),
+  ("What does volume restoration cost?","Volume and density pricing is individual: it depends on the zones treated and strand count and is set in your personalized plan at the complimentary consultation."),
   ("Will anyone be able to tell I have extensions?","No. Our philosophy is invisible artistry: texture, porosity, and movement are matched so precisely that even hairdressers can't see the transition."),
   ("How often does volume work need maintenance?","Move-up appointments typically fall every 8–12 weeks depending on your growth rate. You leave with a personalized maintenance schedule and direct access to Lana for questions.")]),
 "length-transformation": dict(
  title="Length Transformation Extensions in Burbank & LA | Culture of Extensions",
- desc="Full-length bespoke hair extensions in 100% Slavic & European remy hair. Burbank studio serving Los Angeles. By Lana — from $1,000.",
+ desc="Full-length bespoke hair extensions in 100% Slavic & European remy hair. Burbank studio serving Los Angeles. By Lana — price on request.",
  h1="Length Transformation in Slavic & European Hair",
- eyebrow="Full Bespoke Installation · From $1,000",
+ eyebrow="Full Bespoke Installation · Price on request",
  lead="Full-length bespoke extensions in 100% Slavic and European remy hair — the most coveted hair in the world, architected around your natural foundation.",
  body_cards=[("100% Slavic & European Remy","The finest natural hair available — fine cuticle, natural shine, and movement that blends seamlessly with your own."),
   ("Length Architecture","Length is designed in proportion to your features, density, and lifestyle — not pulled from a chart."),
@@ -561,9 +561,9 @@ svc_data = {
   ("Can I color or tone the extensions later?","Slavic hair accepts transparent keratin toning beautifully — no dye, no damage. Color adjustments are planned with Lana so the hair keeps its integrity across its full lifespan.")]),
 "bio-tape-color": dict(
  title="BIO Tape Extensions & Keratin Toning in Burbank, LA | Culture of Extensions",
- desc="Ultra-thin seamless BIO tape wefts and transparent keratin toning in Burbank, Los Angeles. No dye, no damage — by Lana. From $500.",
+ desc="Ultra-thin seamless BIO tape wefts and transparent keratin toning in Burbank, Los Angeles. No dye, no damage — by Lana. Price on request.",
  h1="BIO Tape & Transparent Keratin Color",
- eyebrow="Seamless Wefts · From $500",
+ eyebrow="Seamless Wefts · Price on request",
  lead="Ultra-thin seamless wefts and transparent keratin toning — color refinement and density with no dye and no damage.",
  body_cards=[("Ultra-Thin Wefts","BIO tape sits flat against the scalp — invisible at the parting, comfortable from day one."),
   ("Keratin Toning","Transparent toning refines color without oxidative dye — shine and tone, zero chemical damage."),
@@ -571,7 +571,7 @@ svc_data = {
  block_h2="Color Without Chemistry",
  block_p=["Transparent keratin toning is how we adjust tone across your installation — warming, cooling, or glossing the hair — without a single drop of oxidative dye. The hair keeps its structure; you keep the color precision.",
  "Paired with ultra-thin BIO tape wefts, this is our gentlest installation: seamless density and refined color in a single appointment, with the same zero-damage standard as every Culture of Extensions method."],
- checks=["Seamless wefts invisible at the parting","Transparent keratin gloss — no oxidative dye","Ideal entry method for first-time clients","From $500 — exact plan at consultation"],
+ checks=["Seamless wefts invisible at the parting","Transparent keratin gloss — no oxidative dye","Ideal entry method for first-time clients","Price on request — personalized plan at consultation"],
  faq=[("What is BIO tape and how is it different from regular tape-ins?","BIO tape wefts are ultra-thin and flexible, sitting flush against the scalp. They are lighter and less detectable than standard tape-ins and remove gently without residue."),
   ("What is transparent keratin toning?","A no-dye color refinement: transparent keratin pigment glosses the hair, adjusting tone and adding shine without oxidative chemistry. It keeps both your natural hair and the extension hair structurally intact."),
   ("How long does BIO tape last?","Tape installations are typically maintained every 6–8 weeks, when wefts are lifted and re-applied. The hair itself is reusable across multiple cycles with proper care."),
@@ -601,7 +601,7 @@ city_data = {
  "Burbank clients visit us from Magnolia Park, the Rancho district, the Media District, and the hillside neighborhoods — most within a 10-minute drive. Street parking is available near the studio, and every appointment is private: one client, full attention."],
  checks=["Private appointment-only studio on N Glenoaks Blvd","Complimentary consultation before any commitment","Consultations in English, Spanish, and Russian","Direct access to Lana between appointments"],
  faq=[("Where exactly is the studio located in Burbank?","2119 N Glenoaks Blvd, Burbank, CA 91504 — in the northern part of Burbank, minutes from the 5 freeway. Visits are by appointment only; book a complimentary consultation to begin."),
-  ("How much do hair extensions cost in Burbank?","Installations at our Burbank studio start from $400 for volume work, $500 for BIO tape, $700 for signature K-Tip, and $1,000 for full length transformations. Exact pricing follows your personalized plan."),
+  ("How much do hair extensions cost in Burbank?","At our Burbank studio, K-Tip installation starts from $400 per 100 capsules with Seda and from $500 per 100 capsules with Lana — hair not included. Volume work, BIO tape and full length transformations are priced on request. Your final price is set individually at your complimentary consultation."),
   ("Do I need a consultation before booking an installation?","Yes — and it's complimentary. Lana analyzes your natural hair structure, density, and goals, then builds your personalized plan with exact pricing before you commit to anything."),
   ("What payment and booking system do you use?","Booking runs through Square Appointments — pick a date and service online. The consultation confirms your installation plan and timing."),
   ("Is parking available at the Burbank studio?","Yes, street parking is available near the studio on N Glenoaks Blvd.")]),
@@ -616,7 +616,7 @@ city_data = {
  checks=["10 minutes from Brand Blvd & the Americana","Private one-client-at-a-time studio format","K-Tip micro-capsule & BIO tape in Slavic hair","Complimentary consultation with exact pricing"],
  faq=[("How far is the studio from central Glendale?","About 10 minutes by car from the N Brand Blvd area — the studio is at 2119 N Glenoaks Blvd in Burbank, just across the city line."),
   ("Why drive to Burbank instead of a Glendale salon?","Specialization. Culture of Extensions does one thing: premium hair extensions in Slavic and European hair. The methodology — structural analysis, zero-damage placement, invisible blending — is the result of 14+ years and 2,500+ transformations."),
-  ("What extension methods are available?","Signature K-Tip micro-capsule (from $700), BIO tape with keratin toning (from $500), targeted volume work (from $400), and full length transformations in Slavic hair (from $1,000)."),
+  ("What extension methods are available?","Signature K-Tip micro-capsule (from $400 per 100 capsules, hair not included), BIO tape with keratin toning, targeted volume work, and full length transformations in Slavic hair (priced on request after your complimentary consultation)."),
   ("Do you take clients with previous bad extension experiences?","Very often. Restoring hair after poor installations is part of the practice — the consultation includes an honest assessment of your hair's current condition and a recovery-first plan."),
   ("How do I book from Glendale?","Book the complimentary consultation online via Square Appointments — pick a date, and Lana takes it from there.")]),
 "hair-extensions-studio-city": dict(city="Studio City",
@@ -671,7 +671,7 @@ city_data = {
  "Every transformation follows the Culture of Extensions methodology: structural analysis of your natural hair, a personalized plan with exact pricing, meticulous unhurried installation, and education so the result lasts. Where modern goddesses are born — by Lana, Svitlana Levenets, 14+ years, 2,500+ transformations."],
  checks=["Serving Hollywood, WeHo, Los Feliz, Silver Lake & beyond","Signature K-Tip micro-capsule method","100% Slavic & European remy hair only","Complimentary private consultation · EN / ES / RU"],
  faq=[("Who is the best hair extension specialist in Los Angeles?","We'll let the work answer that — Lana (Svitlana Levenets) has spent 14+ years and 2,500+ transformations refining a methodology built on structural analysis, zero-damage placement, and invisible blending. Book a complimentary consultation and judge the plan she builds for you."),
-  ("How much do luxury hair extensions cost in Los Angeles?","At Culture of Extensions: volume work from $400, BIO tape from $500, signature K-Tip from $700, and full Slavic-hair length transformations from $1,000 — with exact pricing set in your personalized plan."),
+  ("How much do luxury hair extensions cost in Los Angeles?","At Culture of Extensions, K-Tip installation starts from $400 per 100 capsules with Seda and from $500 per 100 capsules with Lana — hair not included. Volume work, BIO tape and full length transformations are priced on request — your final price is set in your personalized plan."),
   ("Where is the studio?","2119 N Glenoaks Blvd in Burbank — about 20 minutes from Hollywood and West Hollywood. Private, appointment-only."),
   ("What languages are consultations available in?","English, Spanish, and Russian."),
   ("What is the first step?","A complimentary consultation. Lana analyzes your natural hair structure, density, and goals, then architects your personalized plan — method, hair, timeline, and exact price — before you commit.")]),
@@ -838,7 +838,7 @@ guide_data = {
  faq=[
   ("How far is the studio from Beverly Hills?", "Our private studio at 2119 N Glenoaks Blvd in Burbank is approximately 20 to 25 minutes from Beverly Hills via the 101 or 134."),
   ("Do you accommodate celebrity or high-profile privacy needs?", "Yes. The studio operates strictly on an appointment-only, single-client basis. There are no walk-ins or overlapping appointments."),
-  ("What is the booking process?", "We begin with a complimentary in-person consultation where Lana analyzes your natural hair foundation, presents Slavic hair options, and provides an exact fixed quote.")
+  ("What is the booking process?", "We begin with a complimentary in-person consultation where Lana analyzes your natural hair foundation, presents Slavic hair options, and provides a personalized price estimate.")
  ]
 ),
 "zero-damage-hair-extensions-biomechanics": dict(
@@ -937,7 +937,7 @@ guide_data = {
 <tr><td><strong>Hair Quality Used</strong></td><td>100% Raw Slavic or Virgin European Weft</td><td>Single-donor Raw Slavic cut-strands</td></tr>
 <tr><td><strong>Maintenance Interval</strong></td><td>Move-up every 6 to 8 weeks</td><td>Full reset every 3 to 4 months</td></tr>
 <tr><td><strong>Updo / Ponytail Flexibility</strong></td><td>Mid-to-high soft ponytail</td><td>Absolute freedom (ultra-high sleek buns)</td></tr>
-<tr><td><strong>Investment (Culture of Extensions)</strong></td><td>From $1,000 (Full installs $1,500–$2,800)</td><td>From $700 (Full installs $1,800–$3,500)</td></tr>
+<tr><td><strong>Investment (Culture of Extensions)</strong></td><td>Price on request</td><td>From $400 per 100 capsules (hair not included)</td></tr>
 <tr><td><strong>Hair Reusability</strong></td><td>12 to 24 months</td><td>12 to 18 months (re-tipped)</td></tr>
 </tbody></table>''',
  block_h2="Scalp Biomechanics: Why Placement Dictates Health",
@@ -977,7 +977,7 @@ guide_data = {
 <tr><td><strong>Artificial Coating</strong></td><td>Zero silicone, zero synthetic wax</td><td>Heavy industrial silicone seal</td></tr>
 <tr><td><strong>Behavior in Humidity</strong></td><td>Drapes naturally, soft movement</td><td>Frizzes, tangles at nape, expands wildly</td></tr>
 <tr><td><strong>Wash Lifespan</strong></td><td>Maintains silkiness wash 1 to 200+</td><td>Degrades sharply after wash 6 to 10</td></tr>
-<tr><td><strong>18-Month Total Cost</strong></td><td>Low ($4,900 with reuse)</td><td>High ($8,900+ with 8 replacements)</td></tr>
+<tr><td><strong>18-Month Total Cost</strong></td><td>Lower (hair is reused)</td><td>Higher (repeated hair replacement)</td></tr>
 </tbody></table>''',
  block_h2="The Silicone Mirage: Why Cheap Hair Costs More",
  block_p=[
@@ -1002,36 +1002,35 @@ guide_data = {
  h1="The Real Cost & Maintenance of Luxury Extensions",
  eyebrow="2026 Los Angeles Pricing & Economics",
  lead="Complete pricing transparency: initial installations, maintenance move-up intervals, and why authentic Slavic hair saves thousands of dollars over an 18-month horizon.",
- direct_answer="In the premium Los Angeles market (Burbank, Beverly Hills), bespoke hair extension installations range from $400 for targeted volume to $1,500–$3,500+ for full Slavic length transformations. Routine maintenance move-ups occur every 6–8 weeks ($250–$450). While budget salons advertise $800 installs using cheap hair that requires replacement every 2 months (totaling $8,900+ over 18 months), Culture of Extensions clients re-use their Slavic hair for up to 2 years, investing only $4,900 over the same period.",
+ direct_answer="In the premium Los Angeles market (Burbank, Beverly Hills), extension pricing depends on method, hair length and density. At Culture of Extensions, K-Tip installation starts from $400 per 100 capsules with Seda and from $500 per 100 capsules with Lana — hair not included. Removal is $100 per hour. Your final price is set individually at a complimentary consultation. Because premium Slavic hair can be reused across several maintenance cycles with proper care, long-term cost is often lower than repeatedly replacing low-grade hair.",
  body_cards=[
-  ("Initial Bespoke Install", "From $400 for volume, from $700 for K-Tip, and from $1,000 for full Slavic transformations ($1,500–$3,500 depending on length and density)."),
+  ("Initial Bespoke Install", "K-Tip installation from $400 (Seda) / $500 (Lana) per 100 capsules, hair not included. Volume, BIO tape and full transformations are priced on request."),
   ("Maintenance Cadence", "Every 6 to 8 weeks for Invisible Bead wefts; 3 to 4 months for K-Tip resets. Protects natural hair growth."),
-  ("The 18-Month Math", "Reusing Slavic hair eliminates 8 separate hair purchases, saving over $4,000 compared to budget salons.")
+  ("The Long-Term Math", "Reusing quality Slavic hair means fewer hair purchases over time compared with low-grade hair that must be replaced often.")
  ],
  table_html='''<table class="matrix">
-<thead><tr><th>Metric (18-Month Horizon)</th><th>Budget / Mass-Market Salon</th><th>Culture of Extensions by Lana</th></tr></thead>
+<thead><tr><th>Factor (18-Month Horizon)</th><th>Budget / Mass-Market Salon</th><th>Culture of Extensions by Lana</th></tr></thead>
 <tbody>
-<tr><td><strong>Initial Hair & Install</strong></td><td>$800 (Low quality hair)</td><td>$2,200 (100% Virgin Slavic)</td></tr>
-<tr><td><strong>Hair Lifespan</strong></td><td>2 months (silicone washes out)</td><td>18 to 24 months (cuticles intact)</td></tr>
-<tr><td><strong>Hair Purchases Required</strong></td><td>8 new hair purchases ($4,800)</td><td><strong>0 replacements</strong> (hair is reused)</td></tr>
-<tr><td><strong>Move-Up Maintenance Visits</strong></td><td>9 visits ($1,800)</td><td>9 visits ($2,700)</td></tr>
-<tr><td><strong>TOTAL 18-MONTH INVESTMENT</strong></td><td><strong>$8,900+</strong></td><td><strong>$4,900</strong> (Saves $4,000+)</td></tr>
-<tr><td><strong>Average Daily Investment</strong></td><td>$16.48 / day</td><td><strong>$9.07 / day</strong></td></tr>
+<tr><td><strong>Initial Hair & Install</strong></td><td>Lower upfront, low-grade hair</td><td>Premium Slavic hair — price set at consultation</td></tr>
+<tr><td><strong>Hair Lifespan</strong></td><td>Short (silicone washes out)</td><td>Long with proper care (cuticles intact)</td></tr>
+<tr><td><strong>Hair Purchases Required</strong></td><td>Frequent replacements</td><td><strong>Hair is reused</strong> across cycles</td></tr>
+<tr><td><strong>Move-Up Maintenance Visits</strong></td><td>Every 6–8 weeks</td><td>Every 6–8 weeks (K-Tip: 3–4 months)</td></tr>
+<tr><td><strong>Long-Term Cost</strong></td><td>Higher</td><td><strong>Lower</strong> thanks to reuse</td></tr>
 </tbody></table>''',
  block_h2="Deconstructing the Luxury Investment",
  block_p=[
   "A luxury transformation at Culture of Extensions is composed of three tangible components: 1) rare, single-donor raw virgin Slavic hair assets (which you own and keep), 2) 3 to 6 hours of unhurried master craftsmanship by Lana, and 3) multi-tonal dimensional color blending.",
-  "We provide exact, fixed quotes during your complimentary consultation before any commitment is made. No surprise add-ons or vague ranges."
+  "You receive a personalized price estimate at your complimentary consultation, before any commitment. Starting prices are not a guaranteed final price — the final price depends on your hair and the plan we agree on together."
  ],
  checks=[
-  "Exact pricing established in personalized plan at consultation",
+  "Personalized price estimate at your complimentary consultation",
   "No hidden fees for finishing cut, blending, or styling",
   "Personalized at-home maintenance schedule and care guide",
   "Complimentary private consultation with Lana in Burbank"
  ],
  faq=[
-  ("What does the complimentary consultation include?", "Lana analyzes your natural hair density, scalp elasticity, and lifestyle, maps placement zones, and determines exact hair length, method, and fixed pricing before you commit."),
-  ("How much does maintenance cost?", "Routine maintenance appointments fall every 6–8 weeks for wefts and BIO tape, typically ranging from $250 to $450 depending on row count. Your original Slavic hair is re-installed directly with zero hair replacement cost."),
+  ("What does the complimentary consultation include?", "Lana analyzes your natural hair density, scalp elasticity, and lifestyle, maps placement zones, and determines hair length, method, and your personalized pricing before you commit."),
+  ("How much does maintenance cost?", "Routine maintenance appointments fall every 6–8 weeks; pricing depends on the amount of hair and is quoted individually. Removal is $100 per hour. With proper care, your original Slavic hair can be re-installed."),
   ("What happens if I delay my maintenance?", "Delaying maintenance beyond 8–10 weeks causes rows to tilt and twist natural root follicles, risking mechanical breakage. We strictly educate clients on adherence to preserve 100% natural hair health.")
  ]
 ),
